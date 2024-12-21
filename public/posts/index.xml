@@ -6,8 +6,16 @@
     <description>Recent content in Posts on Tatsuya Ichinose</description>
     <generator>Hugo -- 0.140.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2024 23:09:14 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 21 Dec 2024 12:15:46 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Curricuram</title>
+      <link>http://localhost:1313/posts/curricuram/</link>
+      <pubDate>Sat, 21 Dec 2024 12:15:46 +0900</pubDate>
+      <guid>http://localhost:1313/posts/curricuram/</guid>
+      <description>&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;📅 &lt;strong&gt;期間&lt;/strong&gt;: 2024年10月5日〜&lt;/p&gt;</description>
+    </item>
     <item>
       <title>🇺🇸 留学 (アメリカ,カリフォルニア大学バークレー校)</title>
       <link>http://localhost:1313/posts/myprofile/</link>
@@ -18,15 +26,15 @@
 &lt;p&gt;🌍 &lt;strong&gt;体験内容&lt;/strong&gt;:
 アメリカのカリフォルニア大学バークレー校 (University of California, Berkeley) で8週間のサマーセッションに参加し、以下の講義を受講しました:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Introduction to Aritificial Inteligence&lt;/li&gt;
+&lt;li&gt;Introduction to Aritificial Intelligence&lt;/li&gt;
 &lt;li&gt;Game Theory&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;私の学部では留学する学生がほとんどおらず、参加したプログラムは過去に一人もいませんでした。しかし、グローバルな視点を持ち、多様な文化背景の中で学ぶ経験が必要だと考え、ビザや宿泊先の手配、奨学金の申請のような準備を自力で進めました。&lt;/p&gt;
-&lt;p&gt;現地では日本人がほとんどいない環境で、多くの学生と交流することができました。この経験を通じて、主体性やグローバルな思考力を養うことができました:&lt;/p&gt;
+&lt;p&gt;私の学部では留学する人がほとんどおらず、私の参加したプログラムは過去に一人もいませんでした。
+しかし、グローバルな視点を持ち、多様な文化背景の中で学ぶ経験は必要だと考え、情報が少ない中、ビザや宿泊先の手配、奨学金の申請等を自分で進めました。現地では日本人がほとんどいないという環境でしたが、多くの学生と交流することが出来、主体性やグローバルな視点におけるコミュニケーション能力を養うことが出来ました。&lt;/p&gt;
 &lt;p&gt;詳細はこちら: &lt;a href=&#34;https://www.titech.ac.jp/students/abroad/experiences/70001&#34;&gt;東京工業大学 留学体験記&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;documents&#34;&gt;Documents&lt;/h2&gt;
-&lt;p&gt;📄 &lt;strong&gt;成績PDF&lt;/strong&gt;: &lt;a href=&#34;./../../documents/UcBerkeleyTranscript.pdf&#34;&gt;成績証明書をダウンロード&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;📄 &lt;strong&gt;成績証明書&lt;/strong&gt;: &lt;a href=&#34;http://localhost:1313/documents/UcBerkeleyTranscript.pdf&#34;&gt;Download my transcript&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;</description>
     </item>
   </channel>

@@ -6,27 +6,49 @@
     <description>Recent content on Tatsuya Ichinose</description>
     <generator>Hugo -- 0.140.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2024 23:09:14 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 15 Nov 2024 12:15:46 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>📚自然言語処理を分かりやすくほぐして解説してみた</title>
+      <link>http://localhost:1313/posts/note_nlp/</link>
+      <pubDate>Fri, 15 Nov 2024 12:15:46 +0900</pubDate>
+      <guid>http://localhost:1313/posts/note_nlp/</guid>
+      <description>&lt;p&gt;自然言語処理の基本事項を高校生でも理解できるように「かみくだきながら」説明をしたものをnoteで公開しています。&lt;/p&gt;
+&lt;p&gt;UC Berkeleyでの留学時に自然言語処理の研究者のお話を聞く機会がありました。
+そこでChatGPTのような魔法に見えるような「AI」が実は自分がこれまで習得してきた内容で構成されているということを学びました。
+それ以来自然言語処理について興味を持ち、独学で学んだことをnoteを通じて発信することで記録しています。&lt;/p&gt;
+&lt;p&gt;📅 &lt;strong&gt;期間&lt;/strong&gt;: 2024年11月15日&lt;/p&gt;
+&lt;p&gt;詳細はこちら: &lt;a href=&#34;https://note.com/tat5453/n/n3f22d032c25a&#34;&gt;https://note.com/tat5453/n/n3f22d032c25a&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>📄Curricuram</title>
+      <link>http://localhost:1313/posts/curricuram/</link>
+      <pubDate>Fri, 04 Oct 2024 12:15:46 +0900</pubDate>
+      <guid>http://localhost:1313/posts/curricuram/</guid>
+      <description>&lt;p&gt;東京科学大学のOCWウェブサイトで公開されているシラバスのURLからiCloudカレンダーを作成できるウェブアプリケーション「Curricuram」を作成しました。具体的にはPythonを使ってWeb解析をして、カレンダーにインポート可能な.icsファイルを生成し、GradioとHaggingFaceを利用してWeb上で実行出来るように改良しました。&lt;/p&gt;
+&lt;p&gt;📅 &lt;strong&gt;期間&lt;/strong&gt;: 2024年10月5日〜&lt;/p&gt;
+&lt;p&gt;👨‍💻 &lt;strong&gt;使用技術&lt;/strong&gt;: &lt;img alt=&#34;Python&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&amp;style=for-the-badge&#34;&gt;&lt;/p&gt;
+&lt;p&gt;詳細はこちら: &lt;a href=&#34;https://huggingface.co/spaces/Tat2too/Curricuram&#34;&gt;https://huggingface.co/spaces/Tat2too/Curricuram&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>🇺🇸 留学 (アメリカ,カリフォルニア大学バークレー校)</title>
-      <link>http://localhost:1313/posts/myprofile/</link>
+      <link>http://localhost:1313/posts/berkeley/</link>
       <pubDate>Sat, 10 Aug 2024 23:09:14 +0900</pubDate>
-      <guid>http://localhost:1313/posts/myprofile/</guid>
-      <description>&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
-&lt;p&gt;📅 &lt;strong&gt;期間&lt;/strong&gt;: 2024年6月13日〜8月10日&lt;/p&gt;
-&lt;p&gt;🌍 &lt;strong&gt;体験内容&lt;/strong&gt;:
-アメリカのカリフォルニア大学バークレー校 (University of California, Berkeley) で8週間のサマーセッションに参加し、以下の講義を受講しました:&lt;/p&gt;
+      <guid>http://localhost:1313/posts/berkeley/</guid>
+      <description>&lt;p&gt;アメリカのカリフォルニア大学バークレー校 (University of California, Berkeley) で8週間の&lt;a href=&#34;https://summer.berkeley.edu/&#34;&gt;サマーセッション&lt;/a&gt;に応募し、以下の講義を受講しました:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Introduction to Aritificial Inteligence&lt;/li&gt;
+&lt;li&gt;Introduction to Aritificial Intelligence&lt;/li&gt;
 &lt;li&gt;Game Theory&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;私の学部では留学する学生がほとんどおらず、参加したプログラムは過去に一人もいませんでした。しかし、グローバルな視点を持ち、多様な文化背景の中で学ぶ経験が必要だと考え、ビザや宿泊先の手配、奨学金の申請のような準備を自力で進めました。&lt;/p&gt;
-&lt;p&gt;現地では日本人がほとんどいない環境で、多くの学生と交流することができました。この経験を通じて、主体性やグローバルな思考力を養うことができました:&lt;/p&gt;
+&lt;p&gt;私の学部では留学する人がほとんどおらず、私の参加したプログラムは過去に一人もいませんでした。
+しかし、グローバルな視点を持ち、多様な文化背景の中で学ぶ経験は必要だと考え、情報が少ない中、ビザや宿泊先の手配、奨学金の申請等を自分で進めました。現地では日本人がほとんどいないという環境でしたが、多くの学生と交流することが出来、主体性やグローバルな視点におけるコミュニケーション能力を養うことが出来ました。&lt;/p&gt;
+&lt;p&gt;📅 &lt;strong&gt;期間&lt;/strong&gt;: 2024年6月13日〜8月10日&lt;/p&gt;
 &lt;p&gt;詳細はこちら: &lt;a href=&#34;https://www.titech.ac.jp/students/abroad/experiences/70001&#34;&gt;東京工業大学 留学体験記&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;👨‍💻 &lt;strong&gt;使用技術&lt;/strong&gt;:
+&lt;img alt=&#34;Python&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&amp;style=for-the-badge&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;documents&#34;&gt;Documents&lt;/h2&gt;
-&lt;p&gt;📄 &lt;strong&gt;成績PDF&lt;/strong&gt;: &lt;a href=&#34;./../../documents/UcBerkeleyTranscript.pdf&#34;&gt;成績証明書をダウンロード&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;📄 &lt;strong&gt;成績証明書&lt;/strong&gt;: &lt;a href=&#34;http://localhost:1313/documents/UcBerkeleyTranscript.pdf&#34;&gt;Download my transcript&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;</description>
     </item>
   </channel>
