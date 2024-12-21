@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tatsuya Ichinose</title>
-    <link>http://localhost:1313/</link>
+    <link>http://localhost:1313/myprofile/</link>
     <description>Recent content on Tatsuya Ichinose</description>
     <generator>Hugo -- 0.140.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 15 Nov 2024 12:15:46 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/myprofile/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>📚自然言語処理を分かりやすくほぐして解説してみた</title>
-      <link>http://localhost:1313/posts/note_nlp/</link>
+      <link>http://localhost:1313/myprofile/posts/note_nlp/</link>
       <pubDate>Fri, 15 Nov 2024 12:15:46 +0900</pubDate>
-      <guid>http://localhost:1313/posts/note_nlp/</guid>
+      <guid>http://localhost:1313/myprofile/posts/note_nlp/</guid>
       <description>&lt;p&gt;自然言語処理の基本事項を高校生でも理解できるように「かみくだきながら」説明をしたものをnoteで公開しています。&lt;/p&gt;
 &lt;p&gt;UC Berkeleyでの留学時に自然言語処理の研究者のお話を聞く機会がありました。
 そこでChatGPTのような魔法に見えるような「AI」が実は自分がこれまで習得してきた内容で構成されているということを学びました。
@@ -22,9 +22,9 @@
     </item>
     <item>
       <title>📄Curricuram</title>
-      <link>http://localhost:1313/posts/curricuram/</link>
+      <link>http://localhost:1313/myprofile/posts/curricuram/</link>
       <pubDate>Fri, 04 Oct 2024 12:15:46 +0900</pubDate>
-      <guid>http://localhost:1313/posts/curricuram/</guid>
+      <guid>http://localhost:1313/myprofile/posts/curricuram/</guid>
       <description>&lt;p&gt;東京科学大学のOCWウェブサイトで公開されているシラバスのURLからiCloudカレンダーを作成できるウェブアプリケーション「Curricuram」を作成しました。具体的にはPythonを使ってWeb解析をして、カレンダーにインポート可能な.icsファイルを生成し、GradioとHaggingFaceを利用してWeb上で実行出来るように改良しました。&lt;/p&gt;
 &lt;p&gt;📅 &lt;strong&gt;期間&lt;/strong&gt;: 2024年10月5日〜&lt;/p&gt;
 &lt;p&gt;👨‍💻 &lt;strong&gt;使用技術&lt;/strong&gt;: &lt;img alt=&#34;Python&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&amp;style=for-the-badge&#34;&gt;&lt;/p&gt;
@@ -32,9 +32,9 @@
     </item>
     <item>
       <title>🇺🇸 留学 (アメリカ,カリフォルニア大学バークレー校)</title>
-      <link>http://localhost:1313/posts/berkeley/</link>
+      <link>http://localhost:1313/myprofile/posts/berkeley/</link>
       <pubDate>Sat, 10 Aug 2024 23:09:14 +0900</pubDate>
-      <guid>http://localhost:1313/posts/berkeley/</guid>
+      <guid>http://localhost:1313/myprofile/posts/berkeley/</guid>
       <description>&lt;p&gt;アメリカのカリフォルニア大学バークレー校 (University of California, Berkeley) で8週間の&lt;a href=&#34;https://summer.berkeley.edu/&#34;&gt;サマーセッション&lt;/a&gt;に応募し、以下の講義を受講しました:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Introduction to Aritificial Intelligence&lt;/li&gt;
@@ -48,7 +48,7 @@
 &lt;img alt=&#34;Python&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&amp;style=for-the-badge&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;documents&#34;&gt;Documents&lt;/h2&gt;
-&lt;p&gt;📄 &lt;strong&gt;成績証明書&lt;/strong&gt;: &lt;a href=&#34;http://localhost:1313/documents/UcBerkeleyTranscript.pdf&#34;&gt;Download my transcript&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;📄 &lt;strong&gt;成績証明書&lt;/strong&gt;: &lt;a href=&#34;http://localhost:1313/myprofile/documents/UcBerkeleyTranscript.pdf&#34;&gt;Download my transcript&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;</description>
     </item>
   </channel>
