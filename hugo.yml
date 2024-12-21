@@ -1,22 +1,7 @@
 baseURL: "https://example.org/"
 languageCode: "en-us"
-title: "Tatsuya Ichinose Profile"
+title: "Tatsuya Ichinose"
 theme: "PaperMod"
-
-languages:
-  en:
-    languageName: "English"
-    weight: 1
-    taxonomies:
-      category: categories
-      tag: tags
-      series: series
-    menu:
-      main:
-        - name: Projects
-          url: projects
-          weight: 5
-
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -35,4 +20,3 @@ params:
       - 所属: 東京工業大学　情報理工学院 情報工学系　B3
 
       - 連絡先: ichinose.t.2dcf@m.isct.ac.jp
-
