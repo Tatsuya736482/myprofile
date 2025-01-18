@@ -13,6 +13,8 @@ params:
       url: "https://github.com/Tatsuya736482"
     - name: discord
       url: "https://discordapp.com/users/1182145927079788625"
+    - name: zenn
+      url: "https://zenn.dev/yay1"
     - name: wantedly
       url: "https://www.wantedly.com/id/tatsuya_ichinose_f"
 
