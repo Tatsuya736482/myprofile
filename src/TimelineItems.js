@@ -125,7 +125,7 @@ export const timelineItems = {
             I wanted to create a website that would allow me to share my experiences and achievements with others in a visually appealing way.
             <br />
             For more details, check out the GitHub repository here: 
-            <a href="https://tatsuya736482.github.io/myprofile/" target="_blank" rel="noopener noreferrer">My Profile</a>.
+            <a href="https://github.com/Tatsuya736482/myprofile.git" target="_blank" rel="noopener noreferrer">My Profile</a>.
         </Box>,
     },
     "now": {
