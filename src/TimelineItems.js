@@ -68,7 +68,6 @@ export const timelineItems = {
         icon: <MenuBookIcon />,
         title: "Published an article online that explains natural language processing (NLP).",
         subtitle: "Publishing on Note",
-        link: "https://note.com/tat5453/n/n3f22d032c25a",
         tag:["projects"],
         detail:<Box>
             I am sharing my self-study of natural language processing on Note, breaking down the basics so that even high school students can understand.
@@ -104,7 +103,6 @@ export const timelineItems = {
         icon: < WorkIcon/>,
         title: "Internship at Sky Co., LTD.(Sky株式会社)",
         subtitle: "Developing a web service.",
-        link: "https://www.skygroup.jp/",
         tag:["work"],
         detail:<Box>
             The company website here:
@@ -116,7 +114,6 @@ export const timelineItems = {
         icon: <LaptopIcon />,
         title: "Created this website using React and Material-UI.",
         subtitle: "React, Material-UI",
-        link: "https://tatsuya736482.github.io/myprofile/",
         tag:["projects"],
         detail:<Box>
             I created this website to introduce myself and my achievements. 
@@ -125,7 +122,7 @@ export const timelineItems = {
             I wanted to create a website that would allow me to share my experiences and achievements with others in a visually appealing way.
             <br />
             For more details, check out the GitHub repository here: 
-            <a href="https://github.com/Tatsuya736482/myprofile.git" target="_blank" rel="noopener noreferrer">My Profile</a>.
+            <a href="https://github.com/Tatsuya736482/myprofile.git" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
         </Box>,
     },
     "now": {
