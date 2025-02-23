@@ -47,40 +47,48 @@ export default function SimpleSlide() {
           Click on the underlined items or icons to see the details of each.
         </p>
         <Box
-        
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          '& > *': {
+            m: 1,
+          },
+          width: '100%',
+          justifyContent: 'center',
+          textAlign: 'center',
+        }}
+      >
+        <p>Filter by:</p>
+        <br />
+        <ToggleButtonGroup
+          color="primary"
+          value={selected}
+          exclusive
+          onChange={handleChange}
+          aria-label="Timeline Selection"
+          size="small"
           sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            '& > *': {
-              m: 1,
+            '& .MuiToggleButton-root': {
+              fontSize: { xs: '0.5rem', sm: '0.7rem', md: '0.75rem' }, // フォントサイズ縮小
+              padding: { xs: '2px 6px', sm: '4px 8px' }, // パディングを小さくする
+              minWidth: { xs: '50px', sm: 'auto' }, // ボタンの最小幅を縮小
             },
-            width: '100%',
+            '& .MuiSvgIcon-root': {
+              fontSize: { xs: '0.8rem', sm: '1rem' }, // アイコンサイズを小さく
+            },
+            display: 'flex',
             justifyContent: 'center',
-            textAlign: 'center',
           }}
         >
-          <p>Filter by:</p>
-          <ToggleButtonGroup
-            color="primary"
-            value={selected}
-            exclusive
-            onChange={handleChange}
-            aria-label="Timeline Selection"
-            size='small'
-            sx={{
-              '& .MuiToggleButton-root': {
-                fontSize: { xs: '0.5rem', sm: '0.75rem', md: '0.75rem' },
-              },
-            }}
-          >
-            <ToggleButton value="All"><AppsIcon />&nbsp;All</ToggleButton>
-            <ToggleButton value="papers"><ArticleIcon />&nbsp;Papers</ToggleButton>
-            <ToggleButton value="study"><SchoolIcon />&nbsp;Study</ToggleButton>
-            <ToggleButton value="projects"><PhonelinkIcon />&nbsp;Projects</ToggleButton>
-            <ToggleButton value="work"><WorkIcon />&nbsp;Work Experience</ToggleButton>
-          </ToggleButtonGroup>
-        </Box>
+          <ToggleButton value="All"><AppsIcon fontSize="inherit" />&nbsp;All</ToggleButton>
+          <ToggleButton value="papers"><ArticleIcon fontSize="inherit" />&nbsp;Papers</ToggleButton>
+          <ToggleButton value="study"><SchoolIcon fontSize="inherit" />&nbsp;Study</ToggleButton>
+          <ToggleButton value="projects"><PhonelinkIcon fontSize="inherit" />&nbsp;Projects</ToggleButton>
+          <ToggleButton value="work"><WorkIcon fontSize="inherit" />&nbsp;Work</ToggleButton>
+        </ToggleButtonGroup>
+      </Box>
+
 
       </Box>
       <Paper elevation={0} >
