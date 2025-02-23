@@ -159,7 +159,7 @@ export default function PageContainerBasic(props) {
                       <h1>Hi👋 I'm Tatsuya Ichinose!</h1>
                       <h2>Thank you for visiting my website! 🎉</h2>
                     </TypeIt>
-                    <Avatar alt="Tatsuya Ichinose" src="https://tatsuya736482.github.io/myprofile/images/me.jpg" sx={{ width: 150, height: 150 }} />
+                    <Avatar alt="Tatsuya Ichinose" src="../images/me.jpg" sx={{ width: 150, height: 150 }} />
                     <br />
                     <Typography variant="body2">
                       <CiMail />
