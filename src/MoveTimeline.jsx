@@ -47,47 +47,51 @@ export default function SimpleSlide() {
           Click on the underlined items or icons to see the details of each.
         </p>
         <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          '& > *': {
-            m: 1,
-          },
-          width: '100%',
-          justifyContent: 'center',
-          textAlign: 'center',
-        }}
-      >
-        <p>Filter by:</p>
-        <br />
-        <ToggleButtonGroup
-          color="primary"
-          value={selected}
-          exclusive
-          onChange={handleChange}
-          aria-label="Timeline Selection"
-          size="small"
           sx={{
-            '& .MuiToggleButton-root': {
-              fontSize: { xs: '0.5rem', sm: '0.7rem', md: '0.75rem' }, // フォントサイズ縮小
-              padding: { xs: '2px 6px', sm: '4px 8px' }, // パディングを小さくする
-              minWidth: { xs: '50px', sm: 'auto' }, // ボタンの最小幅を縮小
-            },
-            '& .MuiSvgIcon-root': {
-              fontSize: { xs: '0.8rem', sm: '1rem' }, // アイコンサイズを小さく
-            },
             display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            '& > *': {
+              m: 1,
+            },
+            width: '100%',
             justifyContent: 'center',
+            textAlign: 'center',
+            flexWrap: 'wrap', // 折り返しを許可
           }}
         >
-          <ToggleButton value="All"><AppsIcon fontSize="inherit" />&nbsp;All</ToggleButton>
-          <ToggleButton value="papers"><ArticleIcon fontSize="inherit" />&nbsp;Papers</ToggleButton>
-          <ToggleButton value="study"><SchoolIcon fontSize="inherit" />&nbsp;Study</ToggleButton>
-          <ToggleButton value="projects"><PhonelinkIcon fontSize="inherit" />&nbsp;Projects</ToggleButton>
-          <ToggleButton value="work"><WorkIcon fontSize="inherit" />&nbsp;Work</ToggleButton>
-        </ToggleButtonGroup>
-      </Box>
+          <p>Filter by:</p>
+          <ToggleButtonGroup
+            color="primary"
+            value={selected}
+            exclusive
+            onChange={handleChange}
+            aria-label="Timeline Selection"
+            size="small"
+            sx={{
+              '& .MuiToggleButton-root': {
+                fontSize: { xs: '0.5rem', sm: '0.7rem', md: '0.75rem' }, // フォントサイズ縮小
+                padding: { xs: '2px 6px', sm: '4px 8px' }, // 余白を小さく
+                minWidth: { xs: '50px', sm: 'auto' }, // 最小幅を縮小
+              },
+              '& .MuiSvgIcon-root': {
+                fontSize: { xs: '0.8rem', sm: '1rem' }, // アイコンサイズを小さく
+              },
+              display: 'flex',
+              flexWrap: 'wrap', // 折り返しを許可
+              justifyContent: 'center', // 中央寄せ
+              gap: '4px', // ボタン間の間隔を調整
+            }}
+          >
+            <ToggleButton value="All"><AppsIcon fontSize="inherit" />&nbsp;All</ToggleButton>
+            <ToggleButton value="papers"><ArticleIcon fontSize="inherit" />&nbsp;Papers</ToggleButton>
+            <ToggleButton value="study"><SchoolIcon fontSize="inherit" />&nbsp;Study</ToggleButton>
+            <ToggleButton value="projects"><PhonelinkIcon fontSize="inherit" />&nbsp;Projects</ToggleButton>
+            <ToggleButton value="work"><WorkIcon fontSize="inherit" />&nbsp;Work</ToggleButton>
+          </ToggleButtonGroup>
+        </Box>
+
+
 
 
       </Box>
