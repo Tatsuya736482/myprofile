@@ -142,8 +142,8 @@ export default function PageContainerBasic(props) {
         >
           <Box ustifyContent="center" width="100%">
             <Grid item xs={12}>
-              <Card >
-                <CardContent>
+            <Card sx={{ m: 0 ,width:"100%" }}> {/* 横方向の余白をなくす */}
+              <CardContent> {/* CardContent の余白も調整 */}
                   <Box
                     display="flex"
                     flexDirection="column"
