@@ -143,8 +143,6 @@ export default function PageContainerBasic(props) {
           <Box ustifyContent="center" width="100%">
             <Grid item xs={12}>
               <Card >
-      
-      
                 <CardContent>
                   <Box
                     display="flex"

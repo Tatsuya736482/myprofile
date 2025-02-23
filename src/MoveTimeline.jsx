@@ -38,7 +38,6 @@ export default function SimpleSlide() {
           '& > *': {
             m: 1,
           },
-          
         }}
       >
         <h1>⏳Personal history</h1>
@@ -47,27 +46,42 @@ export default function SimpleSlide() {
           <br />
           Click on the underlined items or icons to see the details of each.
         </p>
-        <ToggleButtonGroup
-          color="primary"
-          value={selected}
-          exclusive
-          onChange={handleChange}
-          aria-label="Timeline Selection"
-          size='small'
+        <Box
+        
           sx={{
-            '& .MuiToggleButton-root': {
-              fontSize: { xs: '0.5rem', sm: '0.75rem', md: '0.75rem' },
-              padding: { xs: '4px 8px', sm: '6px 12px', md: '8px 16px' },
-             
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            '& > *': {
+              m: 1,
             },
+            width: '100%',
+            justifyContent: 'center',
+            textAlign: 'center',
           }}
         >
-          <ToggleButton value="All"><AppsIcon />&nbsp;All</ToggleButton>
-          <ToggleButton value="papers"><ArticleIcon />&nbsp;Papers</ToggleButton>
-          <ToggleButton value="study"><SchoolIcon />&nbsp;Study</ToggleButton>
-          <ToggleButton value="projects"><PhonelinkIcon />&nbsp;Projects</ToggleButton>
-          <ToggleButton value="work"><WorkIcon />&nbsp;Work Experience</ToggleButton>
-        </ToggleButtonGroup>
+          <p>Filter by:</p>
+          <ToggleButtonGroup
+            color="primary"
+            value={selected}
+            exclusive
+            onChange={handleChange}
+            aria-label="Timeline Selection"
+            size='small'
+            sx={{
+              '& .MuiToggleButton-root': {
+                fontSize: { xs: '0.5rem', sm: '0.75rem', md: '0.75rem' },
+              },
+            }}
+          >
+            <ToggleButton value="All"><AppsIcon />&nbsp;All</ToggleButton>
+            <ToggleButton value="papers"><ArticleIcon />&nbsp;Papers</ToggleButton>
+            <ToggleButton value="study"><SchoolIcon />&nbsp;Study</ToggleButton>
+            <ToggleButton value="projects"><PhonelinkIcon />&nbsp;Projects</ToggleButton>
+            <ToggleButton value="work"><WorkIcon />&nbsp;Work Experience</ToggleButton>
+          </ToggleButtonGroup>
+        </Box>
+
       </Box>
       <Paper elevation={0} >
         {renderContent()}
