@@ -1,0 +1,35 @@
+/* デフォルトのスタイル */
+h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  ul, li {
+    font-size: 1rem;
+  }
+  
+  /* スマホ版のスタイル */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    h2 {
+      font-size: 1.2rem;
+    }
+  
+    h3 {
+      font-size: 1rem;
+    }
+  
+    ul, li {
+      font-size: 0.875rem; /* フォントサイズを小さく */
+    }
+  }
