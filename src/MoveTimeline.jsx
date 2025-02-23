@@ -57,6 +57,7 @@ export default function SimpleSlide() {
           sx={{
             '& .MuiToggleButton-root': {
               fontSize: { xs: '0.5rem', sm: '0.75rem', md: '0.75rem' },
+              padding: { xs: '4px 8px', sm: '6px 12px', md: '8px 16px' },
              
             },
           }}
