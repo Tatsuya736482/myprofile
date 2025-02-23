@@ -25,7 +25,6 @@
     "typeit-react": "^2.7.8",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://Tatsuya736482.github.io/myprofile/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
