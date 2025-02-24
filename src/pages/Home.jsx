@@ -76,10 +76,10 @@ export default function PageContainerBasic(props) {
           alignItems="center"
           width="100%"
           textAlign="center"
-          sx={{ p: 2 }} 
+          sx={{ p: 2 }}
         >
-          <ContentsSelfIntroduction />
-        </Box>
+        <ContentsSelfIntroduction />
+      </Box>
         <br />
         <Paper elevation={3} sx={{ p: 2 }}>
           <br />
