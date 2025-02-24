@@ -10,3 +10,9 @@ Componentの属性
 
 ## Detail
 Component識別用の命名
+
+
+# 画像の挿入
+```
+{`${process.env.PUBLIC_URL}/images/me.jpg`}
+```

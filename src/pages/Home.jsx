@@ -32,7 +32,7 @@ const NAVIGATION = [
   { segment: 'inbox', title: 'Inbox' },
   {
     segment: 'home',
-    title: 'about me',
+    title: 'Home',
     icon: <DashboardIcon />,
   },
 ];
@@ -50,16 +50,6 @@ function useDemoRouter(initialPath) {
 
   return router;
 }
-
-
-const Skeleton = styled('div')(({ theme, height }) => ({
-  backgroundColor: theme.palette.action.hover,
-  borderRadius: theme.shape.borderRadius,
-  height,
-  content: '" "',
-}));
-
-
 
 export default function PageContainerBasic(props) {
   const { window } = props;
@@ -86,7 +76,7 @@ export default function PageContainerBasic(props) {
           alignItems="center"
           width="100%"
           textAlign="center"
-          sx={{ p: 2 }}
+          sx={{ p: 2 }} 
         >
           <ContentsSelfIntroduction />
         </Box>
