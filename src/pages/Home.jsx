@@ -43,7 +43,7 @@ export default function Home() {
           <br />
         </Paper>
         <br />
-        <footer style={{ textAlign: "center", padding: "10px", background: "#f8f8f8", fontSize: "14px" }}>
+        <footer style={{ textAlign: "center", padding: "10px", fontSize: "14px" }}>
           © {new Date().getFullYear()} Tatsuya Ichinose. All rights reserved.
         </footer>
       </Paper>
