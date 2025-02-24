@@ -14,14 +14,14 @@ export const timelineItems = {
         title: "Admitted to Tokyo Institute of Technology (Tokyo Tech)",
         subtitle: "Dept. of Computer Science",
         link: null,
-        tag:["study"],
+        tag:["education"],
     },
     "2024-06S": {
         date: "Jun - Aug 2024",
         icon: <FlightTakeoffIcon />,
         title: "Studied computer science at University of California, Berkeley (UC Berkeley)",
         subtitle: "Summer Session",
-        tag:["study"],
+        tag:["education"],
         detail:<Box> 
             I applied for an 8-week summer session at the University of California, Berkeley, where I took the following courses:
             <ul>
@@ -61,7 +61,7 @@ export const timelineItems = {
         title: "Tokyo Institute of Technology (Tokyo Tech) merged to become Institute of Science Tokyo (Science Tokyo)",
         subtitle: null,
         link: null,
-        tag:["study"],
+        tag:["education"],
     },
     "2024-11P": {
         date: "Nov 2024 -",
@@ -131,6 +131,6 @@ export const timelineItems = {
         title: "Studying at Institute of Science Tokyo (Science Tokyo)",
         subtitle: null,
         link: null,
-        tag:["study"],
+        tag:["education"],
     },
 };

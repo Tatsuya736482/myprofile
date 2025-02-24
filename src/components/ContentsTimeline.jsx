@@ -84,8 +84,8 @@ export default function SimpleSlide() {
             }}
           >
             <ToggleButton value="All"><AppsIcon fontSize="inherit" />&nbsp;All</ToggleButton>
+            <ToggleButton value="education"><SchoolIcon fontSize="inherit" />&nbsp;Education</ToggleButton>
             <ToggleButton value="papers"><ArticleIcon fontSize="inherit" />&nbsp;Papers</ToggleButton>
-            <ToggleButton value="study"><SchoolIcon fontSize="inherit" />&nbsp;Study</ToggleButton>
             <ToggleButton value="projects"><PhonelinkIcon fontSize="inherit" />&nbsp;Projects</ToggleButton>
             <ToggleButton value="work"><WorkIcon fontSize="inherit" />&nbsp;Work</ToggleButton>
           </ToggleButtonGroup>
