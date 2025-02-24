@@ -31,7 +31,6 @@ export default function TypeTimelineStart({ date, icon, title, subtitle, link, d
           {icon}
         </IconButton>
         }
-        <TimelineConnector sx={{ bgcolor: 'text.secondary' }} />
         
         
         <TimelineConnector sx={{ bgcolor: 'primary.main' }} />

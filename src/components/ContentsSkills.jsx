@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-
+import TypeIt from "typeit-react";
 export default function ContentsSkills() {
     return(
         <Box
@@ -11,7 +11,9 @@ export default function ContentsSkills() {
           width="100%"
           sx={{ p: 2, "& h2, & p": { margin: 0 } }}
         >
-          <h1>💪 Skills</h1>
+          <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false  }}>
+              <h1>💪 Skills</h1>
+            </TypeIt>
           <h2>✔︎ Language Ability</h2>
           <Box>
             <ul style={{  padding: 0 }}>

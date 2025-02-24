@@ -5,6 +5,7 @@ import Avatar from '@mui/material/Avatar';
 import TypeIt from 'typeit-react';
 import { CiMail } from 'react-icons/ci';
 import TypeBackgroundBox from './TypeBackgroundbox';
+import ElementsSnslinks from './ElementsSnslinks';
 
 export default function ContentsSelfIntroduction() {
     return(
@@ -16,11 +17,11 @@ export default function ContentsSelfIntroduction() {
             alignItems="center"
             width="100%"
             textAlign="center"
-            sx={{ p: 2, color: "white" }}  // ★ 追加：全体のテキスト色を白に
+            sx={{ p: 2, color: "white" }}  
           >
-            <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false }}>
+            <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false  }}>
               <h1>Hi👋 I'm Tatsuya Ichinose!</h1>
-              <h2>Thank you for visiting my website! 🎉</h2>
+              <h2>Welcome to my website! 🎉</h2>
             </TypeIt>
             <Avatar alt="Tatsuya Ichinose" src={`${process.env.PUBLIC_URL}/images/me.jpg`} sx={{ width: 150, height: 150 }} />
             <br />
@@ -30,6 +31,11 @@ export default function ContentsSelfIntroduction() {
               <a href="mailto:ichinose.t.2dcf@m.isct.ac.jp" style={{ color: "white" }}>  {/* ★ 修正：リンクの色を白に */}
                 <strong>ichinose.t.2dcf@m.isct.ac.jp</strong>
               </a>
+              <br />
+              <br />
+              <ElementsSnslinks style={{ width: '150px', height: '150px' }}/>
+            
+
             </Typography>
             <br />
             <Typography variant="body2" color="white" component="p">  {/* ★ 修正：Typographyの色を明示 */}

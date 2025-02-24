@@ -10,7 +10,7 @@ const options = [
 
 const ITEM_HEIGHT = 48;
 
-export default function LongMenu() {
+export default function LongMenu({ color = 'white' }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -30,7 +30,7 @@ export default function LongMenu() {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <LanguageIcon />
+        <LanguageIcon style={{color}}/>
       </IconButton>
       <Menu
         id="long-menu"

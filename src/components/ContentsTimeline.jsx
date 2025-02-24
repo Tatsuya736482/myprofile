@@ -9,6 +9,7 @@ import PhonelinkIcon from '@mui/icons-material/Phonelink';
 import ArticleIcon from '@mui/icons-material/Article';
 import TimelineFilter from './TypeTimelineFilter';
 import AppsIcon from '@mui/icons-material/Apps';
+import TypeIt from 'typeit-react';
 
 export default function SimpleSlide() {
   const [selected, setSelected] = React.useState('All');
@@ -40,7 +41,10 @@ export default function SimpleSlide() {
           },
         }}
       >
-        <h1>⏳Personal history</h1>
+        <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false  }}>
+          <h1>⏳Personal history</h1>
+        </TypeIt>
+        
         <p>
           Click on the buttons to filter the timeline.
           <br />

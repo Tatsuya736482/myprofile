@@ -3,11 +3,15 @@ import { styled } from '@mui/material/styles';
 
 const BackgroundBox = styled(Box)(({ backgroundImage }) => ({
     position: 'relative',
-    width: '100%',
-    minHeight: '100vh',
+    width: '100%',  
+    minHeight: '100%',
+    margin: '0 auto', // 中央寄せ
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    display: 'flex',  // 中央寄せを確実にする
+    justifyContent: 'center', // 水平方向の中央寄せ
+    alignItems: 'center',     // 垂直方向の中央寄せ
     '&::before': {
       content: '""',
       position: 'absolute',
@@ -22,6 +26,7 @@ const BackgroundBox = styled(Box)(({ backgroundImage }) => ({
       zIndex: 1,
     },
 }));
+
 
 export default function TypeBackgroundBox({ children, backgroundImage }) {
     return (

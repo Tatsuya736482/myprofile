@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import TypeIt from "typeit-react";
 
 export default function ContentsEducation() {
     return(
@@ -11,7 +12,10 @@ export default function ContentsEducation() {
             width="100%"
             sx={{ p: 2, "& h2, & p": { margin: 0 } }}
           >
-            <h1>📚 Education</h1>
+            
+            <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false  }}>
+              <h1>📚 Education</h1>
+            </TypeIt>
             <h2>Institute of Science Tokyo</h2>
             <p>
                 Bachelor of Computer Science
