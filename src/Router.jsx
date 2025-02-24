@@ -1,20 +1,20 @@
 import { BrowserRouter, useRoutes } from "react-router-dom";
-import Aboutme from "./Aboutme";
+import Home from "./pages/Home";
 import React from "react";
 
 const Router = () => {
   const routingConfig = [
     {
       path: "/",
-      element: <Aboutme />,
+      element: <Home />,
     },
     {
-      path: "/aboutme",
-      element: <Aboutme />,
+      path: "/Home",
+      element: <Home />,
     },
     {
       path: "/myprofile",
-      element: <Aboutme />,
+      element: <Home />,
     },
     // { path: '*', element: <NotFound /> }
   ];
