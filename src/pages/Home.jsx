@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <AppProvider>
-      <Paper sx={{backgroundColor: "#f5f5f5" }}>
+      <Paper >
         <Box
           display="flex"
           flexDirection="column"
