@@ -12,10 +12,6 @@ const Router = () => {
       path: "/Home",
       element: <Home />,
     },
-    {
-      path: "/myprofile",
-      element: <Home />,
-    },
     // { path: '*', element: <NotFound /> }
   ];
 
