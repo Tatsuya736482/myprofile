@@ -6,6 +6,7 @@ import TypeIt from 'typeit-react';
 import { CiMail } from 'react-icons/ci';
 import TypeBackgroundBox from './TypeBackgroundbox';
 import ElementsSnslinks from './ElementsSnslinks';
+import ElementsDarkmode from './ElementsDarkmode';
 
 export default function ContentsSelfIntroduction() {
     return(
@@ -19,6 +20,15 @@ export default function ContentsSelfIntroduction() {
             textAlign="center"
             sx={{ p: 2, color: "white" }}  
           >
+
+            <Box
+              position="absolute"
+              top={16}
+              right={16}
+            >
+              <ElementsDarkmode />
+            </Box>
+              
             <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false  }}>
               <h1>Hi👋 I'm Tatsuya Ichinose!</h1>
               <h2>Welcome to my website! 🎉</h2>

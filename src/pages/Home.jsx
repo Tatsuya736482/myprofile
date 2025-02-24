@@ -12,6 +12,7 @@ import ContentsSelfIntroduction from '../components/ContentsSelfIntroduction';
 import ContentsEducation from '../components/ContentsEducation';
 import ContentsSkills from '../components/ContentsSkills';
 import ContentsTimeline from '../components/ContentsTimeline';
+import ElementsDarkmode from '../components/ElementsDarkmode';
 
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
           <Box ustifyContent="center" width="100%" minHeight={600} >
             <ContentsTimeline />
           </Box>
+          <br />
           <Divider />
           <ContentsEducation />
           <br />
