@@ -16,6 +16,7 @@ import ElementsDarkmode from '../components/ElementsDarkmode';
 
 
 export default function Home({lng="en"}) {
+  const lngSuported = lng.startsWith("ja") ? "jp" : "en";
 
   return (
     <AppProvider>
@@ -34,7 +35,7 @@ export default function Home({lng="en"}) {
         <Paper elevation={4} sx={{ p: 2 }}>
           <br />
           <Box ustifyContent="center" width="100%" minHeight={600} >
-            <ContentsTimeline lng={lng}/>
+            <ContentsTimeline lng={lngSuported}/>
           </Box>
           <br />
           <Divider />
