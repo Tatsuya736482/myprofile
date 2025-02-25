@@ -3,29 +3,21 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import LanguageIcon from '@mui/icons-material/Language';
-import { useNavigate } from 'react-router-dom';
-
 const options = [
-  { label: 'English', path: '/en' },
-  { label: 'Japanese', path: '/ja' },
+  'English',
+  'Japanese(Later)',
 ];
 
 const ITEM_HEIGHT = 48;
 
-export default function LongMenu({ color = 'white' }) {
+export default function LongMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const navigate = useNavigate();
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleClose = (path) => {
+  const handleClose = () => {
     setAnchorEl(null);
-    if (path) {
-      navigate(path);
-    }
   };
 
   return (
@@ -38,7 +30,7 @@ export default function LongMenu({ color = 'white' }) {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <LanguageIcon style={{color}}/>
+        <LanguageIcon />
       </IconButton>
       <Menu
         id="long-menu"
@@ -47,7 +39,7 @@ export default function LongMenu({ color = 'white' }) {
         }}
         anchorEl={anchorEl}
         open={open}
-        onClose={() => handleClose()}
+        onClose={handleClose}
         slotProps={{
           paper: {
             style: {
@@ -58,8 +50,8 @@ export default function LongMenu({ color = 'white' }) {
         }}
       >
         {options.map((option) => (
-          <MenuItem key={option.label} onClick={() => handleClose(option.path)}>
-            {option.label}
+          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+            {option}
           </MenuItem>
         ))}
       </Menu>
