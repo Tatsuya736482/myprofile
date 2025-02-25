@@ -4,7 +4,7 @@ import TypeIt from "typeit-react";
 
 export default function ContentsSkills({ lng = "en" }) {
   const title = lng === "ja" ? "📚 資格など" : "📚 Skills";
-  const languageAbility = lng === "ja" ? "✔︎ 言語" : "✔︎ Language Ability";
+  const languageAbility = lng === "ja" ? "・言語" : "・Language Ability";
   const english = lng === "ja" ? "英語" : "English";
   const englishDetail = lng === "ja" ? "TOEIC 895 (2025年1月26日取得)" : "TOEIC 895 (Obtained on January 26, 2025)";
   const japanese = lng === "ja" ? null : "Japanese";
