@@ -8,9 +8,9 @@ const Router = () => {
   // 各ページのパス設定
   return <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/author' element={<Home />} />
-      <Route path='/report' element={<Home />} />
+      <Route path='/' element={<Home lng={navigator.language}/>} />
+      <Route path='/en' element={<Home lng="en"/>} />
+      <Route path='/ja' element={<Home lng="ja"/>} />
     </Routes>
   </BrowserRouter>;
 };
