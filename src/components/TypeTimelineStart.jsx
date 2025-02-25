@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { TimelineItem, TimelineOppositeContent, TimelineSeparator, TimelineConnector, TimelineContent } from '@mui/lab';
 import { IconButton, Typography, Popover } from '@mui/material';
 
-export default function TypeTimelineStart({ date, icon, title, subtitle, link, detail }) {
+export default function TypeTimelineStart({ date, icon, title, subtitle,  detail ,lng="en"}) {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -23,11 +23,11 @@ export default function TypeTimelineStart({ date, icon, title, subtitle, link, d
       </TimelineOppositeContent>
       <TimelineSeparator>
         {detail ?
-        <IconButton color="primary" aria-label={title} onClick={handleClick}>
+        <IconButton color="primary" aria-label={title[lng]} onClick={handleClick}>
         {icon}
         </IconButton>
         :
-        <IconButton color="primary" aria-label={title}>
+        <IconButton color="primary" aria-label={title[lng]}>
           {icon}
         </IconButton>
         }
@@ -43,7 +43,7 @@ export default function TypeTimelineStart({ date, icon, title, subtitle, link, d
           sx={{ fontSize: { xs: '0.75rem', sm: '1rem', md: '1.25rem' }, cursor: 'pointer' }}
           onClick={handleClick}
         >
-          <u>{title}</u>
+          <u>{title[lng]}</u>
         </Typography>
         :
         <Typography 
@@ -51,11 +51,11 @@ export default function TypeTimelineStart({ date, icon, title, subtitle, link, d
           component="span" 
           sx={{ fontSize: { xs: '0.75rem', sm: '1rem', md: '1.25rem' }, cursor: 'pointer' }}
         >
-          {title}
+          {title[lng]}
         </Typography>
         }
 
-        {subtitle && <Typography sx={{ color: 'text.secondary', fontSize: { xs: '0.5rem', sm: '0.75rem', md: '1rem' }, cursor: 'pointer' }} >{subtitle}</Typography>}
+        {subtitle[lng] && <Typography sx={{ color: 'text.secondary', fontSize: { xs: '0.5rem', sm: '0.75rem', md: '1rem' }, cursor: 'pointer' }} >{subtitle[lng]}</Typography>}
       </TimelineContent>
       <Popover
         id={id}

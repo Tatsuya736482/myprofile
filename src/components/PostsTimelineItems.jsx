@@ -11,16 +11,15 @@ export const timelineItems = {
     "2022-04A": {
         date: "Apr 2022",
         icon: <SchoolIcon />,
-        title: "Admitted to Tokyo Institute of Technology (Tokyo Tech)",
-        subtitle: "Dept. of Computer Science",
-        link: null,
+        title: {"en":"Admitted to Tokyo Institute of Technology (Tokyo Tech)", "ja":"東京工業大学入学"},
+        subtitle: {"en":"Dept. of Computer Science", "ja":"情報理工学院"},
         tag:["education"],
     },
     "2024-06S": {
         date: "Jun - Aug 2024",
         icon: <FlightTakeoffIcon />,
-        title: "Studied computer science at University of California, Berkeley (UC Berkeley)",
-        subtitle: "Summer Session",
+        title: {"en":"Studied computer science at University of California, Berkeley (UC Berkeley)", "ja":"カリフォルニア大学バークレー校(UC Berkeley)留学"},
+        subtitle: {"en":"Summer Session" , "ja":"Summer Session"},
         tag:["education"],
         detail:<Box> 
             I applied for an 8-week summer session at the University of California, Berkeley, where I took the following courses:
@@ -42,8 +41,8 @@ export const timelineItems = {
     "2024-10C": {
         date: "Oct - Oct 2024",
         icon: <LaptopIcon />,
-        title: "Create a web service that generates an iCloud calendar from a syllabus URL.",
-        subtitle: "Python, Gradio",
+        title: {"en":"Create a web service that generates an iCloud calendar from a syllabus URL.", "ja":"シラバスURLからiCloudカレンダーを生成するWebサービスを作成"},
+        subtitle: {"en":"Python, Gradio", "ja":"Python, Gradio"},
         tag:["projects"],
         detail:<Box>
             I developed a web application called Curricuram, which allows users to create an iCloud calendar from syllabus URLs published on the Institute of Science Tokyo OCW website.
@@ -58,16 +57,15 @@ export const timelineItems = {
     "2024-10T": {
         date: "Oct 2024",
         icon: <FaExchangeAlt />,
-        title: "Tokyo Institute of Technology (Tokyo Tech) merged to become Institute of Science Tokyo (Science Tokyo)",
-        subtitle: null,
-        link: null,
+        title: {"en":"Tokyo Institute of Technology (Tokyo Tech) merged to become Institute of Science Tokyo (Science Tokyo)", "ja":"東京工業大学が大学統合により東京科学大学へ"},
+        subtitle: {"en":null, "ja":null},
         tag:["education"],
     },
     "2024-11P": {
         date: "Nov 2024 -",
         icon: <MenuBookIcon />,
-        title: "Published an article online that explains natural language processing (NLP).",
-        subtitle: "Publishing on Note",
+        title: {"en":"Published an article online that explains natural language processing (NLP).", "ja":"自然言語処理(NLP)の解説記事をNoteに投稿"},
+        subtitle: {"en":"Publishing on Note", "ja":null},
         tag:["projects"],
         detail:<Box>
             I am sharing my self-study of natural language processing on Note, breaking down the basics so that even high school students can understand.
@@ -84,8 +82,8 @@ export const timelineItems = {
     "2024-12C": {
         date: "Dec 2024 - Feb 2025",
         icon: <PhonelinkIcon />,
-        title: "Created a Flutter app called fuguru (iOS, Android, Web) using GCP to filter out already-read content from articles.",
-        subtitle: "Google Cloud Platform (Gemini on Vertex AI, Text Embedding), Firebase, Flutter",
+        title: {"en":"Created a Flutter app called fuguru (iOS, Android, Web) using GCP to filter out already-read content from articles.", "ja":"GCPを使用して、記事から既に読んだことのある内容を除外するFlutterアプリfuguru(iOS, Android, Web)を作成"},
+        subtitle: {"en":"Google Cloud Platform (Gemini on Vertex AI, Text Embedding), Firebase, Flutter","ja":"Google Cloud Platform (Gemini on Vertex AI, Text Embedding), Firebase, Flutter"},
         tag:["projects"],
         detail:<Box>
 
@@ -101,8 +99,8 @@ export const timelineItems = {
     "2025-2I": {
         date: "Feb 2025 - Now",
         icon: < WorkIcon/>,
-        title: "Internship at Sky Co., LTD.(Sky株式会社)",
-        subtitle: "Developing a web service.",
+        title: {"en":"Internship at Sky Co., LTD.(Sky株式会社)", "ja":"インターンシップ: Sky株式会社"},
+        subtitle: {"en":"Developing a web service.", "ja":"Webサービス開発"},
         tag:["work"],
         detail:<Box>
             The company website here:
@@ -112,8 +110,8 @@ export const timelineItems = {
     "2025-3C": {
         date: "Mar - Mar 2025",
         icon: <LaptopIcon />,
-        title: "Created this website using React and Material-UI.",
-        subtitle: "React, Material-UI",
+        title: {"en":"Created this website using React and Material-UI.", "ja":"ReactとMaterial-UIを使用して自己紹介ウェブサイトを作成"},
+        subtitle: {"en":"React, Material-UI", "ja":"React, Material-UI"},
         tag:["projects"],
         detail:<Box>
             I created this website to introduce myself and my achievements. 
@@ -128,8 +126,8 @@ export const timelineItems = {
     "now": {
         date: "Now",
         icon: <SchoolIcon />,
-        title: "Studying at Institute of Science Tokyo (Science Tokyo)",
-        subtitle: null,
+        title: {"en":"Studying at Institute of Science Tokyo (Science Tokyo)", "ja":"東京科学大学在学"},
+        subtitle: {"en":null, "ja":null},
         link: null,
         tag:["education"],
     },

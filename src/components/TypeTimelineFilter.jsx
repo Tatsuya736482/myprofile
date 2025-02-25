@@ -4,7 +4,7 @@ import TypeTimelineStart from "./TypeTimelineStart";
 import { timelineItems } from "./PostsTimelineItems";
 import { Timeline , timelineOppositeContentClasses } from "@mui/lab";
 
-export default function TimelineFilter({ filterTag = "study" }) {
+export default function TimelineFilter({ filterTag = "study" ,lng = "en"}) {
   const filteredItems = filterTag
     ? Object.entries(timelineItems).filter(([_, item]) => item.tag.includes(filterTag))
     : Object.entries(timelineItems); 
@@ -13,7 +13,8 @@ export default function TimelineFilter({ filterTag = "study" }) {
     <Timeline sx={{ [`& .${timelineOppositeContentClasses.root}`]: { flex: 0.2 } }}>
       {filteredItems.map(([key, item], index) => {
         const Component = index === 0 ? TypeTimelineStart : TypeTimeline;
-        return <Component key={key} {...item} />;
+        return <Component key={key} {...item} lng={lng} />;
+        
       })}
     </Timeline>
   );

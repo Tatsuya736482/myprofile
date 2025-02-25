@@ -15,7 +15,7 @@ import ContentsTimeline from '../components/ContentsTimeline';
 import ElementsDarkmode from '../components/ElementsDarkmode';
 
 
-export default function Home() {
+export default function Home({lng="en"}) {
 
   return (
     <AppProvider>
@@ -34,7 +34,7 @@ export default function Home() {
         <Paper elevation={4} sx={{ p: 2 }}>
           <br />
           <Box ustifyContent="center" width="100%" minHeight={600} >
-            <ContentsTimeline />
+            <ContentsTimeline lng={lng}/>
           </Box>
           <br />
           <Divider />

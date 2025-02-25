@@ -9,7 +9,6 @@ import TypeBackgroundBox from './TypeBackgroundbox';
 import ElementsSnslinks from './ElementsSnslinks';
 import ElementsDarkmode from './ElementsDarkmode';
 import ElementsLanguagemenu from './ElementsLanguagemenu';
-
 export default function ContentsSelfIntroduction() {
     return(
         <TypeBackgroundBox backgroundImage={`${process.env.PUBLIC_URL}/images/sf.jpeg`}>
@@ -31,6 +30,7 @@ export default function ContentsSelfIntroduction() {
               <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'white' }}>
                 <ElementsDarkmode />
                 <ElementsLanguagemenu />
+         
               </Stack>
               
             </Box>

@@ -11,7 +11,7 @@ import TimelineFilter from './TypeTimelineFilter';
 import AppsIcon from '@mui/icons-material/Apps';
 import TypeIt from 'typeit-react';
 
-export default function SimpleSlide() {
+export default function SimpleSlide({lng = "en"}) {
   const [selected, setSelected] = React.useState('All');
 
   const handleChange = (event, newSelected) => {
@@ -23,9 +23,9 @@ export default function SimpleSlide() {
   const renderContent = () => {
     switch (selected) {
       case 'All':
-        return <TimelineFilter filterTag={null} />
+        return <TimelineFilter filterTag={null} lng={lng}/>
       default:
-        return <TimelineFilter filterTag={selected} />;
+        return <TimelineFilter filterTag={selected} lng={lng}/>;
     }
   };
 
