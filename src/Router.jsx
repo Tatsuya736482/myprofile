@@ -25,7 +25,7 @@ const Router = () => {
 };
 
 const AppRouter = () => (
-  <BrowserRouter>
+  <BrowserRouter basename="/myprofile">
     <Router />
   </BrowserRouter>
 );
