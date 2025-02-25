@@ -6,15 +6,15 @@ const Router = () => {
   const routingConfig = [
     {
       path: "/",
-      element: <Home lng={navigator.language}/>,
+      element: <Home />,
     },
     {
-      path: "/en",
-      element: <Home lng='en'/>,
+      path: "/Home",
+      element: <Home />,
     },
     {
-      path: "/ja",
-      element: <Home lng='ja'/>,
+      path: "/myprofile",
+      element: <Home />,
     },
     // { path: '*', element: <NotFound /> }
   ];
