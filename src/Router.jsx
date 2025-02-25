@@ -1,33 +1,18 @@
-import { BrowserRouter, useRoutes } from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
+import { Route, Routes } from "react-router";
 import Home from "./pages/Home";
 import React from "react";
 
+
 const Router = () => {
-  const routingConfig = [
-    {
-      path: "/",
-      element: <Home />,
-    },
-    {
-      path: "/Home",
-      element: <Home lng='ja'/>,
-    },
-    {
-      path: "/myprofile",
-      element: <Home />,
-    },
-    // { path: '*', element: <NotFound /> }
-  ];
-
-  const routing = useRoutes(routingConfig);
-
-  return routing;
+  // 各ページのパス設定
+  return <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/author' element={<Home />} />
+      <Route path='/report' element={<Home />} />
+    </Routes>
+  </BrowserRouter>;
 };
 
-const AppRouter = () => (
-  <BrowserRouter basename="/myprofile">
-    <Router />
-  </BrowserRouter>
-);
-
-export default AppRouter;
+export default Router;
