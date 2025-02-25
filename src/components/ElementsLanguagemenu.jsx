@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const options = [
   { label: 'English', path: '/en' },
-  { label: 'Japanese(Later)', path: '/ja' },
+  { label: 'Japanese', path: '/ja' },
 ];
 
 const ITEM_HEIGHT = 48;
@@ -24,7 +24,12 @@ export default function LongMenu({ color = 'white' }) {
   const handleClose = (path) => {
     setAnchorEl(null);
     if (path) {
-      navigate(path);
+      if (window.location.pathname !== path) {
+        navigate(path);
+        window.location.reload();
+      } else {
+        window.location.reload(); 
+      }
     }
   };
 

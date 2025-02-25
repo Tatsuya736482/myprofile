@@ -11,14 +11,14 @@ export const timelineItems = {
     "2022-04A": {
         date: "Apr 2022",
         icon: <SchoolIcon />,
-        title: {"en":"Admitted to Tokyo Institute of Technology (Tokyo Tech)", "ja":"東京工業大学入学"},
+        title: {"en":"Admitted to Tokyo Institute of Technology (Tokyo Tech)", "ja":"東京工業大学 入学"},
         subtitle: {"en":"Dept. of Computer Science", "ja":"情報理工学院"},
         tag:["education"],
     },
     "2024-06S": {
         date: "Jun - Aug 2024",
         icon: <FlightTakeoffIcon />,
-        title: {"en":"Studied computer science at University of California, Berkeley (UC Berkeley)", "ja":"カリフォルニア大学バークレー校(UC Berkeley)留学"},
+        title: {"en":"Studied computer science at University of California, Berkeley (UC Berkeley)🇺🇸", "ja":"🇺🇸カリフォルニア大学バークレー校(UC Berkeley)留学"},
         subtitle: {"en":"Summer Session" , "ja":"Summer Session"},
         tag:["education"],
         detail:<Box> 

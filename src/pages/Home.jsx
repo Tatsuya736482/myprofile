@@ -16,7 +16,7 @@ import ElementsDarkmode from '../components/ElementsDarkmode';
 
 
 export default function Home({lng="en"}) {
-  const lngSuported = lng.startsWith("ja") ? "jp" : "en";
+  const lngSupported = lng.startsWith("ja") ? "ja" : "en";
 
   return (
     <AppProvider>
@@ -30,19 +30,16 @@ export default function Home({lng="en"}) {
           textAlign="center"
           
         >
-        <ContentsSelfIntroduction />
+        <ContentsSelfIntroduction lng={lngSupported}/>
       </Box>
         <Paper elevation={4} sx={{ p: 2 }}>
           <br />
           <Box ustifyContent="center" width="100%" minHeight={600} >
-            <ContentsTimeline lng={lngSuported}/>
+            <ContentsTimeline lng={lngSupported}/>
           </Box>
           <br />
           <Divider />
-          <ContentsEducation />
-          <br />
-          <Divider />
-          <ContentsSkills />
+          <ContentsSkills lng={lngSupported}/>
           <br />
         </Paper>
         <br />

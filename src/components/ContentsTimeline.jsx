@@ -29,6 +29,16 @@ export default function SimpleSlide({lng = "en"}) {
     }
   };
 
+  const title = lng === "ja" ? "⏳経歴" : "⏳Personal history";
+  const filterInstruction = lng === "ja" 
+    ? "✔︎ボタンを選択すると、経歴をフィルタリングできます。"
+    : "✔︎Click on the buttons to filter the timeline.";
+  const detailInstruction = lng === "ja" 
+    ? "✔︎下線付きの項目にいては、アイコンまたは文章をクリックして各詳細を確認してください。"
+    : "✔︎Click on the underlined items or icons to see the details of each.";
+  const filterBy = lng === "ja" ? "フィルター：" : "Filter by:";
+
+
   return (
     <Box>
       <Box
@@ -41,14 +51,14 @@ export default function SimpleSlide({lng = "en"}) {
           },
         }}
       >
-        <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false  }}>
-          <h1>⏳Personal history</h1>
+        <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false }}>
+          <h1>{title}</h1>
         </TypeIt>
         
         <p>
-          Click on the buttons to filter the timeline.
+          {filterInstruction}
           <br />
-          Click on the underlined items or icons to see the details of each.
+          {detailInstruction}
         </p>
         <Box
           sx={{
@@ -64,7 +74,7 @@ export default function SimpleSlide({lng = "en"}) {
             flexWrap: 'wrap', // 折り返しを許可
           }}
         >
-          <p>Filter by:</p>
+          <p>{filterBy}</p>
           <ToggleButtonGroup
             color="primary"
             value={selected}
