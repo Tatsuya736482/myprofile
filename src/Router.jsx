@@ -10,7 +10,7 @@ const Router = () => {
     },
     {
       path: "/Home",
-      element: <Home />,
+      element: <Home lng='ja'/>,
     },
     {
       path: "/myprofile",
