@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 
-const BackgroundBox = styled(Box)(({ backgroundImage }) => ({
+const BackgroundBox = styled(Box)(({ backgroundImage, overlayOpacity }) => ({
     position: 'relative',
     width: '100%',  
     minHeight: '100%',
@@ -19,7 +19,7 @@ const BackgroundBox = styled(Box)(({ backgroundImage }) => ({
       left: 0,
       width: '100%',
       height: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.4)', // オーバーレイを追加して暗くする
+      backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})`, // オーバーレイを追加して暗くする
     },
     '& > *': {
       position: 'relative',
@@ -27,14 +27,13 @@ const BackgroundBox = styled(Box)(({ backgroundImage }) => ({
     },
 }));
 
-
 export default function TypeBackgroundBox({ children, backgroundImage }) {
+    const theme = useTheme();
+    const overlayOpacity = theme.palette.mode === 'dark' ? 0.6 : 0.4;
+
     return (
-        <BackgroundBox backgroundImage={backgroundImage}>
+        <BackgroundBox backgroundImage={backgroundImage} overlayOpacity={overlayOpacity}>
             {children}
         </BackgroundBox>
     );
 }
-
-
-

@@ -7,6 +7,10 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 
+// Scroll
+//https://github.com/fisshy/react-scroll?tab=readme-ov-file
+import { Element,scroller } from 'react-scroll';
+
 // Defined by myself
 import ContentsSelfIntroduction from '../components/ContentsSelfIntroduction';
 import ContentsEducation from '../components/ContentsEducation';
@@ -31,14 +35,16 @@ export default function Home({lng="en"}) {
           
         >
         <ContentsSelfIntroduction lng={lngSupported}/>
-      </Box>
+      </Box>     
         <Paper elevation={4} sx={{ p: 2 }}>
           <br />
+          <Element name="Timeline" />
           <Box ustifyContent="center" width="100%" minHeight={600} >
             <ContentsTimeline lng={lngSupported}/>
           </Box>
           <br />
           <Divider />
+          <Element name="Skills" />
           <ContentsSkills lng={lngSupported}/>
           <br />
         </Paper>

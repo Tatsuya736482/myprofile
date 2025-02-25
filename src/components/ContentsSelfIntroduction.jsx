@@ -9,7 +9,7 @@ import TypeBackgroundBox from './TypeBackgroundbox';
 import ElementsSnslinks from './ElementsSnslinks';
 import ElementsDarkmode from './ElementsDarkmode';
 import ElementsLanguagemenu from './ElementsLanguagemenu';
-
+import ElementsOutline from './ElementsOutline';
 export default function ContentsSelfIntroduction({ lng = "en" }) {
   const greeting = lng === "ja" ? "一瀬 達矢(Tatsuya Ichinose)" : "Hi👋 I'm Tatsuya Ichinose!";
   const welcomeMessage = lng === "ja" ? "Welcome to my website! 🎉" : "Welcome to my website! 🎉";
@@ -32,11 +32,15 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
         sx={{ p: 2, color: "white" }}  
       >
         <Box
-          position="absolute"
+          position="fixed"
           top={16}
           right={16}
+          bgcolor="rgba(0, 0, 0, 0.4)" // 背景を若干暗くする
+          p={1} // パディングを追加
+          borderRadius={10} // 角を丸くする
+
         >
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'white' }}>
+          <Stack direction="row" spacing={1} alignItems="center" sx={{ color: "white" }}>
             <ElementsDarkmode />
             <ElementsLanguagemenu />
           </Stack>
@@ -65,6 +69,11 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
           {interestInfo}
           <br />
         </Typography>
+        <br />
+        <br />
+        <Box>
+          <ElementsOutline lng={lng}/>
+        </Box>
       </Box>
     </TypeBackgroundBox>
   );
