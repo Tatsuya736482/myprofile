@@ -3,10 +3,12 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import TypeIt from 'typeit-react';
+import { Stack } from '@mui/material';
 import { CiMail } from 'react-icons/ci';
 import TypeBackgroundBox from './TypeBackgroundbox';
 import ElementsSnslinks from './ElementsSnslinks';
 import ElementsDarkmode from './ElementsDarkmode';
+import ElementsLanguagemenu from './ElementsLanguagemenu';
 
 export default function ContentsSelfIntroduction() {
     return(
@@ -26,7 +28,11 @@ export default function ContentsSelfIntroduction() {
               top={16}
               right={16}
             >
-              <ElementsDarkmode />
+              <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'white' }}>
+                <ElementsDarkmode />
+                <ElementsLanguagemenu />
+              </Stack>
+              
             </Box>
               
             <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false  }}>
