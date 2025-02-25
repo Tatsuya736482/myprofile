@@ -100,7 +100,7 @@ export const timelineItems = {
         date: "Feb 2025 - Now",
         icon: < WorkIcon/>,
         title: {"en":"Internship at Sky Co., LTD.(Sky株式会社)", "ja":"インターンシップ: Sky株式会社"},
-        subtitle: {"en":"Developing a web service.", "ja":"Webサービス開発"},
+        subtitle: {"en":"Developing a web service.", "ja":"Web開発"},
         tag:["work"],
         detail:<Box>
             The company website here:
@@ -124,10 +124,10 @@ export const timelineItems = {
         </Box>,
     },
     "now": {
-        date: "Now",
+        date: "Apr 2022 - Now",
         icon: <SchoolIcon />,
-        title: {"en":"Studying at Institute of Science Tokyo (Science Tokyo)", "ja":"東京科学大学在学"},
-        subtitle: {"en":null, "ja":null},
+        title: {"en":"Studying at Institute of Science Tokyo (Science Tokyo)", "ja":"東京科学大学 在学中"},
+        subtitle: {"en":null, "ja":"情報理工学院 情報工学科"},
         link: null,
         tag:["education"],
     },
