@@ -15,8 +15,7 @@ const Router = () => {
     {
       path: "/ja",
       element: <Home lng='ja'/>,
-    }
-
+    },
     // { path: '*', element: <NotFound /> }
   ];
 
