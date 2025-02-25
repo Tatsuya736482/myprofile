@@ -19,9 +19,9 @@ export default function ContentsSkills({ lng = "en" }) {
       width="100%"
       sx={{ p: 2, "& h2, & p": { margin: 0 } }}
     >
-      <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false }}>
-        <h1>{title}</h1>
-      </TypeIt>
+      
+      <h1>{title}</h1>
+      
       <h2>{languageAbility}</h2>
       <Box>
         <ul style={{ padding: 0 }}>

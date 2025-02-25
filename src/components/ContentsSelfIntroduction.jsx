@@ -42,7 +42,7 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
           </Stack>
         </Box>
         
-        <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false }}>
+        <TypeIt options={{ speed: 30, waitUntilVisible: true, cursor: false }}>
           <h1>{greeting}</h1>
           <h2>{welcomeMessage}</h2>
         </TypeIt>

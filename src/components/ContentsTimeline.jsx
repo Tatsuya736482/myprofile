@@ -51,9 +51,8 @@ export default function SimpleSlide({lng = "en"}) {
           },
         }}
       >
-        <TypeIt options={{ speed: 35, waitUntilVisible: true, lifeLike: true, cursor: false }}>
-          <h1>{title}</h1>
-        </TypeIt>
+        <h1>{title}</h1>
+        
         
         <p>
           {filterInstruction}
