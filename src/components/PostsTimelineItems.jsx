@@ -123,6 +123,26 @@ export const timelineItems = {
             <a href="https://github.com/Tatsuya736482/myprofile.git" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
         </Box>,
     },
+    "2025-3D": {
+        date: "Mar - now",
+        icon: <LaptopIcon />,
+        title: {"en":"I have built a website for a student organization using Next.js and Firebase.", "ja":"Next.jsとFirebaseを使用して、留学サポート団体のウェブサイトを構築"},
+        subtitle: {"en":"Next.js, Firebase,Auth.js,Supabase(For file storage)", "ja":"Next.js, Firebase,Auth.js,Supabase(For file storage)"},
+        tag:["projects"],
+        detail:<Box>
+             "I have developed a dynamic website for a student organization using Next.js and Firebase, focusing on efficient performance and scalability. 
+             <br />
+             The site utilizes Incremental Static Regeneration (ISR) on Vercel, ensuring fast page loads and optimal SEO while maintaining the ability to update content without rebuilding the entire site. 
+             <br />
+             I prioritized free hosting by leveraging Vercel’s free tier for deployment. 
+                <br />
+             
+             To secure access to article management, I implemented OAuth using Google Accounts via Auth.js, allowing only authorized members to manage and post content. 
+                <br />
+             This project highlights my ability to build efficient, user-friendly platforms with secure, role-based access control and my commitment to cost-effective, high-performance web solutions.
+            <a href="https://www.flap-sciencetokyo.com" target="_blank" rel="noopener noreferrer">https://www.flap-sciencetokyo.com</a>.
+        </Box>,
+    },
     "now": {
         date: "Apr 2022 - Now",
         icon: <SchoolIcon />,
