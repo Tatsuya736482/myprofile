@@ -99,7 +99,7 @@ export const timelineItems = {
     "2025-2I": {
         date: "Feb 2025 - Now",
         icon: < WorkIcon/>,
-        title: {"en":"Internship at Sky Co., LTD.(Sky株式会社)", "ja":"インターンシップ: Sky株式会社"},
+        title: {"en":"Internship at Sky Co., LTD.(Sky株式会社)", "ja":"インターンシップ@Sky株式会社"},
         subtitle: {"en":"Developing a web service.", "ja":"Web開発"},
         tag:["work"],
         detail:<Box>
