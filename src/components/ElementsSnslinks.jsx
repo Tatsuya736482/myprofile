@@ -27,11 +27,6 @@ export default function CustomPageToolbar({ color = 'white' }) {
               <LinkedInIcon fontSize="inherit" style={{ color }}/>
             </IconButton>
           </a>
-          <a href="https://www.wantedly.com/id/tatsuya_ichinose_f" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="wantedly" size="small">
-              <SiWantedly style={{ color }}/>
-            </IconButton>
-          </a>
           <a href="https://qiita.com/A12" target="_blank" rel="noopener noreferrer">
             <IconButton aria-label="qiita" size="small">
               <SiQiita style={{ color }}/>

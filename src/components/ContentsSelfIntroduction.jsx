@@ -46,10 +46,13 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
           </Stack>
         </Box>
         
+        <Box minHeight={'200px'} pt={'10px'}>
+        <h1>{greeting}</h1>
         <TypeIt options={{ speed: 30, waitUntilVisible: true, cursor: false }}>
-          <h1>{greeting}</h1>
           <h2>{welcomeMessage}</h2>
         </TypeIt>
+        </Box>
+        
         <Avatar alt="Tatsuya Ichinose" src={`${process.env.PUBLIC_URL}/images/me.jpg`} sx={{ width: 150, height: 150 }} />
         <br />
         <Typography variant="body2">
