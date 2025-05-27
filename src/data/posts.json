@@ -143,6 +143,20 @@
   "tag": ["education"],
   "detail":"2025-04O.md"
 },
+  "2025-05S": {
+  "image": "swallowIcon.png",
+  "date": "Mar 2025 – Present",
+  "icon": "LaptopIcon",
+  "subtitle": {
+    "en": "development of the Swallow LLM, the construction of evaluation infrastructure for large language models (LLMs), and the publication of evaluation results on the Swallow LLM Leaderboard.",
+    "ja": "Swallow LLMの構築やLLMの評価基盤の構築、Swallow LLM Leaderboardに評価結果を公開"
+  },
+  "detail":"2025-05S.md",
+  "tag": ["education"],
+  "title": {
+    "en": "Swallow LLM",
+    "ja": "Swallow LLM"
+  }},
     "now": {
       "image":"scienceTokyoIcon.webp",
       "date": "Apr 2022 - Now",
