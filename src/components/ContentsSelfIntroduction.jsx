@@ -17,8 +17,8 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
     ? "東京科学大学 情報理工学院 情報工学科の学部4年生です。"
     : "I'm an undergraduate student at Institute of Science Tokyo majoring in Computer Science.";
   const interestInfo = lng === "ja" 
-    ? "岡崎研究室に所属しています。自然言語処理に興味があります。"
-    : "I'm interested in Natural Language Processing, especially about the generation of text.";
+    ? "自然言語処理に関する研究を中心に扱う岡崎研究室に所属しています。 研究室では、 Swallow Projectの一員として Swallow LLMの構築やLLMの評価基盤の構築、Swallow LLM Leaderboardに評価結果を公開するなどの活動をしています。"
+    : "I joined the Okazaki Laboratory, which focuses primarily on research in natural language processing (NLP).As a member of the Swallow Project, I have been involved in the development of the Swallow LLM, the construction of evaluation infrastructure for large language models (LLMs), and the publication of evaluation results on the Swallow LLM Leaderboard.";
 
   return (
     <TypeBackgroundBox backgroundImage={`${process.env.PUBLIC_URL}/images/sf.jpeg`}>
@@ -54,7 +54,7 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
           <ElementsSnslinks style={{ width: '150px', height: '150px' }}/>
         </Typography>
         <br />
-        <Typography variant="body2" color="white" component="p">
+        <Typography variant="body2" color="white" component="p" width={'600px'}>
           {studentInfo}
           <br />
           {interestInfo}

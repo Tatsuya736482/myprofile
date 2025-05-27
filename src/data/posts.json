@@ -91,7 +91,7 @@
       "icon": "WorkIcon",
       "title": {
         "en": "Internship at Sky Co., LTD.(Sky株式会社)",
-        "ja": "インターンシップ@Sky株式会社"
+        "ja": "長期インターンシップ@Sky株式会社"
       },
       "subtitle": {
         "en": "Developing a web service.",
@@ -116,7 +116,7 @@
       "detail":"/2025-03C.md"     },
     "2025-03D": {
       "image":"nextIcon.png",
-      "date": "Mar - now",
+      "date": "Mar 2025 - Apr 2025",
       "icon": "LaptopIcon",
       "title": {
         "en": "I have built a website for a student organization using Next.js and Firebase.",
@@ -128,6 +128,21 @@
       },
       "tag": ["projects"],
       "detail": "2025-03D.md"    },
+"2025-04O": {
+  "image": "okazakiLabIcon.jpeg",
+  "date": "Apr 2025 – Present",
+  "icon": "LaptopIcon",
+  "title": {
+    "en": "Okazaki Laboratory",
+    "ja": "岡崎研究室"
+  },
+  "subtitle": {
+    "en": "Institute of Science Tokyo (formerly Tokyo Institute of Technology)",
+    "ja": "東京科学大学（旧・東京工業大学）"
+  },
+  "tag": ["education"],
+  "detail":"2025-04O.md"
+},
     "now": {
       "image":"scienceTokyoIcon.webp",
       "date": "Apr 2022 - Now",
