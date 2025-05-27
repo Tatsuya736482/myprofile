@@ -14,7 +14,7 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
   const greeting = lng === "ja" ? "一瀬 達矢(Tatsuya Ichinose)" : "Hi👋 I'm Tatsuya Ichinose!";
   const welcomeMessage = lng === "ja" ? "Welcome to my website! 🎉" : "Welcome to my website! 🎉";
   const studentInfo = lng === "ja" 
-    ? "東京科学大学 情報理工学院 情報工学科の学部4年生です。"
+    ? "東京科学大学 情報理工学院 情報工学科,岡崎研究室所属の学部4年生です。"
     : "I'm an undergraduate student at Institute of Science Tokyo majoring in Computer Science.";
   const interestInfo = lng === "ja" 
     ? "自然言語処理に関する研究を中心に扱う岡崎研究室に所属しています。 研究室では、 Swallow Projectの一員として Swallow LLMの構築やLLMの評価基盤の構築、Swallow LLM Leaderboardに評価結果を公開するなどの活動をしています。"
@@ -54,7 +54,7 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
           <ElementsSnslinks style={{ width: '150px', height: '150px' }}/>
         </Typography>
         <br />
-        <Typography variant="body2" color="white" component="p" width={'600px'}>
+        <Typography variant="body2" color="white" component="p" width={{'md':'600px'}}>
           {studentInfo}
           <br />
           {interestInfo}

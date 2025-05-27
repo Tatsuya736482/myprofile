@@ -70,37 +70,47 @@ export default function TypeTimeline({ date, icon, title, subtitle, detail, imag
           spacing={2}
           sx={{ position: 'relative', zIndex: 2 }}
         >
-          <Box sx={{ minWidth: 100, textAlign: 'center' }}>
-            <Typography fontSize={12} color="text.secondary">
-              {date}
-            </Typography>
-          </Box>
+          <Stack
+  direction={{ xs: 'column', sm: 'row' }} // 👈 スマホでは縦、タブレット以上では横
+  alignItems="center"
+  spacing={2}
+  sx={{ position: 'relative', zIndex: 2 }}
+>
+  <Box sx={{ minWidth: 100, textAlign: 'center' }}>
+    <Typography fontSize={12} color="text.secondary">
+      {date}
+    </Typography>
+  </Box>
 
-          <Box
-            sx={{
-              width: 70,
-              height: 70,
-              overflow: 'hidden',
-              borderRadius: 2,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: theme.palette.background.paper,
-            }}
-          >
-            <img
-              src={`${process.env.PUBLIC_URL}/images/${image}`}
-              alt="timeline"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                display: 'block',
-                borderRadius: '8px',
-              }}
-            />
-          </Box>
+  <Box
+    sx={{
+      width: 70,
+      height: 70,
+      overflow: 'hidden',
+      borderRadius: 2,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: theme.palette.background.paper,
+    }}
+  >
+    <img
+      src={`${process.env.PUBLIC_URL}/images/${image}`}
+      alt="timeline"
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        objectPosition: 'center',
+        display: 'block',
+        borderRadius: '8px',
+      }}
+    />
+  </Box>
+
+  {/* 他の要素が続く場合はここに */}
+</Stack>
+
 
           <Box sx={{ flex: 1 }}>
             <Stack spacing={0.5} mt={1}>
