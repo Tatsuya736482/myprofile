@@ -4,8 +4,8 @@ import { AppProvider } from '@toolpad/core/AppProvider';
 // material-ui
 // https://mui.com/
 import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
+
 
 // Scroll
 //https://github.com/fisshy/react-scroll?tab=readme-ov-file
@@ -17,13 +17,34 @@ import ContentsEducation from '../components/ContentsEducation';
 import ContentsSkills from '../components/ContentsSkills';
 import ContentsTimeline from '../components/ContentsTimeline';
 import ElementsDarkmode from '../components/ElementsDarkmode';
-
+import { Stack,Box } from '@mui/material';
+import ElementsLanguagemenu from '../components/ElementsLanguagemenu';
 
 export default function Home({lng="en"}) {
   const lngSupported = lng.startsWith("ja") ? "ja" : "en";
 
   return (
     <AppProvider>
+              <Box
+  position="fixed"
+  top={{ xs: 8, sm: 16 }}
+  right={{ xs: 8, sm: 16 }}
+  bgcolor="rgba(0, 0, 0, 0.4)"
+  p={1}
+  borderRadius={10}
+  zIndex={9999}
+  sx={{
+    transition: 'background-color 0.3s',
+    '&:hover': {
+      bgcolor: 'rgba(0, 0, 0, 0.6)',
+    },
+  }}
+>
+  <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'white' }}>
+    <ElementsDarkmode />
+    <ElementsLanguagemenu />
+  </Stack>
+</Box>
       <Paper >
         <Box
           display="flex"

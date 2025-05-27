@@ -1,75 +1,127 @@
-import { useState } from 'react';
-import { TimelineItem, TimelineOppositeContent, TimelineSeparator, TimelineConnector, TimelineContent } from '@mui/lab';
-import { IconButton, Typography, Popover } from '@mui/material';
+import React, { useState } from 'react';
+import {
+  Typography,
+  Stack,
+  Box,
+  useTheme
+} from '@mui/material';
+import { AppleGlassDialog } from './ElementsDialog';
 
-export default function TypeTimeline({ date, icon, title, subtitle,  detail ,lng="en"}) {
-  const [anchorEl, setAnchorEl] = useState(null);
+export default function TypeTimeline({ date, icon, title, subtitle, detail, image, lng = "en" }) {
+  const theme = useTheme();
+  const [open, setOpen] = useState(false);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'timeline-popover' : undefined;
+  const handleDialogOpen = () => setOpen(true);
+  const handleDialogClose = () => setOpen(false);
 
   return (
-    <TimelineItem>
-      <TimelineOppositeContent sx={{ m: 'auto 0', textAlign: 'center', fontSize: { xs: '0.5rem', sm: '0.75rem', md: '1rem' } }} variant="body2" color="text.secondary">
-        {date}
-      </TimelineOppositeContent>
-      <TimelineSeparator>
-        <TimelineConnector sx={{ bgcolor: 'primary.main' }} />
-        {detail ?
-        <IconButton color="primary" aria-label={title[lng]} onClick={handleClick}>
-        {icon}
-        </IconButton>
-        :
-        <IconButton color="primary" aria-label={title[lng]}>
-          {icon}
-        </IconButton>
-        }
-        <TimelineConnector sx={{ bgcolor: 'primary.main' }} />
-      </TimelineSeparator>
-      
-      <TimelineContent sx={{ py: '12px', px: 2 }}>
-        {detail ? 
-        <Typography 
-          variant="h6" 
-          component="span" 
-          sx={{ fontSize: { xs: '0.75rem', sm: '1rem', md: '1.25rem' }, cursor: 'pointer' }}
-          onClick={handleClick}
+    <>
+     <Box
+  sx={{
+    width: '100%',
+    px: 3,
+    py: 2,
+    borderRadius: 4,
+    boxShadow: 3,
+    overflow: 'hidden',
+    position: 'relative',
+    cursor: detail ? 'pointer' : 'default',
+    border: detail ? '2px dashed #90caf9' : 'none', // ✅ 装飾例：水色の点線
+  }}
+  onClick={detail ? handleDialogOpen : undefined}
+>
+{detail && (
+    <Box
+      sx={{
+        position: 'absolute',
+        top: 1,
+        right: 1,
+        px: 1.2,
+        py: 0.4,
+        fontSize: '10px',
+        fontWeight: 600,
+        color: 'white',
+        background: 'linear-gradient(90deg, #42a5f5, #f06292)',
+        borderRadius: '12px',
+        boxShadow: '0 0 4px rgba(0,0,0,0.2)',
+        zIndex: 10,
+        pointerEvents: 'none',
+      }}
+    >
+      {lng=="ja"?"クリックして詳細を確認":"Click to view details"}
+    </Box>
+  )}
+
+        {/* すりガラスのオーバーレイ */}
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 255, 255, 0.4)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            borderRadius: 4,
+          }}
+        />
+
+        <Stack
+          direction="row"
+          alignItems="center"
+          spacing={2}
+          sx={{ position: 'relative', zIndex: 2 }}
         >
-          <u>{title[lng]}</u>
-        </Typography>
-        :
-        <Typography 
-          variant="h6" 
-          component="span" 
-          sx={{ fontSize: { xs: '0.75rem', sm: '1rem', md: '1.25rem' }, cursor: 'pointer' }}
-        >
-          {title[lng]}
-        </Typography>
-        
-        }
-      
-        {subtitle[lng] && <Typography sx={{ color: 'text.secondary', fontSize: { xs: '0.5rem', sm: '0.75rem', md: '1rem' }, cursor: 'pointer' }} >{subtitle[lng]}</Typography>}
-      </TimelineContent>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-      >
-        <Typography sx={{ p: 2 }}>{detail}</Typography>
-      </Popover>
-    </TimelineItem>
+          <Box sx={{ minWidth: 100, textAlign: 'center' }}>
+            <Typography fontSize={12} color="text.secondary">
+              {date}
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              width: 70,
+              height: 70,
+              overflow: 'hidden',
+              borderRadius: 2,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: theme.palette.background.paper,
+            }}
+          >
+            <img
+              src={`${process.env.PUBLIC_URL}/images/${image}`}
+              alt="timeline"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                display: 'block',
+                borderRadius: '8px',
+              }}
+            />
+          </Box>
+
+          <Box sx={{ flex: 1 }}>
+            <Stack spacing={0.5} mt={1}>
+              <Typography fontSize={14} fontWeight={600} color="text.primary">
+                {title[lng]}
+              </Typography>
+              <Typography fontSize={12} color="text.secondary">
+                {subtitle?.[lng]}
+              </Typography>
+            </Stack>
+          </Box>
+        </Stack>
+      </Box>
+
+      {/* ✅ モーダルで Markdown 表示 */}
+      <AppleGlassDialog
+  open={open}
+  onClose={handleDialogClose}
+  title={title[lng]}
+  detail={`${process.env.PUBLIC_URL}/markdown/${lng}/${detail}`}
+/>
+    </>
   );
 }

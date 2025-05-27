@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import SchoolIcon from '@mui/icons-material/School';
@@ -9,10 +7,13 @@ import PhonelinkIcon from '@mui/icons-material/Phonelink';
 import ArticleIcon from '@mui/icons-material/Article';
 import TimelineFilter from './TypeTimelineFilter';
 import AppsIcon from '@mui/icons-material/Apps';
-import TypeIt from 'typeit-react';
+import { Box, useTheme } from '@mui/material';
 
 export default function SimpleSlide({lng = "en"}) {
   const [selected, setSelected] = React.useState('All');
+  const theme = useTheme();
+
+  const isDark = theme.palette.mode === 'dark';
 
   const handleChange = (event, newSelected) => {
     if (newSelected !== null) {
@@ -40,7 +41,21 @@ export default function SimpleSlide({lng = "en"}) {
 
 
   return (
-    <Box>
+    <Box
+      sx={{
+        width: '100%',
+        px: 3,
+        py: 2,
+        borderRadius: 4,
+        boxShadow: 3,
+        minHeight: '300px',
+        overflow: 'hidden',
+        position: 'relative',
+        background: isDark
+          ? 'linear-gradient(to bottom, #2e3b32, #4b2c3f)' // 🌙 ダーク用 (green→pinkの暗色)
+          : 'linear-gradient(to bottom, #a8e6cf, #ffb6c1)' // ☀️ ライト用 (green→pinkの明色)
+      }}
+    >
       <Box
         sx={{
           display: 'flex',
@@ -108,9 +123,8 @@ export default function SimpleSlide({lng = "en"}) {
 
 
       </Box>
-      <Paper elevation={0} >
         {renderContent()}
-      </Paper>
+
     </Box>
   );
 }

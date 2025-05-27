@@ -14,10 +14,10 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
   const greeting = lng === "ja" ? "一瀬 達矢(Tatsuya Ichinose)" : "Hi👋 I'm Tatsuya Ichinose!";
   const welcomeMessage = lng === "ja" ? "Welcome to my website! 🎉" : "Welcome to my website! 🎉";
   const studentInfo = lng === "ja" 
-    ? "東京科学大学 情報理工学院 情報工学科の学部生です。"
+    ? "東京科学大学 情報理工学院 情報工学科の学部4年生です。"
     : "I'm an undergraduate student at Institute of Science Tokyo majoring in Computer Science.";
   const interestInfo = lng === "ja" 
-    ? "自然言語処理に興味があります。"
+    ? "岡崎研究室に所属しています。自然言語処理に興味があります。"
     : "I'm interested in Natural Language Processing, especially about the generation of text.";
 
   return (
@@ -31,20 +31,8 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
         textAlign="center"
         sx={{ p: 2, color: "white" }}  
       >
-        <Box
-          position="fixed"
-          top={16}
-          right={16}
-          bgcolor="rgba(0, 0, 0, 0.4)" // 背景を若干暗くする
-          p={1} // パディングを追加
-          borderRadius={10} // 角を丸くする
 
-        >
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ color: "white" }}>
-            <ElementsDarkmode />
-            <ElementsLanguagemenu />
-          </Stack>
-        </Box>
+
         
         <Box minHeight={'200px'} pt={'10px'}>
         <h1>{greeting}</h1>

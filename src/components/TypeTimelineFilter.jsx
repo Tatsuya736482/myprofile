@@ -1,22 +1,20 @@
 import React from "react";
 import TypeTimeline from "./TypeTimeline";
-import TypeTimelineStart from "./TypeTimelineStart";
-import { timelineItems } from "./PostsTimelineItems";
 import { Timeline , timelineOppositeContentClasses } from "@mui/lab";
+import { Stack,Box } from "@mui/material";
+import posts from "../data/posts.json"
 
 export default function TimelineFilter({ filterTag = "study" ,lng = "en"}) {
   const filteredItems = filterTag
-    ? Object.entries(timelineItems).filter(([_, item]) => item.tag.includes(filterTag))
-    : Object.entries(timelineItems); 
+    ? Object.entries(posts).filter(([_, item]) => item.tag.includes(filterTag))
+    : Object.entries(posts); 
 
   return (
-    <Timeline sx={{ [`& .${timelineOppositeContentClasses.root}`]: { flex: 0.2 } }}>
-      {filteredItems.map(([key, item], index) => {
-        const Component = index === 0 ? TypeTimelineStart : TypeTimeline;
-        return <Component key={key} {...item} lng={lng} />;
-        
-      })}
-    </Timeline>
+    <Stack direction={'column'} spacing={'10px'}>
+      {filteredItems.map(([key, item]) => (
+        <TypeTimeline key={key} {...item} lng={lng} />
+      ))}
+    </Stack> 
   );
 }
 
