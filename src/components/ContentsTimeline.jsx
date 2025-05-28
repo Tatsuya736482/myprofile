@@ -34,9 +34,6 @@ export default function SimpleSlide({lng = "en"}) {
   const filterInstruction = lng === "ja" 
     ? "・ボタンを選択すると、経歴をフィルタリングできます。"
     : "✔︎Click on the buttons to filter the timeline.";
-  const detailInstruction = lng === "ja" 
-    ? "・下線付きの項目については、アイコンまたは文章をクリックして各詳細を確認してください。"
-    : "✔︎Click on the underlined items or icons to see the details of each.";
   const filterBy = lng === "ja" ? "フィルター：" : "Filter by:";
 
 
@@ -71,8 +68,6 @@ export default function SimpleSlide({lng = "en"}) {
         
         <p>
           {filterInstruction}
-          <br />
-          {detailInstruction}
         </p>
         <Box
           sx={{
