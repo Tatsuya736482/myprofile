@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+
 import {
   Dialog,
   DialogTitle,
@@ -55,7 +57,7 @@ export  function AppleGlassDialog({ open, onClose, title, detail }) {
         </IconButton>
       </DialogTitle>
       <DialogContent dividers>
-        <ReactMarkdown>{markdownContent}</ReactMarkdown>
+        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdownContent}</ReactMarkdown>
       </DialogContent>
     </Dialog>
   );

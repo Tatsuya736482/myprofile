@@ -95,7 +95,7 @@ export default function TypeTimeline({ date, icon, title, subtitle, detail, imag
     }}
   >
     <img
-      src={`${process.env.PUBLIC_URL}/images/${image}`}
+      src={`${process.env.PUBLIC_URL}/images/timeLineIcons/${image}`}
       alt="timeline"
       style={{
         width: '100%',

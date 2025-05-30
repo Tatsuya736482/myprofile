@@ -25,6 +25,7 @@
     "react-router-dom": "^7.2.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.3",
+    "rehype-raw": "^7.0.0",
     "typeit-react": "^2.7.8",
     "web-vitals": "^2.1.4"
   },
