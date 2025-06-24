@@ -102,8 +102,8 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
         <Typography variant="body2">
           <CiMail />
           &nbsp;
-          <a href="mailto:ichinose.t.2dcf@m.isct.ac.jp" style={{ color: "white" }}>
-            <strong>ichinose.t.2dcf@m.isct.ac.jp</strong>
+          <a href="mailto:tatsuya.ichinose@nlp.comp.isct.ac.jp" style={{ color: "white" }}>
+            <strong>tatsuya.ichinose@nlp.comp.isct.ac.jp</strong>
           </a>
           <br />
           <br />

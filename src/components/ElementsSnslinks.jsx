@@ -12,7 +12,7 @@ import { SiZenn } from "react-icons/si";
 export default function CustomPageToolbar({ color = 'white' }) {
     return (
         <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'white' }}>
-          <a href="mailto:ichinose.t.2dcf@m.isct.ac.jp" style={{ color: 'black' }}>
+          <a href="mailto:tatsuya.ichinose@nlp.comp.isct.ac.jp" style={{ color: 'black' }}>
             <IconButton aria-label="email" size="small">
               <EmailIcon fontSize="inherit"style={{ color }} />
             </IconButton>
