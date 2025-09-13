@@ -7,7 +7,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { SiWantedly } from "react-icons/si";
 import { SiQiita } from "react-icons/si";
 import { SiZenn } from "react-icons/si";
-
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function CustomPageToolbar({ color = 'white' }) {
     return (
@@ -15,6 +15,11 @@ export default function CustomPageToolbar({ color = 'white' }) {
           <a href="mailto:tatsuya.ichinose@nlp.comp.isct.ac.jp" style={{ color: 'black' }}>
             <IconButton aria-label="email" size="small">
               <EmailIcon fontSize="inherit"style={{ color }} />
+            </IconButton>
+          </a>
+          <a href="https://x.com/tatsuya_ich" target="_blank" rel="noopener noreferrer">
+            <IconButton aria-label="zenn" size="small">
+              <FaXTwitter style={{ color }}/>
             </IconButton>
           </a>
           <a href="https://github.com/Tatsuya736482" target="_blank" rel="noopener noreferrer">
@@ -38,5 +43,6 @@ export default function CustomPageToolbar({ color = 'white' }) {
             </IconButton>
           </a>
         </Stack>
+
     );
   }
