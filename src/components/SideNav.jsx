@@ -6,7 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function SideToc({ items, headerOffset = 72 }) {
+export default function SideToc({lng="en", items, headerOffset = 72 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [activeId, setActiveId] = useState(items?.[0]?.id);
@@ -104,7 +104,7 @@ export default function SideToc({ items, headerOffset = 72 }) {
             }}
           >
             <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
-              目次
+              {lng === "ja" ? "目次" : "Contents"}
             </Typography>
 
             <Box component="nav" sx={{ display: "grid", gap: 1 }}>

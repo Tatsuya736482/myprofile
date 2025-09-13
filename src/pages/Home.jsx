@@ -76,7 +76,7 @@ export default function Home({ lng = "en" }) {
           <ElementsLanguagemenu />
         </Stack>
       </Box>
-      <SideNav items={tocItems} headerOffset={72} />
+      <SideNav items={tocItems} headerOffset={72} lng={lngSupported}/>
 
       <Box
         id="introduction" // ← セクションID
