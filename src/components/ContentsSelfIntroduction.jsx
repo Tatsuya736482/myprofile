@@ -112,7 +112,7 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
         </Stack>
         <Box minHeight={"150px"}>
           <TypeIt
-            options={{ speed: 30, waitUntilVisible: true, cursor: false }}
+            options={{ speed: 40, waitUntilVisible: true, cursor: false}}
           >
             <h2>{welcomeMessage}</h2>
           </TypeIt>

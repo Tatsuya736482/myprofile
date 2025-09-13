@@ -103,7 +103,7 @@ export default function TypeTimeline({
               width: logoSize,
               height: logoSize,
               borderRadius: 2,
-              bgcolor: theme.palette.action.hover,
+              bgcolor: "white",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

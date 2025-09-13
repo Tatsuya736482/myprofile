@@ -5,7 +5,7 @@ import { Stack,Box } from "@mui/material";
 import posts from "../data/posts.json"
 
 export default function TimelineFilter({ filterTag = "study", lng = "en" }) {
-  const allowedTags = ["education", "work", "papers"];
+  const allowedTags = ["education", "career"];
   
   const filteredItems = filterTag
     ? Object.entries(posts).filter(([_, item]) => item.tag.includes(filterTag))

@@ -13,32 +13,32 @@ export default function CustomPageToolbar({ color = 'white' }) {
     return (
         <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'white' }}>
           <a href="mailto:tatsuya.ichinose@nlp.comp.isct.ac.jp" style={{ color: 'black' }}>
-            <IconButton aria-label="email" size="small">
+            <IconButton aria-label="email" size="medium">
               <EmailIcon fontSize="inherit"style={{ color }} />
             </IconButton>
           </a>
           <a href="https://x.com/tatsuya_ich" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="zenn" size="small">
+            <IconButton aria-label="zenn" size="medium">
               <FaXTwitter style={{ color }}/>
             </IconButton>
           </a>
           <a href="https://github.com/Tatsuya736482" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="github" size="small">
+            <IconButton aria-label="github" size="medium">
               <GitHubIcon fontSize="inherit" style={{ color }} />
             </IconButton>
           </a>
           <a href="https://www.linkedin.com/in/tatsuya-ichinose-265315342/" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="linkedin" size="small">
+            <IconButton aria-label="linkedin" size="medium">
               <LinkedInIcon fontSize="inherit" style={{ color }}/>
             </IconButton>
           </a>
           <a href="https://qiita.com/A12" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="qiita" size="small">
+            <IconButton aria-label="qiita" size="medium">
               <SiQiita style={{ color }}/>
             </IconButton>
           </a>
           <a href="https://zenn.dev/yay1" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="zenn" size="small">
+            <IconButton aria-label="zenn" size="medium">
               <SiZenn style={{ color }}/>
             </IconButton>
           </a>

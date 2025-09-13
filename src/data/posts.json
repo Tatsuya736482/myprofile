@@ -69,7 +69,7 @@
       "en": "Developing a web service.",
       "ja": "社内のDX改善のためのWebサービス開発, Next.js,Docker"
     },
-    "tag": ["work"],
+    "tag": ["career"],
     "links": {
       "en": [
         {
@@ -90,12 +90,12 @@
     "date": "Apr 2025 – Present",
     "icon": "LaptopIcon",
     "title": {
-      "en": "Okazaki Laboratory",
-      "ja": "岡崎研究室"
+      "en": "Okazaki Laboratory (Science Tokyo)",
+      "ja": "岡崎研究室 (東京科学大学)"
     },
     "subtitle": {
-      "en": "Institute of Science Tokyo (formerly Tokyo Institute of Technology)",
-      "ja": "東京科学大学（旧・東京工業大学）"
+      "en": "In the laboratory, I'm researching methods for constructing high-learning-effect datasets for fine-tuning large language models (LLMs). I'm also a member of the Swallow LLM Team, where I develop evaluation frameworks and conduct evaluations of LLMs.",
+      "ja": "研究室では大規模言語モデル(LLM)の事後学習における学習効果の高いデータセットの構築手法について研究しています。また、Swallow LLM Teamにも所属し、LLM評価用フレームワークの開発やLLMの評価を行っています。"
     },
     "tag": ["education"],
     "links": {
@@ -103,27 +103,57 @@
         {
           "title": "Laboratory Homepage",
           "url": "https://www.nlp.c.titech.ac.jp/index.en.html"
+        },
+        {
+          "title": "Swallow LLM",
+          "url": "https://swallow-llm.github.io/index.en.html"
+        },
+        {
+          "title": "LLM Evaluation Results (Swallow LLM Leaderboard)",
+          "url": "https://swallow-llm.github.io/leaderboard/index-post.en.html"
         }
       ],
       "ja": [
         {
           "title": "研究室ホームページ",
           "url": "https://www.nlp.c.titech.ac.jp/index.ja.html"
+        },
+        {
+          "title": "Swallow LLM",
+          "url": "https://swallow-llm.github.io/index.ja.html"
+        },
+        {
+          "title": "LLMの評価結果(Swallow LLM Leaderboard)",
+          "url": "https://swallow-llm.github.io/leaderboard/index-post.ja.html"
         }
       ]
     }
   },
+  "2025-09O": {
+    "image": "scienceTokyoIcon.png",
+    "date": "Sep 2025 – Present",
+    "icon": "LaptopIcon",
+    "title": {
+      "en": "Research Assistant at Institute of Science Tokyo (Science Tokyo)",
+      "ja": "東京科学大学 Research Assistant (RA)"
+    },
+    "subtitle": {
+      "en": "Working as a Research Assistant (RA) at Tokyo Institute of Technology.",
+      "ja": "東京科学大学のRAとして、研究を進めています。"
+    },
+    "tag": ["career"]
+  },
   "Present": {
-    "image": "scienceTokyoIcon.webp",
+    "image": "scienceTokyoIcon.png",
     "date": "Apr 2022 - Present",
     "icon": "SchoolIcon",
     "title": {
       "en": "Studying at Institute of Science Tokyo (Science Tokyo)",
-      "ja": "東京科学大学 在学中"
+      "ja": "東京科学大学（旧・東京工業大学）在学中"
     },
     "subtitle": {
       "en": null,
-      "ja": "情報理工学院 情報工学科"
+      "ja": "情報理工学院 情報工学系"
     },
     "link": null,
     "tag": ["education"]

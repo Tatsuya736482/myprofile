@@ -30,7 +30,7 @@ export default function SimpleSlide({ lng = "en" }) {
       case "All":
         return <TimelineFilter filterTag={null} lng={lng} />;
       case "education":
-      case "work":
+      case "career":
       case "papers":
         return <TimelineFilter filterTag={selected} lng={lng} />;
       default:
@@ -39,7 +39,6 @@ export default function SimpleSlide({ lng = "en" }) {
     }
   };
 
-  const title = lng === "ja" ? "⏳経歴" : "⏳Personal history";
   const filterInstruction =
     lng === "ja"
       ? "・ボタンを選択すると、経歴をフィルタリングできます。"
@@ -54,7 +53,7 @@ export default function SimpleSlide({ lng = "en" }) {
           : "Education & Career"}
       </Typography>
 
-      <p>{filterInstruction}</p>
+
       <Box
         sx={{
           display: "flex",
@@ -100,13 +99,9 @@ export default function SimpleSlide({ lng = "en" }) {
             <SchoolIcon fontSize="inherit" />
             &nbsp;Education
           </ToggleButton>
-          <ToggleButton value="papers">
-            <ArticleIcon fontSize="inherit" />
-            &nbsp;Papers
-          </ToggleButton>
-          <ToggleButton value="work">
+          <ToggleButton value="career">
             <WorkIcon fontSize="inherit" />
-            &nbsp;Work
+            &nbsp;Career
           </ToggleButton>
         </ToggleButtonGroup>
       </Box>
