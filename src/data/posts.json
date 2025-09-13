@@ -11,167 +11,121 @@
       "ja": "情報理工学院"
     },
     "tag": ["education"],
-    "image":"tokyoTechIcon.png"
+    "image": "tokyoTechIcon.png"
   },
   "2024-06S": {
     "date": "Jun - Aug 2024",
     "icon": "FlightTakeoffIcon",
     "title": {
       "en": "Studied computer science at University of California, Berkeley (UC Berkeley)🇺🇸",
-      "ja": "🇺🇸カリフォルニア大学バークレー校(UC Berkeley)留学"
+      "ja": "カリフォルニア大学バークレー校 留学"
     },
     "subtitle": {
-      "en": "Summer Session",
-      "ja": "Summer Session"
+      "en": "Summer Session, Computer Science(Artificial Intelligence, Machine Learning, Algorithms), Statistics(Game Theory)",
+      "ja": "Summer Session, Computer Science(Artificial Intelligence, Machine Learning, Algorithms), Statistics(Game Theory)"
     },
     "tag": ["education"],
-    "detail":"2024-06S.md",
-    "image":"berkeleyIcon.svg"
+    "image": "berkeleyIcon.svg",
+    "links": {
+      "en": [
+        {
+          "title": "Study Abroad Experience(Japanese Article)",
+          "url": "https://www.titech.ac.jp/students/abroad/experiences/70001"
+        },
+        {
+          "title": "UC Berkeley Summer Session",
+          "url": "https://summer.berkeley.edu/"
+        },
+        {
+          "title": "CS188 2024(Introduction to Artificial Intelligence at UC Berkeley)",
+          "url": "https://inst.eecs.berkeley.edu/~cs188/su24/"
+        }
+      ],
+      "ja": [
+        {
+          "title": "留学体験談",
+          "url": "https://www.titech.ac.jp/students/abroad/experiences/70001"
+        },
+        {
+          "title": "UC Berkeley Summer Session",
+          "url": "https://summer.berkeley.edu/"
+        },
+        {
+          "title": "CS188 2024(Introduction to Artificial Intelligence at UC Berkeley)",
+          "url": "https://inst.eecs.berkeley.edu/~cs188/su24/"
+        }
+      ]
+    }
   },
-  "2024-10C": {
-    "image":"pythonIcon.png",
-    "date": "Oct - Oct 2024",
-    "icon": "LaptopIcon",
+  "2025-02I": {
+    "image": "SkyIcon.png",
+    "date": "Feb 2025 - Present",
+    "icon": "WorkIcon",
     "title": {
-      "en": "Create a web service that generates an iCloud calendar from a syllabus URL.",
-      "ja": "シラバスURLからiCloudカレンダーを生成するWebサービスを作成"
+      "en": "Internship at Sky Co., LTD.(Sky株式会社)",
+      "ja": "長期インターンシップ@Sky株式会社"
     },
     "subtitle": {
-      "en": "Python, Gradio",
-      "ja": "Python, Gradio"
+      "en": "Developing a web service.",
+      "ja": "社内のDX改善のためのWebサービス開発, Next.js,Docker"
     },
-    "tag": ["projects"],
-    "detail":"/2024-10C.md" 
-  },
-  "2024-10T": {
-      "image":"scienceTokyoIcon.webp",
-      "date": "Oct 2024",
-      "icon": "FaExchangeAlt",
-      "title": {
-        "en": "Tokyo Institute of Technology (Tokyo Tech) merged to become Institute of Science Tokyo (Science Tokyo)",
-        "ja": "東京工業大学が大学統合により東京科学大学へ"
-      },
-      "subtitle": {
-        "en": null,
-        "ja": null
-      },
-      "tag": ["education"]
-    },
-    "2024-11P": {
-      "image":"noteIcon.png",
-      "date": "Nov 2024 -",
-      "icon": "MenuBookIcon",
-      "title": {
-        "en": "Published an article online that explains natural language processing (NLP).",
-        "ja": "自然言語処理(NLP)の解説記事をNoteに投稿"
-      },
-      "subtitle": {
-        "en": "Publishing on Note",
-        "ja": null
-      },
-      "tag": ["projects"],
-      "detail": "/2024-11P.md"    },
-    "2024-12C": {
-      "image":"GCPIcon.webp",
-      "date": "Dec 2024 - Feb 2025",
-      "icon": "PhonelinkIcon",
-      "title": {
-        "en": "Created a Flutter app called fuguru (iOS, Android, Web) using GCP to filter out already-read content from articles.",
-        "ja": "GCPを使用して、記事から既に読んだことのある内容を除外するFlutterアプリfuguru(iOS, Android, Web)を作成"
-      },
-      "subtitle": {
-        "en": "Google Cloud Platform (Gemini on Vertex AI, Text Embedding), Firebase, Flutter",
-        "ja": "Google Cloud Platform (Gemini on Vertex AI, Text Embedding), Firebase, Flutter"
-      },
-      "tag": ["projects"],
-      "detail": "/2024-12C.md"    },
-    "2025-02I": {
-      "image":"SkyIcon.png",
-      "date": "Feb 2025 - Now",
-      "icon": "WorkIcon",
-      "title": {
-        "en": "Internship at Sky Co., LTD.(Sky株式会社)",
-        "ja": "長期インターンシップ@Sky株式会社"
-      },
-      "subtitle": {
-        "en": "Developing a web service.",
-        "ja": "Web開発"
-      },
-      "tag": ["work"],
-      "detail": "/2025-02I.md"
-    },
-    "2025-03C": {
-      "image":"ReactIcon.webp",
-      "date": "Mar - Mar 2025",
-      "icon": "LaptopIcon",
-      "title": {
-        "en": "Created this website using React and Material-UI.",
-        "ja": "ReactとMaterial-UIを使用して自己紹介ウェブサイトを作成"
-      },
-      "subtitle": {
-        "en": "React, Material-UI",
-        "ja": "React, Material-UI"
-      },
-      "tag": ["projects"],
-      "detail":"/2025-03C.md"     },
-    "2025-03D": {
-      "image":"nextIcon.png",
-      "date": "Mar 2025 - Apr 2025",
-      "icon": "LaptopIcon",
-      "title": {
-        "en": "I have built a website for a student organization using Next.js and Firebase.",
-        "ja": "Next.jsとFirebaseを使用して、留学サポート団体のウェブサイトを構築"
-      },
-      "subtitle": {
-        "en": "Next.js, Firebase,Auth.js,Supabase(For file storage)",
-        "ja": "Next.js, Firebase,Auth.js,Supabase(For file storage)"
-      },
-      "tag": ["projects"],
-      "detail": "2025-03D.md"    },
-"2025-04O": {
-  "image": "okazakiLabIcon.jpeg",
-  "date": "Apr 2025 – Present",
-  "icon": "LaptopIcon",
-  "title": {
-    "en": "Okazaki Laboratory",
-    "ja": "岡崎研究室"
-  },
-  "subtitle": {
-    "en": "Institute of Science Tokyo (formerly Tokyo Institute of Technology)",
-    "ja": "東京科学大学（旧・東京工業大学）"
-  },
-  "tag": ["education"],
-  "detail":"2025-04O.md"
-},
-  "2025-05S": {
-  "image": "swallowIcon.png",
-  "date": "Mar 2025 – Present",
-  "icon": "LaptopIcon",
-  "subtitle": {
-    "en": "development of the Swallow LLM, the construction of evaluation infrastructure for large language models (LLMs), and the publication of evaluation results on the Swallow LLM Leaderboard.",
-    "ja": "Swallow LLMの構築やLLMの評価基盤の構築、Swallow LLM Leaderboardに評価結果を公開"
-  },
-  "detail":"2025-05S.md",
-  "tag": ["projects"],
-  "title": {
-    "en": "Swallow LLM",
-    "ja": "Swallow LLM"
-  }},
-    "now": {
-      "image":"scienceTokyoIcon.webp",
-      "date": "Apr 2022 - Now",
-      "icon": "SchoolIcon",
-      "title": {
-        "en": "Studying at Institute of Science Tokyo (Science Tokyo)",
-        "ja": "東京科学大学 在学中"
-      },
-      "subtitle": {
-        "en": null,
-        "ja": "情報理工学院 情報工学科"
-      },
-      "link": null,
-      "tag": ["education"]
+    "tag": ["work"],
+    "links": {
+      "en": [
+        {
+          "title": "Long-term Internship Recruitment Page(Japanese)",
+          "url": "https://www.sky-recruit.jp/internship/long-term/"
+        }
+      ],
+      "ja": [
+        {
+          "title": "長期インターンシップ募集ページ",
+          "url": "https://www.sky-recruit.jp/internship/long-term/"
+        }
+      ]
     }
-  
-  
+  },
+  "2025-04O": {
+    "image": "okazakiLabIcon.jpeg",
+    "date": "Apr 2025 – Present",
+    "icon": "LaptopIcon",
+    "title": {
+      "en": "Okazaki Laboratory",
+      "ja": "岡崎研究室"
+    },
+    "subtitle": {
+      "en": "Institute of Science Tokyo (formerly Tokyo Institute of Technology)",
+      "ja": "東京科学大学（旧・東京工業大学）"
+    },
+    "tag": ["education"],
+    "links": {
+      "en": [
+        {
+          "title": "Laboratory Homepage",
+          "url": "https://www.nlp.c.titech.ac.jp/index.en.html"
+        }
+      ],
+      "ja": [
+        {
+          "title": "研究室ホームページ",
+          "url": "https://www.nlp.c.titech.ac.jp/index.ja.html"
+        }
+      ]
+    }
+  },
+  "Present": {
+    "image": "scienceTokyoIcon.webp",
+    "date": "Apr 2022 - Present",
+    "icon": "SchoolIcon",
+    "title": {
+      "en": "Studying at Institute of Science Tokyo (Science Tokyo)",
+      "ja": "東京科学大学 在学中"
+    },
+    "subtitle": {
+      "en": null,
+      "ja": "情報理工学院 情報工学科"
+    },
+    "link": null,
+    "tag": ["education"]
+  }
 }

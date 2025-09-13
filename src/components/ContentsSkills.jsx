@@ -1,45 +1,52 @@
-import React from 'react';
-import Box from '@mui/material/Box';
+import React from "react";
+import Box from "@mui/material/Box";
 import TypeIt from "typeit-react";
+import Typography from "@mui/material/Typography";
 
 export default function ContentsSkills({ lng = "en" }) {
-  const title = lng === "ja" ? "📚 資格など" : "📚 Skills";
-  const languageAbility = lng === "ja" ? "・言語" : "・Language Ability";
+  const title = lng === "ja" ? "その他" : "Others";
   const english = lng === "ja" ? "英語" : "English";
-  const englishDetail = lng === "ja" ? "TOEIC 895 (2025年1月26日取得)" : "TOEIC 895 (Obtained on January 26, 2025)";
-  const japanese = lng === "ja" ? null : "Japanese";
-  const japaneseDetail = lng === "ja" ? null : "Native";
+  const englishDetail =
+    lng === "ja"
+      ? "TOEIC 895 (2025年1月26日取得)"
+      : "TOEIC 895 (Obtained on January 26, 2025)";
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      width="100%"
-      sx={{ p: 2, "& h2, & p": { margin: 0 } }}
-    >
-      
-      <h1>{title}</h1>
-      
-      <h2>{languageAbility}</h2>
+    <Box sx={{ padding: 3 }}>
+      <Typography variant="h4" component="h2" gutterBottom>
+        {lng === "ja" ? "その他" : "Others"}
+      </Typography>
+
       <Box>
-        <ul style={{ padding: 0 }}>
-          <li>
-            <strong>{english}</strong>
-            <ul style={{ paddingLeft: '20px' }}>
-              <li>{englishDetail}</li>
-            </ul>
-          </li>
-          {japanese && (
+        {lng === "ja" ? (
+          <ul style={{ padding: 0 }}>
             <li>
-              <strong>{japanese}</strong>
-              <ul style={{ paddingLeft: '20px' }}>
-                <li>{japaneseDetail}</li>
+              <strong>英語</strong>
+              <ul style={{ paddingLeft: "20px" }}>
+                <li>TOEIC 895 (2025年1月26日取得)</li>
               </ul>
             </li>
-          )}
-        </ul>
+            <li>
+              <strong>奨学金</strong>
+              <ul style={{ paddingLeft: "20px" }}>
+                <li>公益財団法人キーエンス財団 給付型奨学金</li>
+              </ul>
+            </li>
+          </ul>
+        ) : (
+          <ul style={{ padding: 0 }}>
+            <li>
+              <strong>English</strong>
+              <ul style={{ paddingLeft: "20px" }}>
+                <li>TOEIC 895 (Obtained on January 26, 2025)</li>
+              </ul>
+            </li>
+            <strong>Scholarships</strong>
+            <ul style={{ paddingLeft: "20px" }}>
+              <li>Keyence Foundation – Merit-based Scholarship (Grant)</li>
+            </ul>
+          </ul>
+        )}
       </Box>
     </Box>
   );

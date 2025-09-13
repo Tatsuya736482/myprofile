@@ -18,9 +18,36 @@ import ContentsTimeline from "../components/ContentsTimeline";
 import ElementsDarkmode from "../components/ElementsDarkmode";
 import { Stack, Box } from "@mui/material";
 import ElementsLanguagemenu from "../components/ElementsLanguagemenu";
+import ContentsProjects from "../components/ContentsProjects";
+import SideNav from "../components/SideNav";
 
 export default function Home({ lng = "en" }) {
   const lngSupported = lng.startsWith("ja") ? "ja" : "en";
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 600);
+    };
+
+    // 初回実行
+    checkIsMobile();
+
+    // リサイズイベントリスナーを追加
+    window.addEventListener('resize', checkIsMobile);
+
+    // クリーンアップ関数
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+
+  const tocItems = [
+    { id: "introduction", label: "Hello👋" },
+    { id: "timeline", label: "Education & Career" },
+    { id: "projects", label: "Work / Projects" },
+    { id: "skills", label: "Others" },
+  ];
 
   return (
     <AppProvider>
@@ -49,36 +76,62 @@ export default function Home({ lng = "en" }) {
           <ElementsLanguagemenu />
         </Stack>
       </Box>
-      <Paper>
+      <SideNav items={tocItems} headerOffset={72} />
+
+      <Box
+        id="introduction" // ← セクションID
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        width="100%"
+        textAlign="center"
+      >
+        <ContentsSelfIntroduction lng={lngSupported} />
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          bgcolor: "grey.100", // ページ全体の背景
+        }}
+      >
+        {/* メイン本文 */}
         <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          width="100%"
-          textAlign="center"
+          component="main"
+          sx={{
+            flex: 1,
+            bgcolor: "background.default", // 本文側（白など）
+            mr: isMobile ? 0 : "300px",
+            ml: isMobile ? 0 : "100px",
+          }}
         >
-          <ContentsSelfIntroduction lng={lngSupported} />
-        </Box>
-        <Paper elevation={4} sx={{ p: 2 }}>
-          <br />
-          <Element name="Timeline" />
-          <Box ustifyContent="center" width="100%" minHeight={600}>
+          <Box id="timeline">
             <ContentsTimeline lng={lngSupported} />
           </Box>
-          <br />
-          <Divider />
-          <Element name="Skills" />
-          <ContentsSkills lng={lngSupported} />
-          <br />
-        </Paper>
-        <br />
-        <footer
-          style={{ textAlign: "center", padding: "10px", fontSize: "14px" }}
-        >
-          © {new Date().getFullYear()} Tatsuya Ichinose. All rights reserved.
-        </footer>
-      </Paper>
+
+          <Box id="projects">
+            <ContentsProjects lng={lngSupported} />
+          </Box>
+
+          <Box id="skills" display="flex" justifyContent="center" width="100%">
+            <Box margin="0 auto">
+              <ContentsSkills lng={lngSupported} />
+            </Box>
+          </Box>
+
+          <Box
+            sx={{
+              textAlign: "right", // 右寄せ
+              fontSize: "0.875rem", // 少し小さめに
+              color: "text.secondary",
+              mt: 4, // 上に余白
+            }}
+          >
+            © {new Date().getFullYear()} Tatsuya Ichinose. All rights reserved.
+          </Box>
+        </Box>
+      </Box>
     </AppProvider>
   );
 }

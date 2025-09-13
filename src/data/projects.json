@@ -1,0 +1,133 @@
+{
+  "2024-10C": {
+    "image": "pythonIcon.png",
+    "date": "Oct - Oct 2024",
+    "title": {
+      "en": "Create a web service that generates an iCloud calendar from a syllabus URL.",
+      "ja": "シラバスURLからiCloudカレンダーを生成するWebサービスを作成"
+    },
+    "subtitle": {
+      "en": "Python, Gradio",
+      "ja": "Python, Gradio"
+    },
+    "links": {
+      "ja": {
+        "Github": "https://github.com/Tatsuya736482/curriculum",
+        "Website": "https://huggingface.co/spaces/Tatsuya-Ichinose/Curricuram"
+      },
+      "en": {
+        "Github": "https://github.com/Tatsuya736482/curriculum",
+        "Website": "https://huggingface.co/spaces/Tatsuya-Ichinose/Curricuram"
+      }
+    }
+  },
+  "2024-11P": {
+    "image": "noteIcon.png",
+    "date": "Nov 2024 -",
+    "title": {
+      "en": "Published an article online that explains natural language processing (NLP).",
+      "ja": "自然言語処理(NLP)の解説記事をNoteに投稿"
+    },
+    "subtitle": {
+      "en": "Publishing on Note",
+      "ja": null
+    },
+    "links": {
+      "ja": {
+        "Note": "https://note.com/tat5453/n/n3f22d032c25a"
+      },
+      "en": {
+        "Note": "https://note.com/tat5453/n/n3f22d032c25a"
+      }
+    }
+  },
+  "2024-12C": {
+    "image": "GCPIcon.webp",
+    "date": "Dec 2024 - Feb 2025",
+    "icon": "PhonelinkIcon",
+    "title": {
+      "en": "Created a Flutter app called fuguru (iOS, Android, Web) using GCP to filter out already-read content from articles.",
+      "ja": "GCPを使用して、記事から既に読んだことのある内容を除外するFlutterアプリfuguru(iOS, Android, Web)を作成"
+    },
+    "subtitle": {
+      "en": "Google Cloud Platform (Gemini on Vertex AI, Text Embedding), Firebase, Flutter",
+      "ja": "Google Cloud Platform (Gemini on Vertex AI, Text Embedding), Firebase, Flutter"
+    },
+    "links": {
+      "ja": {
+        "Github": "https://github.com/Tatsuya736482/fuguru",
+        "Blog": "https://zenn.dev/yay1/articles/4c2615d147089c"
+      },
+      "en": {
+        "Github": "https://github.com/Tatsuya736482/fuguru",
+        "Blog": "https://zenn.dev/yay1/articles/4c2615d147089c"
+      }
+    }
+  },
+  "2025-03C": {
+    "image": "webProfile.png",
+    "date": "Mar - Mar 2025",
+    "title": {
+      "en": "Created this website using React and Material-UI.",
+      "ja": "Reactを使用して自己紹介ウェブサイトを作成"
+    },
+    "subtitle": {
+      "en": "React, Material-UI",
+      "ja": "React, Material-UI"
+    },
+    "links": {
+      "ja": {
+        "Github": "https://github.com/Tatsuya736482/myprofile",
+        "Website": "https://tatsuya736482.github.io/myprofile/"
+      },
+      "en": {
+        "Github": "https://github.com/Tatsuya736482/myprofile",
+        "Website": "https://tatsuya736482.github.io/myprofile/"
+      }
+    }
+  },
+  "2025-03D": {
+    "image": "webFlap.png",
+    "date": "Mar 2025 - Apr 2025",
+    "title": {
+      "en": "I have built a website for a student organization using Next.js and Firebase.",
+      "ja": "留学体験談の共有サイトをNext.jsとFirebaseを使用して構築"
+    },
+    "subtitle": {
+      "en": "Next.js, Firebase,Auth.js,Supabase(For file storage)",
+      "ja": "Next.js, Firebase,Auth.js,Supabase(For file storage)"
+    },
+    "links": {
+      "ja": {
+        "Website": "https://www.flap-sciencetokyo.com/"
+      },
+      "en": {
+        "Website": "https://www.flap-sciencetokyo.com/"
+      }
+    }
+  },
+  "2025-05S": {
+    "image": "swallowIcon.png",
+    "date": "Mar 2025 – Present",
+    "subtitle": {
+      "en": "development of the Swallow LLM, the construction of evaluation infrastructure for large language models (LLMs), and the publication of evaluation results on the Swallow LLM Leaderboard.",
+      "ja": "事後学習向けLLMの評価フレームワークを構築。LLMの評価を行い、Swallow LLM Leaderboardに評価結果を公開"
+    },
+    "title": {
+      "en": "Swallow LLM",
+      "ja": "Swallow LLM"
+    },
+    "links": {
+      "ja": {
+        "Github(評価フレームワーク)": "https://github.com/swallow-llm/swallow-evaluation-instruct",
+        "Leaderboard": "https://swallow-llm.github.io/leaderboard/index-post.ja.html",
+        "Website": "https://swallow-llm.github.io/index.ja.html"
+      },
+      "en": {
+        "Github(Evaluation Framework)": "https://github.com/swallow-llm/swallow-evaluation-instruct",
+        "Leaderboard": "https://swallow-llm.github.io/leaderboard/index-post.en.html",
+        "Website": "https://swallow-llm.github.io/index.en.html"
+      }
+    }
+  }
+}
