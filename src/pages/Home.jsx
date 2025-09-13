@@ -24,6 +24,7 @@ import SideNav from "../components/SideNav";
 export default function Home({ lng = "en" }) {
   const lngSupported = lng.startsWith("ja") ? "ja" : "en";
   const [isMobile, setIsMobile] = React.useState(false);
+  const [mode, setMode] = React.useState('light');
 
   React.useEffect(() => {
     const checkIsMobile = () => {
@@ -72,7 +73,7 @@ export default function Home({ lng = "en" }) {
           alignItems="center"
           sx={{ color: "white" }}
         >
-          <ElementsDarkmode />
+          <ElementsDarkmode setModeFromParent={setMode} />
           <ElementsLanguagemenu />
         </Stack>
       </Box>
@@ -93,7 +94,7 @@ export default function Home({ lng = "en" }) {
       <Box
         sx={{
           display: "flex",
-          bgcolor: "grey.100", // ページ全体の背景
+          bgcolor: mode === 'dark' ? "grey.900" : "grey.100",
         }}
       >
         {/* メイン本文 */}
