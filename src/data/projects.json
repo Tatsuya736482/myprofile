@@ -108,25 +108,25 @@
   },
   "2025-05S": {
     "image": "swallowIcon.png",
-    "date": "Apr 2025 – Present",
+    "date": "Apr – Sep 2025",
     "subtitle": {
       "en": "development of the Swallow LLM, the construction of evaluation infrastructure for large language models (LLMs), and the publication of evaluation results on the Swallow LLM Leaderboard.",
-      "ja": "事後学習向けLLMの評価フレームワークを構築。LLMの評価を行い、Swallow LLM Leaderboardに評価結果を公開"
+      "ja": "事後学習向けLLMの評価フレームワークを構築。LLMの日本語,英語性能の評価を行い、Swallow LLM Leaderboardに評価結果を公開"
     },
     "title": {
-      "en": "Swallow LLM",
-      "ja": "Swallow LLM"
+      "en": "Swallow Evaluation Instruct",
+      "ja": "Swallow Evaluation Instruct"
     },
     "links": {
       "ja": {
         "Github(評価フレームワーク)": "https://github.com/swallow-llm/swallow-evaluation-instruct",
         "Leaderboard": "https://swallow-llm.github.io/leaderboard/index-post.ja.html",
-        "Website": "https://swallow-llm.github.io/index.ja.html"
+        "Website": "https://swallow-llm.github.io/swallow-leaderboard-v2.ja.html"
       },
       "en": {
         "Github(Evaluation Framework)": "https://github.com/swallow-llm/swallow-evaluation-instruct",
         "Leaderboard": "https://swallow-llm.github.io/leaderboard/index-post.en.html",
-        "Website": "https://swallow-llm.github.io/index.en.html"
+        "Website": "https://swallow-llm.github.io/swallow-leaderboard-v2.en.html"
       }
     }
   }
