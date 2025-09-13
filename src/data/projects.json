@@ -23,7 +23,7 @@
   },
   "2024-11P": {
     "image": "noteIcon.png",
-    "date": "Nov 2024 -",
+    "date": "Nov - Nov 2024",
     "title": {
       "en": "Published an article online that explains natural language processing (NLP).",
       "ja": "自然言語処理(NLP)の解説記事をNoteに投稿"
@@ -88,7 +88,7 @@
   },
   "2025-03D": {
     "image": "webFlap.png",
-    "date": "Mar 2025 - Apr 2025",
+    "date": "Mar - Apr 2025",
     "title": {
       "en": "I have built a website for a student organization using Next.js and Firebase.",
       "ja": "留学体験談の共有サイトをNext.jsとFirebaseを使用して構築"
@@ -108,7 +108,7 @@
   },
   "2025-05S": {
     "image": "swallowIcon.png",
-    "date": "Mar 2025 – Present",
+    "date": "Apr 2025 – Present",
     "subtitle": {
       "en": "development of the Swallow LLM, the construction of evaluation infrastructure for large language models (LLMs), and the publication of evaluation results on the Swallow LLM Leaderboard.",
       "ja": "事後学習向けLLMの評価フレームワークを構築。LLMの評価を行い、Swallow LLM Leaderboardに評価結果を公開"
