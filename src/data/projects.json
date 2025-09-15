@@ -72,8 +72,8 @@
       "ja": "Reactを使用して自己紹介ウェブサイトを作成"
     },
     "subtitle": {
-      "en": "React, Material-UI",
-      "ja": "React, Material-UI"
+      "en": "React, Material-UI, Language auto-detection, Mobile responsive, Dark mode",
+      "ja": "React, Material-UI, 言語自動検出, モバイル対応, ダークモード対応"
     },
     "links": {
       "ja": {
