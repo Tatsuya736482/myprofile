@@ -1,0 +1,34 @@
+{
+  "2025-09": {
+    "image": "yans.png",
+    "date": "Sep 20, 2025",
+    "icon": "SchoolIcon",
+    "title": {
+      "en": "Received Sponsor Award at YANS2025",
+      "ja": "第20回言語処理若手シンポジウム(YANS2025)で株式会社サイバーエージェント賞を受賞"
+    },
+    "subtitle": {
+      "en": "Received the Sponsor Award from CyberAgent, Inc. which was a diamond sponsor of YANS2025.",
+      "ja": "「対照的デコーディングを用いた指示学習データの合成」というタイトルで、LLMの指示学習時に使われた学習データを学習前後のモデルから擬似的に合成する手法について発表しました。本研究はYANS2025でダイヤモンドスポンサーを務めた株式会社サイバーエージェント様より、スポンサー賞をいただきました。"
+    },
+    "links": {
+      "en": [
+        {
+          "title": "YANS2025 Award Winners",
+          "url": "https://yans.anlp.jp/entry/award"
+        }
+      ],
+      "ja": [
+        {
+          "title": "YANS2025 受賞者一覧",
+          "url": "https://yans.anlp.jp/entry/award"
+        },
+        {
+            "title":"株式会社サイバーエージェント",
+            "url":"https://www.cyberagent.co.jp/"
+        }
+      ]
+    },
+    "tag": ["presentations"]
+  }
+}

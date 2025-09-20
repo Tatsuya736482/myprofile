@@ -1,0 +1,11 @@
+{
+  "2025-08-15-a": {
+    "image": "okinawa_sunset.jpg",
+    "title": { "ja": "沖縄の夕焼け", "en": "Okinawa Sunset" },
+    "location": { "ja": "沖縄・読谷村", "en": "Yomitan, Okinawa" },
+    "date": "2025-08-15",
+    "links": { "ja": { "Google マップ": "https://maps.google.com/?q=..." } },
+    "tags": ["beach", "sunset", "okinawa"],
+    "caption": { "ja": "真栄田岬近くで。風が気持ちいい夕暮れ。" }
+  }
+}

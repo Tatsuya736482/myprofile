@@ -4,14 +4,13 @@ import { Timeline , timelineOppositeContentClasses } from "@mui/lab";
 import { Stack,Box } from "@mui/material";
 import posts from "../data/posts.json"
 
-export default function TimelineFilter({ filterTag = "study", lng = "en" }) {
-  const allowedTags = ["education", "career"];
+const postsData = posts;
+
+export default function TimelineFilter({ filterTag = "study", lng = "en",posts = postsData }) {
   
   const filteredItems = filterTag
     ? Object.entries(posts).filter(([_, item]) => item.tag.includes(filterTag))
-    : Object.entries(posts).filter(([_, item]) => 
-        item.tag.some(tag => allowedTags.includes(tag))
-      );
+    : Object.entries(posts);
 
   // key: '2022-04A' の形式を解析して、年月＋英字で降順ソート
   const sortedItems = filteredItems.sort(([keyA], [keyB]) => {

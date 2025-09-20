@@ -15,6 +15,8 @@ import ContentsSelfIntroduction from "../components/ContentsSelfIntroduction";
 import ContentsEducation from "../components/ContentsEducation";
 import ContentsSkills from "../components/ContentsSkills";
 import ContentsTimeline from "../components/ContentsTimeline";
+import ContentsPhotos from "../components/ContentsPhotos";
+import ContentsResearches from "../components/ContentsResearches";
 import ElementsDarkmode from "../components/ElementsDarkmode";
 import { Stack, Box } from "@mui/material";
 import ElementsLanguagemenu from "../components/ElementsLanguagemenu";
@@ -24,7 +26,7 @@ import SideNav from "../components/SideNav";
 export default function Home({ lng = "en" }) {
   const lngSupported = lng.startsWith("ja") ? "ja" : "en";
   const [isMobile, setIsMobile] = React.useState(false);
-  const [mode, setMode] = React.useState('light');
+  const [mode, setMode] = React.useState("light");
 
   React.useEffect(() => {
     const checkIsMobile = () => {
@@ -35,17 +37,18 @@ export default function Home({ lng = "en" }) {
     checkIsMobile();
 
     // リサイズイベントリスナーを追加
-    window.addEventListener('resize', checkIsMobile);
+    window.addEventListener("resize", checkIsMobile);
 
     // クリーンアップ関数
     return () => {
-      window.removeEventListener('resize', checkIsMobile);
+      window.removeEventListener("resize", checkIsMobile);
     };
   }, []);
 
   const tocItems = [
     { id: "introduction", label: "Hello👋" },
     { id: "timeline", label: "Education & Career" },
+    {id: "researches", label: "Research"},
     { id: "projects", label: "Work / Projects" },
     { id: "skills", label: "Others" },
   ];
@@ -77,7 +80,7 @@ export default function Home({ lng = "en" }) {
           <ElementsLanguagemenu />
         </Stack>
       </Box>
-      <SideNav items={tocItems} headerOffset={72} lng={lngSupported}/>
+      <SideNav items={tocItems} headerOffset={72} lng={lngSupported} />
 
       <Box
         id="introduction" // ← セクションID
@@ -94,7 +97,7 @@ export default function Home({ lng = "en" }) {
       <Box
         sx={{
           display: "flex",
-          bgcolor: mode === 'dark' ? "grey.900" : "grey.100",
+          bgcolor: mode === "dark" ? "grey.900" : "grey.100",
         }}
       >
         {/* メイン本文 */}
@@ -110,16 +113,22 @@ export default function Home({ lng = "en" }) {
           <Box id="timeline">
             <ContentsTimeline lng={lngSupported} />
           </Box>
-
+          <Box id="researches">
+            <ContentsResearches lng={lngSupported} />
+          </Box>
+          
           <Box id="projects">
             <ContentsProjects lng={lngSupported} />
           </Box>
-
           <Box id="skills" display="flex" justifyContent="center" width="100%">
             <Box margin="0 auto">
               <ContentsSkills lng={lngSupported} />
             </Box>
           </Box>
+
+          {/* <Box id="projects">
+            <ContentsPhotos lng={lngSupported} />
+          </Box> */}
 
           <Box
             sx={{
