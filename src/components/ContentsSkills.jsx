@@ -27,6 +27,9 @@ export default function ContentsSkills({ lng = "en" }) {
               </ul>
             </li>
             <li>
+              <strong>応用情報技術者 (2025年12月25日取得)</strong>
+            </li>
+            <li>
               <strong>奨学金</strong>
               <ul style={{ paddingLeft: "20px" }}>
                 <li>公益財団法人キーエンス財団 給付型奨学金</li>
@@ -40,6 +43,9 @@ export default function ContentsSkills({ lng = "en" }) {
               <ul style={{ paddingLeft: "20px" }}>
                 <li>TOEIC 895 (Obtained on January 26, 2025)</li>
               </ul>
+            </li>
+            <li>
+              <strong>Applied Information Technology Engineer Examination (25 Dec 2025)</strong>
             </li>
             <strong>Scholarships</strong>
             <ul style={{ paddingLeft: "20px" }}>
