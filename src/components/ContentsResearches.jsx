@@ -13,8 +13,13 @@ import postsContent from "../data/researches.json"
 import { Article } from "@mui/icons-material";
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
-export default function SimpleSlide({ lng = "en" }) {
-  const [selected, setSelected] = React.useState("All");
+export default function ContentsResearches({ lng = "en", researchFilter, setResearchFilter }) {
+  // If props are provided use them, else fallback to internal state
+  const [internalSelected, setInternalSelected] = React.useState("All");
+  
+  const selected = researchFilter !== undefined ? researchFilter : internalSelected;
+  const setSelected = setResearchFilter !== undefined ? setResearchFilter : setInternalSelected;
+
   const theme = useTheme();
   const isMobile = window.innerWidth <= 600;
 
@@ -31,13 +36,13 @@ export default function SimpleSlide({ lng = "en" }) {
     
     switch (selected) {
       case "All":
-        return <TimelineFilter filterTag={null} lng={lng} posts={postsContent}/>;
+        return <TimelineFilter filterTag={null} lng={lng} posts={postsContent} idPrefix="research-" />;
       case "presentations":
       case "publications":
-        return <TimelineFilter filterTag={selected} lng={lng} posts={postsContent}/>;
+        return <TimelineFilter filterTag={selected} lng={lng} posts={postsContent} idPrefix="research-" />;
       default:
         // 許可されていないタグの場合はAllを表示
-        return <TimelineFilter filterTag={null} lng={lng} posts={postsContent}/>;
+        return <TimelineFilter filterTag={null} lng={lng} posts={postsContent} idPrefix="research-" />;
     }
   };
 

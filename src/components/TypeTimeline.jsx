@@ -13,6 +13,7 @@ export default function TypeTimeline({
   bottomLine = true,
   logoSize = 100,   // デフォルトを少し小さめに
   minH = 120,       // デフォルト縦幅を小さめに
+  id,
 }) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -33,6 +34,7 @@ export default function TypeTimeline({
 
   return (
     <Stack
+      id={id}
       direction="row"
       spacing={2}
       alignItems="stretch"

@@ -10,8 +10,13 @@ import AppsIcon from "@mui/icons-material/Apps";
 import { Box, useTheme } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-export default function SimpleSlide({ lng = "en" }) {
-  const [selected, setSelected] = React.useState("All");
+export default function ContentsTimeline({ lng = "en", timelineFilter, setTimelineFilter }) {
+  // If props are provided use them, else fallback to internal state (for backward compatibility or isolation)
+  const [internalSelected, setInternalSelected] = React.useState("All");
+  
+  const selected = timelineFilter !== undefined ? timelineFilter : internalSelected;
+  const setSelected = setTimelineFilter !== undefined ? setTimelineFilter : setInternalSelected;
+
   const theme = useTheme();
   const isMobile = window.innerWidth <= 600;
 
@@ -28,14 +33,14 @@ export default function SimpleSlide({ lng = "en" }) {
     
     switch (selected) {
       case "All":
-        return <TimelineFilter filterTag={null} lng={lng} />;
+        return <TimelineFilter filterTag={null} lng={lng} idPrefix="timeline-" />;
       case "education":
       case "career":
       case "papers":
-        return <TimelineFilter filterTag={selected} lng={lng} />;
+        return <TimelineFilter filterTag={selected} lng={lng} idPrefix="timeline-" />;
       default:
         // 許可されていないタグの場合はAllを表示
-        return <TimelineFilter filterTag={null} lng={lng} />;
+        return <TimelineFilter filterTag={null} lng={lng} idPrefix="timeline-" />;
     }
   };
 

@@ -32,7 +32,7 @@ const ContentsProjects = ({ lng = "ja" }) => {
   );
 
   return (
-    <Box sx={{ padding: 3 }}>
+    <Box sx={{ padding: 3 }} id="projects-section">
       <Typography variant="h4" component="h2" gutterBottom>
         {lng === "ja" ? "開発実績 / Work" : "Work"}
       </Typography>
@@ -47,10 +47,9 @@ const ContentsProjects = ({ lng = "ja" }) => {
           };
 
           return (
-            <Grid item xs={12} sm={6} md={4} key={key}>
+            <Grid item xs={12} sm={6} md={4} key={key} id={`project-${key}`}>
               <Card
                 sx={{
-                  height: "100%",
                   display: "flex",
                   flexDirection: "column",
                   transition: "transform 0.2s ease-in-out",

@@ -18,6 +18,7 @@ import ContentsTimeline from "../components/ContentsTimeline";
 import ContentsPhotos from "../components/ContentsPhotos";
 import ContentsResearches from "../components/ContentsResearches";
 import ElementsDarkmode from "../components/ElementsDarkmode";
+import ElementsSearch from "../components/ElementsSearch";
 import { Stack, Box } from "@mui/material";
 import ElementsLanguagemenu from "../components/ElementsLanguagemenu";
 import ContentsProjects from "../components/ContentsProjects";
@@ -27,6 +28,8 @@ export default function Home({ lng = "en" }) {
   const lngSupported = lng.startsWith("ja") ? "ja" : "en";
   const [isMobile, setIsMobile] = React.useState(false);
   const [mode, setMode] = React.useState("light");
+  const [timelineFilter, setTimelineFilter] = React.useState("All");
+  const [researchFilter, setResearchFilter] = React.useState("All");
 
   React.useEffect(() => {
     const checkIsMobile = () => {
@@ -76,6 +79,11 @@ export default function Home({ lng = "en" }) {
           alignItems="center"
           sx={{ color: "white" }}
         >
+          <ElementsSearch 
+            lng={lngSupported} 
+            setTimelineFilter={setTimelineFilter} 
+            setResearchFilter={setResearchFilter} 
+          />
           <ElementsDarkmode setModeFromParent={setMode} />
           <ElementsLanguagemenu />
         </Stack>
@@ -111,10 +119,10 @@ export default function Home({ lng = "en" }) {
           }}
         >
           <Box id="timeline">
-            <ContentsTimeline lng={lngSupported} />
+            <ContentsTimeline lng={lngSupported} timelineFilter={timelineFilter} setTimelineFilter={setTimelineFilter} />
           </Box>
           <Box id="researches">
-            <ContentsResearches lng={lngSupported} />
+            <ContentsResearches lng={lngSupported} researchFilter={researchFilter} setResearchFilter={setResearchFilter} />
           </Box>
           
           <Box id="projects">

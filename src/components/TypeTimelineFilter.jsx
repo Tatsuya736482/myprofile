@@ -6,7 +6,7 @@ import posts from "../data/posts.json"
 
 const postsData = posts;
 
-export default function TimelineFilter({ filterTag = "study", lng = "en",posts = postsData }) {
+export default function TimelineFilter({ filterTag = "study", lng = "en",posts = postsData, idPrefix = "" }) {
   
   const filteredItems = filterTag
     ? Object.entries(posts).filter(([_, item]) => item.tag.includes(filterTag))
@@ -28,7 +28,7 @@ export default function TimelineFilter({ filterTag = "study", lng = "en",posts =
   return (
     <Stack direction={'column'} spacing={'0px'}>
       {sortedItems.map(([key, item]) => (
-        <TypeTimeline key={key} {...item} lng={lng} />
+        <TypeTimeline key={key} id={`${idPrefix}${key}`} {...item} lng={lng} />
       ))}
     </Stack>
   );
