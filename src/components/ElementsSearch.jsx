@@ -221,7 +221,7 @@ export default function ElementsSearch({ lng = "en", setTimelineFilter, setResea
                         {lng === "ja" ? "キーワードを入力して検索" : "Type meaningful keywords to search"}
                      </Typography>
                      <Stack direction="row" spacing={2} justifyContent="center" useFlexGap flexWrap="wrap">
-                        {(lng === "ja" ? ["留学", "LLM", "Web"] : ["Study Abroad", "LLM", "Web"]).map((keyword) => (
+                        {(lng === "ja" ? ["留学", "LLM", "Web"] : ["Swallow", "LLM", "Web"]).map((keyword) => (
                            <Chip 
                               key={keyword} 
                               label={keyword} 

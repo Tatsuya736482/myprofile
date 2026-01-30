@@ -53,6 +53,15 @@ export default function LongMenu({ color = 'white' }) {
         anchorEl={anchorEl}
         open={open}
         onClose={() => handleClose()}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        sx={{ zIndex: 10000 }}
         slotProps={{
           paper: {
             style: {
