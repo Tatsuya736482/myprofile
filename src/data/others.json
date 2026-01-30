@@ -1,0 +1,31 @@
+{
+  "others-english": {
+    "title": {
+      "ja": "TOEIC 895 (2025年1月26日取得)",
+      "en":  "TOEIC 895 (Obtained on January 26, 2025)"
+    },
+    "items": [],
+    "date": "2025-01-26"
+  },
+  "others-applied-info": {
+    "title": {
+      "ja": "応用情報技術者 (2025年12月25日取得)",
+      "en": "Applied Information Technology Engineer Examination (25 Dec 2025)"
+    },
+    "items": [],
+    "date": "2025-12-25"
+  },
+  "others-scholarship": {
+    "title": {
+      "ja": "奨学金",
+      "en": "Scholarships"
+    },
+    "items": [
+      {
+        "ja": "公益財団法人キーエンス財団 給付型奨学金",
+        "en": "Keyence Foundation – Merit-based Scholarship (Grant)"
+      }
+    ],
+    "date": ""
+  }
+}

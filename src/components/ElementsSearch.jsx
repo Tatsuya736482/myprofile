@@ -22,10 +22,12 @@ import ArticleIcon from "@mui/icons-material/Article";
 import CodeIcon from "@mui/icons-material/Code";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import CloseIcon from "@mui/icons-material/Close";
+import StarIcon from "@mui/icons-material/Star"; // Import an icon for "others"
 
 import posts from "../data/posts.json";
 import projects from "../data/projects.json";
 import researches from "../data/researches.json";
+import others from "../data/others.json";
 
 // Helper to safely get text from multilingual objects
 const getText = (obj, lng) => {
@@ -38,6 +40,7 @@ const getText = (obj, lng) => {
 const getIcon = (category, tags) => {
   if (category === "project") return <CodeIcon />;
   if (category === "research") return <ArticleIcon />;
+  if (category === "others") return <StarIcon />; // Add icon check for "others"
   
   // Timeline tags
   if (tags && Array.isArray(tags)) {
@@ -96,6 +99,25 @@ export default function ElementsSearch({ lng = "en", setTimelineFilter, setResea
         date: item.date,
         tags: ["research"],
         category: "research",
+        source: item
+      });
+    });
+
+    // Process Others (others.json)
+    Object.entries(others).forEach(([key, item]) => {
+      // Create a searchable text from items array if needed, or just map title
+      const details = item.items 
+        ? item.items.map(i => getText(i, "en") + " " + getText(i, "ja")).join(" ")
+        : "";
+
+      data.push({
+        id: `others-${key}`, // We might need to ensure this ID exists in the DOM or handle scrolling differently if it doesn't map 1:1
+        key: key,
+        title: item.title,
+        subtitle: { en: details, ja: details }, // Using items content as subtitle/searchable text
+        date: item.date,
+        tags: ["others"],
+        category: "others",
         source: item
       });
     });
@@ -165,6 +187,16 @@ export default function ElementsSearch({ lng = "en", setTimelineFilter, setResea
         setTimeout(() => {
             element.style.backgroundColor = originalBg;
         }, 1500);
+      } else if (id.startsWith("others-")) {
+           // Fallback for others since they might not have individual IDs in DOM yet
+           // Scroll to skills section
+           const skillsElement = document.getElementById("skills");
+           if (skillsElement) {
+               const offset = 80;
+               const elementPosition = skillsElement.getBoundingClientRect().top;
+               const offsetPosition = elementPosition + window.pageYOffset - offset;
+               window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+           }
       }
     }, 100);
   };
