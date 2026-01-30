@@ -28,15 +28,12 @@
           "url": "https://yans.anlp.jp/entry/award"
         },
         {
-            "title":"株式会社サイバーエージェント",
-            "url":"https://www.cyberagent.co.jp/"
-        },
-        {
           "title": "研究室のニュース記事",
           "url": "https://www.nlp.c.titech.ac.jp/news/2025/09/19/yans2025-award.ja.html"
         }
       ]
     },
+    "bibtex_key": "Ichinose:YANS2025",
     "tag": ["presentations"]
   }
 }

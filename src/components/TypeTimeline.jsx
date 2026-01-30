@@ -1,5 +1,10 @@
 import React, { useState, useMemo } from "react";
-import { Typography, Stack, Box, useTheme, Link } from "@mui/material";
+import { Typography, Stack, Box, useTheme, Link, Dialog, DialogTitle, DialogContent, DialogActions, Button, IconButton, TextField, Tooltip } from "@mui/material";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import SlideshowIcon from '@mui/icons-material/Slideshow';
 
 export default function TypeTimeline({
   date,
@@ -8,6 +13,7 @@ export default function TypeTimeline({
   detail,
   image,
   links,
+  bibtex, // Add bibtex prop
   lng = "ja",
   topLine = true,
   bottomLine = true,
@@ -17,6 +23,9 @@ export default function TypeTimeline({
 }) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  
+  // Dialog state for BibTeX
+  const [bibDialogOpen, setBibDialogOpen] = useState(false);
 
   const lineColor =
     theme.palette.mode === "dark" ? "rgba(255,255,255,0.18)" : "rgba(0,0,0,0.12)";
@@ -31,6 +40,31 @@ export default function TypeTimeline({
     return String(value);
   };
 
+  const getLinkIcon = (title) => {
+    if (!title) return null;
+    const lower = title.toLowerCase();
+    if (lower.includes("paper") || lower.includes("pdf") || lower.includes("論文")) {
+      return <PictureAsPdfIcon sx={{ fontSize: "1rem" }} />;
+    }
+    if (lower.includes("poster") || lower.includes("slide") || lower.includes("presentation") || lower.includes("ポスター")) {
+      return <SlideshowIcon sx={{ fontSize: "1rem" }} />;
+    }
+    return null;
+  };
+
+  const handleCopyBibtex = () => {
+    navigator.clipboard.writeText(bibtex);
+  };
+  
+  const handleDownloadBibtex = () => {
+    const element = document.createElement("a");
+    const file = new Blob([bibtex], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = "citation.bib";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+    document.body.removeChild(element);
+  };
 
   return (
     <Stack
@@ -138,7 +172,7 @@ export default function TypeTimeline({
             )}
 
             {links && links[lng] && Array.isArray(links[lng]) && (
-              <Box sx={{ mt: 0.5, display: "flex", flexWrap: "wrap", gap: 1 }}>
+              <Box sx={{ mt: 0.5, display: "flex", flexWrap: "wrap", gap: 1, alignItems: "center" }}>
                 {links[lng].map((link, index) => (
                   <Link
                     key={index}
@@ -148,12 +182,65 @@ export default function TypeTimeline({
                     sx={{
                       cursor: "pointer",
                       fontSize: "0.8rem",
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 0.5,
                       "&:hover": { textDecoration: "underline" },
                     }}
                   >
+                    {getLinkIcon(link.title)}
                     {link.title}
                   </Link>
                 ))}
+                
+                {bibtex && (
+                  <>
+                     <Typography variant="body2" color="text.secondary">|</Typography>
+                     <Link
+                        component="button"
+                        type="button"
+                        onClick={() => setBibDialogOpen(true)}
+                        sx={{
+                          cursor: "pointer",
+                          fontSize: "0.8rem",
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 0.5,
+                          "&:hover": { textDecoration: "underline" },
+                        }}
+                     >
+                       <LibraryBooksIcon sx={{ fontSize: "1rem" }} />
+                       BibTeX
+                     </Link>
+
+                     <Dialog open={bibDialogOpen} onClose={() => setBibDialogOpen(false)} maxWidth="sm" fullWidth>
+                        <DialogTitle>BibTeX</DialogTitle>
+                        <DialogContent>
+                            <TextField
+                                multiline
+                                fullWidth
+                                rows={6}
+                                value={bibtex}
+                                InputProps={{
+                                    readOnly: true,
+                                    sx: { fontFamily: 'monospace', fontSize: '0.875rem' }
+                                }}
+                            />
+                        </DialogContent>
+                        <DialogActions>
+                            <Button startIcon={<ContentCopyIcon />} onClick={handleCopyBibtex}>
+                                {lng === "ja" ? "コピー" : "Copy"}
+                            </Button>
+                            <Button startIcon={<FileDownloadIcon />} onClick={handleDownloadBibtex}>
+                                {lng === "ja" ? "ダウンロード" : "Download"}
+                            </Button>
+                            <Button onClick={() => setBibDialogOpen(false)}>
+                                {lng === "ja" ? "閉じる" : "Close"}
+                            </Button>
+                        </DialogActions>
+                     </Dialog>
+                  </>
+                )}
               </Box>
             )}
           </Box>

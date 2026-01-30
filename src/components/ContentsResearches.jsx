@@ -16,6 +16,52 @@ import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 export default function ContentsResearches({ lng = "en", researchFilter, setResearchFilter }) {
   // If props are provided use them, else fallback to internal state
   const [internalSelected, setInternalSelected] = React.useState("All");
+  const [bibtexMap, setBibtexMap] = React.useState({});
+
+  React.useEffect(() => {
+    fetch(`${process.env.PUBLIC_URL}/data/references.bib`)
+      .then(response => {
+        if (!response.ok) throw new Error("Network response was not ok");
+        return response.text();
+      })
+      .then(text => {
+        const entries = {};
+        let currentKey = null;
+        let currentEntry = "";
+        let braceCount = 0;
+        let inEntry = false;
+
+        const lines = text.split('\n');
+        for (const line of lines) {
+             if (!inEntry) {
+                 const match = line.match(/^\s*@\w+\s*\{([^,]+),/);
+                 if (match) {
+                     currentKey = match[1].trim();
+                     inEntry = true;
+                     currentEntry = line + "\n";
+                     braceCount = (line.match(/\{/g) || []).length - (line.match(/\}/g) || []).length;
+                     
+                     if (braceCount === 0) {
+                         entries[currentKey] = currentEntry.trim();
+                         inEntry = false;
+                         currentKey = null;
+                     }
+                 }
+             } else {
+                 currentEntry += line + "\n";
+                 braceCount += (line.match(/\{/g) || []).length - (line.match(/\}/g) || []).length;
+                 if (braceCount <= 0) {
+                     entries[currentKey] = currentEntry.trim();
+                     inEntry = false;
+                     currentKey = null;
+                     braceCount = 0;
+                 }
+             }
+        }
+        setBibtexMap(entries);
+      })
+      .catch(err => console.log("Bibtex file not found or load error", err));
+  }, []);
   
   const selected = researchFilter !== undefined ? researchFilter : internalSelected;
   const setSelected = setResearchFilter !== undefined ? setResearchFilter : setInternalSelected;
@@ -36,13 +82,13 @@ export default function ContentsResearches({ lng = "en", researchFilter, setRese
     
     switch (selected) {
       case "All":
-        return <TimelineFilter filterTag={null} lng={lng} posts={postsContent} idPrefix="research-" />;
+        return <TimelineFilter filterTag={null} lng={lng} posts={postsContent} idPrefix="research-" bibtexMap={bibtexMap} />;
       case "presentations":
       case "publications":
-        return <TimelineFilter filterTag={selected} lng={lng} posts={postsContent} idPrefix="research-" />;
+        return <TimelineFilter filterTag={selected} lng={lng} posts={postsContent} idPrefix="research-" bibtexMap={bibtexMap} />;
       default:
         // 許可されていないタグの場合はAllを表示
-        return <TimelineFilter filterTag={null} lng={lng} posts={postsContent} idPrefix="research-" />;
+        return <TimelineFilter filterTag={null} lng={lng} posts={postsContent} idPrefix="research-" bibtexMap={bibtexMap} />;
     }
   };
 

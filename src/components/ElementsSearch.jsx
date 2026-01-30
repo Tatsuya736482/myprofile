@@ -133,6 +133,7 @@ export default function ElementsSearch({ lng = "en", setTimelineFilter, setResea
     if (!query.trim()) return [];
     
     const lowerQuery = query.toLowerCase();
+    const keywords = lowerQuery.split(/[\s　]+/).filter(Boolean);
     
     return index.filter(item => {
       const titleEn = getText(item.title, "en").toLowerCase();
@@ -141,12 +142,12 @@ export default function ElementsSearch({ lng = "en", setTimelineFilter, setResea
       const subJa = getText(item.subtitle, "ja").toLowerCase();
       const date = (item.date || "").toLowerCase();
       
-      return (
-        titleEn.includes(lowerQuery) ||
-        titleJa.includes(lowerQuery) ||
-        subEn.includes(lowerQuery) ||
-        subJa.includes(lowerQuery) ||
-        date.includes(lowerQuery)
+      return keywords.every(keyword => 
+        titleEn.includes(keyword) ||
+        titleJa.includes(keyword) ||
+        subEn.includes(keyword) ||
+        subJa.includes(keyword) ||
+        date.includes(keyword)
       );
     });
   }, [query, index]);
