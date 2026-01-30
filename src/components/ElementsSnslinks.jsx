@@ -47,11 +47,11 @@ export default function CustomPageToolbar({ color = 'white' }) {
               <GitHubIcon fontSize="inherit" style={{ color }} />
             </IconButton>
           </a>
-          <a href="https://www.linkedin.com/in/tatsuya-ichinose-265315342/" target="_blank" rel="noopener noreferrer">
+          {/* <a href="https://www.linkedin.com/in/tatsuya-ichinose-265315342/" target="_blank" rel="noopener noreferrer">
             <IconButton aria-label="linkedin" size="medium" sx={iconHoverStyle}>
               <LinkedInIcon fontSize="inherit" style={{ color }}/>
             </IconButton>
-          </a>
+          </a> */}
           <a href="https://qiita.com/A12" target="_blank" rel="noopener noreferrer">
             <IconButton aria-label="qiita" size="medium" sx={iconHoverStyle}>
               <SiQiita style={{ color }}/>
