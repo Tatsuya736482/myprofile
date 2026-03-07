@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { AppProvider } from "@toolpad/core/AppProvider";
 import Box from "@mui/material/Box";
@@ -20,7 +20,6 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import HomeIcon from "@mui/icons-material/Home";
 import StarIcon from "@mui/icons-material/Star";
 import DownloadIcon from "@mui/icons-material/Download";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 import ElementsDarkmode from "../components/ElementsDarkmode";
 import ElementsLanguagemenu from "../components/ElementsLanguagemenu";
@@ -35,6 +34,10 @@ export default function Materials({ lng = "en" }) {
   const darkTheme = useMemo(() => createTheme({ palette: { mode } }), [mode]);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const highlightId = searchParams.get("highlight");
   const materials = materialsData.materials;
@@ -210,17 +213,12 @@ export default function Materials({ lng = "en" }) {
               <Typography variant="h5" fontWeight={700} sx={{ mb: 0.5, color: "white" }}>
                 {highlightedMaterial.title[lngSupported]}
               </Typography>
-              <Typography variant="body2" sx={{ mb: 1, color: "rgba(255,255,255,0.85)" }}>
+              <Typography variant="body2" sx={{ mb: 2, color: "rgba(255,255,255,0.85)" }}>
                 {highlightedMaterial.description[lngSupported]}
+                {highlightedMaterial.schedule && (
+                  <> — {highlightedMaterial.schedule[lngSupported]}</>
+                )}
               </Typography>
-              {highlightedMaterial.schedule && (
-                <Box sx={{ mb: 2, display: "inline-flex", alignItems: "center", gap: 0.75, bgcolor: "#1565c0", borderRadius: 1.5, px: 1.5, py: 0.75 }}>
-                  <AccessTimeIcon sx={{ fontSize: 18, color: "white" }} />
-                  <Typography variant="body2" fontWeight={700} sx={{ color: "white", letterSpacing: 0.3 }}>
-                    {highlightedMaterial.schedule[lngSupported]}
-                  </Typography>
-                </Box>
-              )}
               <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                 <Button
                   variant="contained"

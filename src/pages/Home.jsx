@@ -32,6 +32,10 @@ export default function Home({ lng = "en" }) {
   const [researchFilter, setResearchFilter] = React.useState("All");
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  React.useEffect(() => {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth <= 600);
     };
