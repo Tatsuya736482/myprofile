@@ -1,0 +1,42 @@
+{
+  "materials": [
+    {
+      "id": "NLP2026",
+      "title": {
+        "ja": "言語処理学会第32回年次大会 (NLP2026)",
+        "en": "The 32nd Annual Meeting of the Association for Natural Language Processing (NLP2026)"
+      },
+      "description": {
+        "ja": "NLP2026での発表資料です。",
+        "en": "Presentation materials from NLP2026."
+      },
+      "folder": "NLP2026",
+      "file": "NLP2026.pdf",
+      "logo": "logo.jpg",
+      "preview": "preview.png",
+      "date": "2026-03",
+      "type": "poster",
+      "conference": "NLP2026",
+      "featured": true
+    },
+    {
+      "id": "YANS2025",
+      "title": {
+        "ja": "第20回言語処理若手シンポジウム (YANS2025)",
+        "en": "The 20th Young Researchers' Workshop on NLP (YANS2025)"
+      },
+      "description": {
+        "ja": "YANS2025での発表資料です。株式会社サイバーエージェント賞を受賞。",
+        "en": "Presentation materials from YANS2025. Received the Sponsor Award from CyberAgent, Inc."
+      },
+      "folder": "YANS2025",
+      "file": "YANS2025.pdf",
+      "logo": "logo.jpg",
+      "preview": "preview.png",
+      "date": "2025-09",
+      "type": "poster",
+      "conference": "YANS2025",
+      "featured": false
+    }
+  ]
+}

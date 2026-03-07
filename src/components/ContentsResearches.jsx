@@ -9,6 +9,9 @@ import TimelineFilter from "./TypeTimelineFilter";
 import AppsIcon from "@mui/icons-material/Apps";
 import { Box, useTheme } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import SlideshowIcon from "@mui/icons-material/Slideshow";
+import { Link as RouterLink } from "react-router-dom";
 import postsContent from "../data/researches.json"
 import { Article } from "@mui/icons-material";
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
@@ -154,6 +157,20 @@ export default function ContentsResearches({ lng = "en", researchFilter, setRese
             &nbsp;Publications
           </ToggleButton>
         </ToggleButtonGroup>
+        <Button
+          component={RouterLink}
+          to={`/${lng}/materials`}
+          size="small"
+          variant="outlined"
+          startIcon={<SlideshowIcon />}
+          sx={{
+            fontSize: { xs: "0.5rem", sm: "0.7rem", md: "0.75rem" },
+            padding: { xs: "2px 6px", sm: "4px 8px" },
+            textTransform: "none",
+          }}
+        >
+          {lng === "ja" ? "発表資料" : "Materials"}
+        </Button>
       </Box>
 
       <Box
