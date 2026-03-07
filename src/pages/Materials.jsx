@@ -13,6 +13,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
+import Avatar from "@mui/material/Avatar";
+import Link from "@mui/material/Link";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import HomeIcon from "@mui/icons-material/Home";
@@ -91,24 +93,74 @@ export default function Materials({ lng = "en" }) {
         </Stack>
       </Box>
 
-      {/* 注目の発表 */}
-      {highlightedMaterial && (
-        <Box
-          sx={{
-            bgcolor: isDark ? "grey.900" : "grey.100",
-            borderBottom: "1px solid",
-            borderColor: "divider",
-            py: { xs: 4, sm: 6 },
-            px: { xs: 2, sm: 4 },
-          }}
+      {/* 自己紹介 */}
+      <Box
+        sx={{
+          pt: { xs: 6, sm: 8 },
+          pb: { xs: 4, sm: 5 },
+          px: { xs: 2, sm: 4 },
+          position: "relative",
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/sf.jpeg)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            bgcolor: isDark ? "rgba(0,0,0,0.6)" : "rgba(0,0,0,0.4)",
+          },
+        }}
+      >
+        <Stack
+          direction="row"
+          spacing={2}
+          alignItems="center"
+          maxWidth="900px"
+          mx="auto"
+          sx={{ position: "relative", zIndex: 1 }}
         >
+          <Avatar
+            alt="Tatsuya Ichinose"
+            src={`${process.env.PUBLIC_URL}/images/me.jpg`}
+            onClick={() => navigate(`/${lngSupported}`)}
+            sx={{ width: 56, height: 56, border: "2px solid white", cursor: "pointer", transition: "opacity 0.2s", "&:hover": { opacity: 0.8 } }}
+          />
+          <Box>
+            <Typography variant="subtitle1" fontWeight={700} sx={{ color: "white" }}>
+              {lngSupported === "ja" ? "一瀬 達矢" : "Tatsuya Ichinose"}
+            </Typography>
+            <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.85)" }}>
+              {lngSupported === "ja"
+                ? "東京科学大学 "
+                : "Institute of Science Tokyo, B.Sc. Candidate (4th Year), "}
+              
+                {lngSupported === "ja" ? "岡崎研究室 学部4年" : "Okazaki Lab"}
+             
+            </Typography>
+          </Box>
+        </Stack>
+
+        {/* 注目の発表 */}
+        {highlightedMaterial && (
           <Box
             maxWidth="900px"
             mx="auto"
+            mt={4}
             display="flex"
             flexDirection={isMobile ? "column" : "row"}
             alignItems={isMobile ? "flex-start" : "center"}
             gap={3}
+            sx={{
+              position: "relative",
+              zIndex: 1,
+              bgcolor: "rgba(255,255,255,0.12)",
+              backdropFilter: "blur(6px)",
+              borderRadius: 2,
+              p: { xs: 2, sm: 3 },
+            }}
           >
             {/* ロゴ + プレビュー */}
             <Stack direction="row" spacing={2} alignItems="center" flexShrink={0}>
@@ -121,9 +173,8 @@ export default function Materials({ lng = "en" }) {
                   height: isMobile ? 60 : 80,
                   objectFit: "contain",
                   borderRadius: 2,
-                  border: "1px solid",
-                  borderColor: "divider",
-                  bgcolor: "background.paper",
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  bgcolor: "rgba(255,255,255,0.9)",
                 }}
               />
               {previewUrl(highlightedMaterial) && (
@@ -138,8 +189,7 @@ export default function Materials({ lng = "en" }) {
                     objectFit: "cover",
                     objectPosition: "top left",
                     borderRadius: 1.5,
-                    border: "1px solid",
-                    borderColor: "divider",
+                    border: "1px solid rgba(255,255,255,0.3)",
                     cursor: "pointer",
                     transition: "box-shadow 0.2s",
                     "&:hover": { boxShadow: 3 },
@@ -154,12 +204,12 @@ export default function Materials({ lng = "en" }) {
                 label={lngSupported === "ja" ? "注目の発表" : "Featured"}
                 size="small"
                 variant="outlined"
-                sx={{ mb: 1 }}
+                sx={{ mb: 1, color: "white", borderColor: "rgba(255,255,255,0.5)", "& .MuiChip-icon": { color: "#FFD700" } }}
               />
-              <Typography variant="h5" fontWeight={700} sx={{ mb: 0.5 }}>
+              <Typography variant="h5" fontWeight={700} sx={{ mb: 0.5, color: "white" }}>
                 {highlightedMaterial.title[lngSupported]}
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              <Typography variant="body2" sx={{ mb: 2, color: "rgba(255,255,255,0.85)" }}>
                 {highlightedMaterial.description[lngSupported]}
               </Typography>
               <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
@@ -171,6 +221,7 @@ export default function Materials({ lng = "en" }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   disableElevation
+                  sx={{ bgcolor: "white", color: "black", "&:hover": { bgcolor: "grey.200" } }}
                 >
                   {lngSupported === "ja" ? "PDFを開く" : "Open PDF"}
                 </Button>
@@ -180,14 +231,15 @@ export default function Materials({ lng = "en" }) {
                   startIcon={<DownloadIcon />}
                   href={pdfUrl(highlightedMaterial)}
                   download
+                  sx={{ color: "white", borderColor: "rgba(255,255,255,0.5)", "&:hover": { borderColor: "white", bgcolor: "rgba(255,255,255,0.1)" } }}
                 >
                   {lngSupported === "ja" ? "ダウンロード" : "Download"}
                 </Button>
               </Stack>
             </Box>
           </Box>
-        </Box>
-      )}
+        )}
+      </Box>
 
       {/* メインコンテンツ */}
       <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>

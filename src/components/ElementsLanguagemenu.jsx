@@ -3,11 +3,11 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import LanguageIcon from '@mui/icons-material/Language';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const options = [
-  { label: 'English', path: '/en' },
-  { label: 'Japanese', path: '/ja' },
+  { label: 'English', lng: 'en' },
+  { label: 'Japanese', lng: 'ja' },
 ];
 
 const ITEM_HEIGHT = 48;
@@ -16,19 +16,25 @@ export default function LongMenu({ color = 'white' }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = (path) => {
+  const handleClose = (lng) => {
     setAnchorEl(null);
-    if (path) {
-      if (window.location.pathname !== path) {
-        navigate(path);
+    if (lng) {
+      // 現在のパスから言語部分を取り除き、新しい言語で再構成する
+      // 例: /ja/materials -> /en/materials, /ja -> /en, / -> /en
+      const currentPath = location.pathname;
+      const stripped = currentPath.replace(/^\/(en|ja)/, '');
+      const newPath = `/${lng}${stripped || ''}`;
+      if (currentPath !== newPath) {
+        navigate(newPath);
         window.location.reload();
       } else {
-        window.location.reload(); 
+        window.location.reload();
       }
     }
   };
@@ -72,7 +78,7 @@ export default function LongMenu({ color = 'white' }) {
         }}
       >
         {options.map((option) => (
-          <MenuItem key={option.label} onClick={() => handleClose(option.path)}>
+          <MenuItem key={option.label} onClick={() => handleClose(option.lng)}>
             {option.label}
           </MenuItem>
         ))}
