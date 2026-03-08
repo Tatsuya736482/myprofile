@@ -11,9 +11,10 @@
         "en": "Presentation materials from NLP2026."
       },
       "schedule": {
-        "ja": "3/12 (木) 9:30-11:00 ・ C7-12 (2F 大会議室202)",
-        "en": "Mar 12 (Thu) 9:30-11:00 ・ C7-12 (2F Room 202)"
+        "ja": "3/12 (木) 9:30-11:00 · C7-12 (2F 大会議室202)",
+        "en": "Mar 12 (Thu) 9:30-11:00 · C7-12 (2F Room 202)"
       },
+      "paperUrl": "https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/C7-12.pdf",
       "folder": "NLP2026",
       "file": "NLP2026.pdf",
       "logo": "logo.jpg",

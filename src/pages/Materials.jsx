@@ -21,6 +21,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import StarIcon from "@mui/icons-material/Star";
 import DownloadIcon from "@mui/icons-material/Download";
 import PlaceIcon from "@mui/icons-material/Place";
+import ArticleIcon from "@mui/icons-material/Article";
 
 import ElementsDarkmode from "../components/ElementsDarkmode";
 import ElementsLanguagemenu from "../components/ElementsLanguagemenu";
@@ -264,6 +265,19 @@ export default function Materials({ lng = "en" }) {
                 >
                   {lngSupported === "ja" ? "ダウンロード" : "Download"}
                 </Button>
+                {highlightedMaterial.paperUrl && (
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    startIcon={<ArticleIcon />}
+                    href={highlightedMaterial.paperUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ color: "white", borderColor: "rgba(255,255,255,0.5)", "&:hover": { borderColor: "white", bgcolor: "rgba(255,255,255,0.1)" } }}
+                  >
+                    {lngSupported === "ja" ? "論文" : "Paper"}
+                  </Button>
+                )}
               </Stack>
             </Box>
           </Box>
