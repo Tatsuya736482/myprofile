@@ -20,6 +20,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import HomeIcon from "@mui/icons-material/Home";
 import StarIcon from "@mui/icons-material/Star";
 import DownloadIcon from "@mui/icons-material/Download";
+import PlaceIcon from "@mui/icons-material/Place";
 
 import ElementsDarkmode from "../components/ElementsDarkmode";
 import ElementsLanguagemenu from "../components/ElementsLanguagemenu";
@@ -138,11 +139,29 @@ export default function Materials({ lng = "en" }) {
             </Typography>
             <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.85)" }}>
               {lngSupported === "ja"
-                ? "東京科学大学 "
-                : "Institute of Science Tokyo, B.Sc. Candidate (4th Year), "}
-              
-                {lngSupported === "ja" ? "岡崎研究室 学部4年" : "Okazaki Lab"}
-             
+                ? "東京科学大学 岡崎研究室 学部4年"
+                : "Institute of Science Tokyo, Okazaki Lab, B.Sc. Candidate (4th Year)"}
+              <br />
+              Swallow LLM
+            </Typography>
+            <Typography
+              variant="body2"
+              component="a"
+              onClick={() => navigate(`/${lngSupported}`)}
+              sx={{
+                color: "rgba(255,255,255,0.9)",
+                cursor: "pointer",
+                textDecoration: "underline",
+                textUnderlineOffset: 3,
+                "&:hover": { color: "white" },
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 0.5,
+                mt: 0.5,
+              }}
+            >
+              <HomeIcon sx={{ fontSize: 16 }} />
+              {lngSupported === "ja" ? "プロフィールを見る" : "View Profile"}
             </Typography>
           </Box>
         </Stack>
@@ -213,12 +232,15 @@ export default function Materials({ lng = "en" }) {
               <Typography variant="h5" fontWeight={700} sx={{ mb: 0.5, color: "white" }}>
                 {highlightedMaterial.title[lngSupported]}
               </Typography>
-              <Typography variant="body2" sx={{ mb: 2, color: "rgba(255,255,255,0.85)" }}>
+              <Typography variant="body2" sx={{ mb: 0.5, color: "rgba(255,255,255,0.85)" }}>
                 {highlightedMaterial.description[lngSupported]}
-                {highlightedMaterial.schedule && (
-                  <> — {highlightedMaterial.schedule[lngSupported]}</>
-                )}
               </Typography>
+              {highlightedMaterial.schedule && (
+                <Typography variant="body2" sx={{ mb: 2, color: "rgba(255,255,255,0.85)", display: "flex", alignItems: "center", gap: 0.5 }}>
+                  <PlaceIcon sx={{ fontSize: 16 }} />
+                  {highlightedMaterial.schedule[lngSupported]}
+                </Typography>
+              )}
               <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                 <Button
                   variant="contained"
