@@ -242,20 +242,35 @@ export default function Materials({ lng = "en" }) {
                   {highlightedMaterial.schedule[lngSupported]}
                 </Typography>
               )}
-              <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-                <Button
-                  variant="contained"
-                  size="small"
-                  startIcon={<PictureAsPdfIcon />}
-                  href={pdfUrl(highlightedMaterial)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  disableElevation
-                  sx={{ bgcolor: "white", color: "black", "&:hover": { bgcolor: "grey.200" } }}
-                >
-                  {lngSupported === "ja" ? "PDFを開く" : "Open PDF"}
-                </Button>
-              </Stack>
+              <Button
+                variant="contained"
+                startIcon={<PictureAsPdfIcon />}
+                endIcon={<OpenInNewIcon sx={{ fontSize: 16 }} />}
+                href={pdfUrl(highlightedMaterial)}
+                target="_blank"
+                rel="noopener noreferrer"
+                disableElevation
+                sx={{
+                  bgcolor: "white",
+                  color: "#1a1a1a",
+                  fontWeight: 700,
+                  px: 2,
+                  py: 0.6,
+                  borderRadius: 6,
+                  textTransform: "none",
+                  fontSize: "0.8rem",
+                  letterSpacing: 0.3,
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+                  transition: "all 0.2s ease",
+                  "&:hover": {
+                    bgcolor: "white",
+                    transform: "translateY(-1px)",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
+                  },
+                }}
+              >
+                {lngSupported === "ja" ? "PDFを開く" : "Open PDF"}
+              </Button>
             </Box>
           </Box>
         )}
