@@ -255,29 +255,6 @@ export default function Materials({ lng = "en" }) {
                 >
                   {lngSupported === "ja" ? "PDFを開く" : "Open PDF"}
                 </Button>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  startIcon={<DownloadIcon />}
-                  href={pdfUrl(highlightedMaterial)}
-                  download
-                  sx={{ color: "white", borderColor: "rgba(255,255,255,0.5)", "&:hover": { borderColor: "white", bgcolor: "rgba(255,255,255,0.1)" } }}
-                >
-                  {lngSupported === "ja" ? "ダウンロード" : "Download"}
-                </Button>
-                {highlightedMaterial.paperUrl && (
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    startIcon={<ArticleIcon />}
-                    href={highlightedMaterial.paperUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{ color: "white", borderColor: "rgba(255,255,255,0.5)", "&:hover": { borderColor: "white", bgcolor: "rgba(255,255,255,0.1)" } }}
-                  >
-                    {lngSupported === "ja" ? "論文" : "Paper"}
-                  </Button>
-                )}
               </Stack>
             </Box>
           </Box>
