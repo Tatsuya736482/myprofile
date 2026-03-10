@@ -24,7 +24,7 @@ import "react-pdf/dist/Page/TextLayer.css";
 
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import HomeIcon from "@mui/icons-material/Home";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import StarIcon from "@mui/icons-material/Star";
 import DownloadIcon from "@mui/icons-material/Download";
 import PlaceIcon from "@mui/icons-material/Place";
@@ -32,8 +32,6 @@ import ArticleIcon from "@mui/icons-material/Article";
 import CloseIcon from "@mui/icons-material/Close";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 
-import ElementsDarkmode from "../components/ElementsDarkmode";
-import ElementsLanguagemenu from "../components/ElementsLanguagemenu";
 import materialsData from "../data/materials.json";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -117,15 +115,28 @@ export default function Materials({ lng = "en" }) {
             "&:hover": { bgcolor: "rgba(0, 0, 0, 0.6)" },
           }}
         >
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ color: "white" }}>
-            <Tooltip title={lngSupported === "ja" ? "プロフィールへ" : "Go to Profile"}>
-              <IconButton onClick={() => navigate(`/${lngSupported}`)} size="small" sx={{ color: "white" }}>
-                <HomeIcon />
-              </IconButton>
-            </Tooltip>
-            <ElementsDarkmode setModeFromParent={setMode} />
-            <ElementsLanguagemenu />
-          </Stack>
+          <Box
+            onClick={() => navigate(`/${lngSupported}`)}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 0.5,
+              cursor: "pointer",
+              px: 1.2,
+              py: 0.5,
+              borderRadius: 2,
+              "&:hover": { bgcolor: "rgba(255,255,255,0.15)" },
+              "&:active": { bgcolor: "rgba(255,255,255,0.25)" },
+            }}
+          >
+            <ArrowBackIcon sx={{ color: "white", fontSize: isMobile ? 16 : 18 }} />
+            <Typography
+              variant={isMobile ? "caption" : "body2"}
+              sx={{ color: "white", fontWeight: 600, letterSpacing: 0.3 }}
+            >
+              {lngSupported === "ja" ? "自己紹介へ" : "About Me"}
+            </Typography>
+          </Box>
         </Box>
 
         {/* ===== フローティングメニュー (SideNav風) ===== */}
@@ -247,11 +258,11 @@ export default function Materials({ lng = "en" }) {
                 <Button
                   fullWidth
                   size="small"
-                  startIcon={<HomeIcon />}
+                  startIcon={<ArrowBackIcon />}
                   onClick={() => navigate(`/${lngSupported}`)}
                   sx={{ textTransform: "none", borderRadius: 2, color: "text.secondary" }}
                 >
-                  {lngSupported === "ja" ? "プロフィール" : "Profile"}
+                  {lngSupported === "ja" ? "自己紹介へ" : "About Me"}
                 </Button>
               </Box>
             )}

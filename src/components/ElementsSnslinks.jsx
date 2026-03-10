@@ -32,11 +32,11 @@ export default function CustomPageToolbar({ color = 'white' }) {
 
     return (
         <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'white' }}>
-          <a href="mailto:tatsuya.ichinose@nlp.comp.isct.ac.jp" style={{ color: 'black' }}>
+          {/* <a href="mailto:tatsuya.ichinose@nlp.comp.isct.ac.jp" style={{ color: 'black' }}>
             <IconButton aria-label="email" size="medium" sx={iconHoverStyle}>
               <EmailIcon fontSize="inherit"style={{ color }} />
             </IconButton>
-          </a>
+          </a> */}
           <a href="https://x.com/tatsuya_ich" target="_blank" rel="noopener noreferrer">
             <IconButton aria-label="zenn" size="medium" sx={iconHoverStyle}>
               <FaXTwitter style={{ color }}/>
