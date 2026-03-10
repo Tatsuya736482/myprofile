@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useCallback, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { AppProvider } from "@toolpad/core/AppProvider";
 import Box from "@mui/material/Box";
@@ -9,12 +9,19 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Tooltip from "@mui/material/Tooltip";
 import Divider from "@mui/material/Divider";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-
 import Avatar from "@mui/material/Avatar";
-import Link from "@mui/material/Link";
+import CircularProgress from "@mui/material/CircularProgress";
+import { motion, AnimatePresence } from "framer-motion";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
+
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import HomeIcon from "@mui/icons-material/Home";
@@ -22,10 +29,14 @@ import StarIcon from "@mui/icons-material/Star";
 import DownloadIcon from "@mui/icons-material/Download";
 import PlaceIcon from "@mui/icons-material/Place";
 import ArticleIcon from "@mui/icons-material/Article";
+import CloseIcon from "@mui/icons-material/Close";
+import ListAltIcon from "@mui/icons-material/ListAlt";
 
 import ElementsDarkmode from "../components/ElementsDarkmode";
 import ElementsLanguagemenu from "../components/ElementsLanguagemenu";
 import materialsData from "../data/materials.json";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 export default function Materials({ lng = "en" }) {
   const lngSupported = lng.startsWith("ja") ? "ja" : "en";
@@ -36,9 +47,30 @@ export default function Materials({ lng = "en" }) {
   const darkTheme = useMemo(() => createTheme({ palette: { mode } }), [mode]);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const [listOpen, setListOpen] = useState(false);
+  const [numPages, setNumPages] = useState(null);
+  const [containerWidth, setContainerWidth] = useState(null);
+  const pdfContainerRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  // コンテナ幅の監視
+  useEffect(() => {
+    const el = pdfContainerRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setContainerWidth(entry.contentRect.width);
+      }
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const onDocumentLoadSuccess = useCallback(({ numPages: n }) => {
+    setNumPages(n);
   }, []);
 
   const highlightId = searchParams.get("highlight");
@@ -64,404 +96,440 @@ export default function Materials({ lng = "en" }) {
     `${process.env.PUBLIC_URL}/images/materials/${folder}`;
   const pdfUrl = (m) => `${basePath(m.folder)}/${m.file}`;
   const logoUrl = (m) => `${basePath(m.folder)}/${m.logo}`;
-  const previewUrl = (m) => m.preview ? `${basePath(m.folder)}/${m.preview}` : null;
+  const previewUrl = (m) =>
+    m.preview ? `${basePath(m.folder)}/${m.preview}` : null;
 
   return (
     <ThemeProvider theme={darkTheme}>
-    <CssBaseline />
-    <AppProvider>
-      {/* 右上コントロール */}
-      <Box
-        position="fixed"
-        top={{ xs: 8, sm: 16 }}
-        right={{ xs: 8, sm: 16 }}
-        bgcolor="rgba(0, 0, 0, 0.4)"
-        p={1}
-        borderRadius={10}
-        zIndex={9999}
-        sx={{
-          transition: "background-color 0.3s",
-          "&:hover": { bgcolor: "rgba(0, 0, 0, 0.6)" },
-        }}
-      >
-        <Stack direction="row" spacing={1} alignItems="center" sx={{ color: "white" }}>
-          <Tooltip title={lngSupported === "ja" ? "プロフィールへ" : "Go to Profile"}>
-            <IconButton
-              onClick={() => navigate(`/${lngSupported}`)}
-              size="small"
-              sx={{ color: "white" }}
-            >
-              <HomeIcon />
-            </IconButton>
-          </Tooltip>
-          <ElementsDarkmode setModeFromParent={setMode} />
-          <ElementsLanguagemenu />
-        </Stack>
-      </Box>
-
-      {/* 自己紹介 */}
-      <Box
-        sx={{
-          pt: { xs: 6, sm: 8 },
-          pb: { xs: 4, sm: 5 },
-          px: { xs: 2, sm: 4 },
-          position: "relative",
-          backgroundImage: `url(${process.env.PUBLIC_URL}/images/sf.jpeg)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            bgcolor: isDark ? "rgba(0,0,0,0.6)" : "rgba(0,0,0,0.4)",
-          },
-        }}
-      >
-        <Stack
-          direction="row"
-          spacing={2}
-          alignItems="center"
-          maxWidth="900px"
-          mx="auto"
-          sx={{ position: "relative", zIndex: 1 }}
+      <CssBaseline />
+      <AppProvider>
+        {/* ===== 右上コントロール ===== */}
+        <Box
+          position="fixed"
+          top={{ xs: 8, sm: 16 }}
+          right={{ xs: 8, sm: 16 }}
+          bgcolor="rgba(0, 0, 0, 0.4)"
+          p={1}
+          borderRadius={10}
+          zIndex={9999}
+          sx={{
+            transition: "background-color 0.3s",
+            "&:hover": { bgcolor: "rgba(0, 0, 0, 0.6)" },
+          }}
         >
-          <Avatar
-            alt="Tatsuya Ichinose"
-            src={`${process.env.PUBLIC_URL}/images/me.jpg`}
-            onClick={() => navigate(`/${lngSupported}`)}
-            sx={{ width: 56, height: 56, border: "2px solid white", cursor: "pointer", transition: "opacity 0.2s", "&:hover": { opacity: 0.8 } }}
-          />
-          <Box>
-            <Typography variant="subtitle1" fontWeight={700} sx={{ color: "white" }}>
-              {lngSupported === "ja" ? "一瀬 達矢" : "Tatsuya Ichinose"}
-            </Typography>
-            <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.85)" }}>
-              {lngSupported === "ja"
-                ? "東京科学大学 岡崎研究室 学部4年"
-                : "Institute of Science Tokyo, Okazaki Lab, B.Sc. Candidate (4th Year)"}
-              <br />
-              Swallow LLM
-            </Typography>
-            <Typography
-              variant="body2"
-              component="a"
-              onClick={() => navigate(`/${lngSupported}`)}
-              sx={{
-                color: "rgba(255,255,255,0.9)",
-                cursor: "pointer",
-                textDecoration: "underline",
-                textUnderlineOffset: 3,
-                "&:hover": { color: "white" },
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 0.5,
-                mt: 0.5,
-              }}
-            >
-              <HomeIcon sx={{ fontSize: 16 }} />
-              {lngSupported === "ja" ? "プロフィールを見る" : "View Profile"}
-            </Typography>
-          </Box>
-        </Stack>
-
-        {/* 注目の発表 */}
-        {highlightedMaterial && (
-          <Box
-            maxWidth="900px"
-            mx="auto"
-            mt={4}
-            display="flex"
-            flexDirection={isMobile ? "column" : "row"}
-            alignItems={isMobile ? "flex-start" : "center"}
-            gap={3}
-            sx={{
-              position: "relative",
-              zIndex: 1,
-              bgcolor: "rgba(255,255,255,0.12)",
-              backdropFilter: "blur(6px)",
-              borderRadius: 2,
-              p: { xs: 2, sm: 3 },
-            }}
-          >
-            {/* ロゴ + プレビュー */}
-            <Stack direction="row" spacing={2} alignItems="center" flexShrink={0}>
-              <Box
-                component="img"
-                src={logoUrl(highlightedMaterial)}
-                alt={highlightedMaterial.conference}
-                sx={{
-                  width: isMobile ? 60 : 80,
-                  height: isMobile ? 60 : 80,
-                  objectFit: "contain",
-                  borderRadius: 2,
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  bgcolor: "rgba(255,255,255,0.9)",
-                }}
-              />
-              {previewUrl(highlightedMaterial) && (
-                <Box
-                  component="img"
-                  src={previewUrl(highlightedMaterial)}
-                  alt="Preview"
-                  onClick={() => window.open(pdfUrl(highlightedMaterial), "_blank")}
-                  sx={{
-                    width: isMobile ? 100 : 140,
-                    height: isMobile ? 70 : 100,
-                    objectFit: "cover",
-                    objectPosition: "top left",
-                    borderRadius: 1.5,
-                    border: "1px solid rgba(255,255,255,0.3)",
-                    cursor: "pointer",
-                    transition: "box-shadow 0.2s",
-                    "&:hover": { boxShadow: 3 },
-                  }}
-                />
-              )}
-            </Stack>
-
-            <Box flex={1}>
-              <Chip
-                icon={<StarIcon sx={{ fontSize: 16 }} />}
-                label={lngSupported === "ja" ? "注目の発表" : "Featured"}
-                size="small"
-                variant="outlined"
-                sx={{ mb: 1, color: "white", borderColor: "rgba(255,255,255,0.5)", "& .MuiChip-icon": { color: "#FFD700" } }}
-              />
-              <Typography variant="h5" fontWeight={700} sx={{ mb: 0.5, color: "white" }}>
-                {highlightedMaterial.title[lngSupported]}
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 0.5, color: "rgba(255,255,255,0.85)" }}>
-                {highlightedMaterial.description[lngSupported]}
-              </Typography>
-              {highlightedMaterial.schedule && (
-                <Typography variant="body2" sx={{ mb: 2, color: "rgba(255,255,255,0.85)", display: "flex", alignItems: "center", gap: 0.5 }}>
-                  <PlaceIcon sx={{ fontSize: 16 }} />
-                  {highlightedMaterial.schedule[lngSupported]}
-                </Typography>
-              )}
-              <Button
-                variant="contained"
-                startIcon={<PictureAsPdfIcon />}
-                endIcon={<OpenInNewIcon sx={{ fontSize: 16 }} />}
-                href={pdfUrl(highlightedMaterial)}
-                target="_blank"
-                rel="noopener noreferrer"
-                disableElevation
-                sx={{
-                  bgcolor: "white",
-                  color: "#1a1a1a",
-                  fontWeight: 700,
-                  px: 2,
-                  py: 0.6,
-                  borderRadius: 6,
-                  textTransform: "none",
-                  fontSize: "0.8rem",
-                  letterSpacing: 0.3,
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
-                  transition: "all 0.2s ease",
-                  "&:hover": {
-                    bgcolor: "white",
-                    transform: "translateY(-1px)",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
-                  },
-                }}
-              >
-                {lngSupported === "ja" ? "PDFを開く" : "Open PDF"}
-              </Button>
-            </Box>
-          </Box>
-        )}
-      </Box>
-
-      {/* メインコンテンツ */}
-      <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
-        <Box maxWidth="900px" mx="auto" px={{ xs: 2, sm: 3 }} py={4}>
-          <Typography variant="h4" component="h2" gutterBottom>
-            {lngSupported === "ja" ? "発表資料" : "Presentation Materials"}
-          </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-            {lngSupported === "ja"
-              ? "学会やシンポジウムでの発表資料をまとめています。"
-              : "A collection of presentation materials from conferences and symposiums."}
-          </Typography>
-
-          {/* テーブル風リスト */}
-          <Stack divider={<Divider />} spacing={0}>
-            {sortedMaterials.map((material) => {
-              const isHL = material.id === highlightId;
-              return (
-                <Box
-                  key={material.id}
-                  sx={{
-                    display: "flex",
-                    flexDirection: isMobile ? "column" : "row",
-                    alignItems: isMobile ? "flex-start" : "center",
-                    gap: isMobile ? 1.5 : 2.5,
-                    py: 2.5,
-                    px: isMobile ? 1 : 2,
-                    borderLeft: isHL ? "3px solid" : "3px solid transparent",
-                    borderColor: isHL ? "primary.main" : "transparent",
-                    bgcolor: isHL
-                      ? (isDark ? "rgba(25,118,210,0.08)" : "rgba(25,118,210,0.04)")
-                      : "transparent",
-                    transition: "background-color 0.2s",
-                    "&:hover": {
-                      bgcolor: isDark ? "grey.900" : "grey.50",
-                    },
-                  }}
-                >
-                  {/* ロゴ + プレビュー */}
-                  <Stack direction="row" spacing={1.5} alignItems="center" flexShrink={0}>
-                    <Box
-                      component="img"
-                      src={logoUrl(material)}
-                      alt={material.conference}
-                      sx={{
-                        width: isMobile ? 40 : 48,
-                        height: isMobile ? 40 : 48,
-                        objectFit: "contain",
-                        borderRadius: 1.5,
-                        border: "1px solid",
-                        borderColor: "divider",
-                        bgcolor: "background.paper",
-                      }}
-                    />
-                    {previewUrl(material) && (
-                      <Box
-                        component="img"
-                        src={previewUrl(material)}
-                        alt="Preview"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(pdfUrl(material), "_blank");
-                        }}
-                        sx={{
-                          width: isMobile ? 64 : 80,
-                          height: isMobile ? 44 : 56,
-                          objectFit: "cover",
-                          objectPosition: "top left",
-                          borderRadius: 1,
-                          border: "1px solid",
-                          borderColor: "divider",
-                          cursor: "pointer",
-                          transition: "box-shadow 0.2s, transform 0.2s",
-                          "&:hover": { boxShadow: 3, transform: "scale(1.05)" },
-                        }}
-                      />
-                    )}
-                  </Stack>
-
-                  {/* 情報 */}
-                  <Box flex={1} minWidth={0}>
-                    <Stack
-                      direction="row"
-                      spacing={1}
-                      alignItems="center"
-                      flexWrap="wrap"
-                      useFlexGap
-                      sx={{ mb: 0.5 }}
-                    >
-                      <Typography variant="subtitle1" fontWeight={600} noWrap={!isMobile} sx={{ 
-                        overflow: isMobile ? "visible" : "hidden",
-                        textOverflow: isMobile ? "unset" : "ellipsis",
-                        whiteSpace: isMobile ? "normal" : "nowrap",
-                      }}>
-                        {material.title[lngSupported]}
-                      </Typography>
-                      {material.featured && (
-                        <Chip
-                          icon={<StarIcon sx={{ fontSize: 14 }} />}
-                          label="Featured"
-                          size="small"
-                          variant="outlined"
-                          color="primary"
-                          sx={{ height: 22, fontSize: "0.7rem" }}
-                        />
-                      )}
-                    </Stack>
-                    <Typography variant="body2" color="text.secondary" sx={{
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      display: "-webkit-box",
-                      WebkitLineClamp: isMobile ? 3 : 1,
-                      WebkitBoxOrient: "vertical",
-                    }}>
-                      {material.description[lngSupported]}
-                    </Typography>
-                    <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 0.5 }}>
-                      <Typography variant="caption" color="text.disabled">
-                        {material.date}
-                      </Typography>
-                      <Chip label={material.type} size="small" variant="outlined" sx={{ height: 20, fontSize: "0.65rem" }} />
-                    </Stack>
-                  </Box>
-
-                  {/* アクション */}
-                  <Stack
-                    direction="row"
-                    spacing={0.5}
-                    alignItems="center"
-                    flexShrink={0}
-                    sx={{ ml: isMobile ? 0 : "auto" }}
-                  >
-                    <Tooltip title={lngSupported === "ja" ? "PDFを開く" : "Open PDF"}>
-                      <IconButton
-                        size="small"
-                        href={pdfUrl(material)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <PictureAsPdfIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title={lngSupported === "ja" ? "ダウンロード" : "Download"}>
-                      <IconButton size="small" href={pdfUrl(material)} download>
-                        <DownloadIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title={lngSupported === "ja" ? "新しいタブで開く" : "Open in new tab"}>
-                      <IconButton
-                        size="small"
-                        href={pdfUrl(material)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <OpenInNewIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                  </Stack>
-                </Box>
-              );
-            })}
+          <Stack direction="row" spacing={1} alignItems="center" sx={{ color: "white" }}>
+            <Tooltip title={lngSupported === "ja" ? "プロフィールへ" : "Go to Profile"}>
+              <IconButton onClick={() => navigate(`/${lngSupported}`)} size="small" sx={{ color: "white" }}>
+                <HomeIcon />
+              </IconButton>
+            </Tooltip>
+            <ElementsDarkmode setModeFromParent={setMode} />
+            <ElementsLanguagemenu />
           </Stack>
         </Box>
 
-        {/* フッター */}
+        {/* ===== フローティングメニュー (SideNav風) ===== */}
+        <AnimatePresence>
+          <motion.div
+            initial={{ x: 320, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 25, delay: 0.3 }}
+            style={{
+              position: "fixed",
+              top: isMobile ? "auto" : 88,
+              bottom: isMobile ? 16 : "auto",
+              right: isMobile ? 16 : 16,
+              zIndex: 10000,
+            }}
+          >
+            {isMobile ? (
+              /* モバイル: FABスタイル */
+              <IconButton
+                onClick={() => setListOpen(true)}
+                sx={{
+                  bgcolor: "background.paper",
+                  boxShadow: "0 2px 16px rgba(0,0,0,0.12)",
+                  border: "1px solid",
+                  borderColor: "divider",
+                  width: 48,
+                  height: 48,
+                  "&:hover": { bgcolor: "action.hover" },
+                }}
+              >
+                <ListAltIcon />
+              </IconButton>
+            ) : (
+              /* デスクトップ: カード */
+              <Box
+                sx={{
+                  width: 280,
+                  px: 2.5,
+                  py: 2,
+                  borderRadius: 2,
+                  bgcolor: "background.paper",
+                  boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
+                  border: "1px solid",
+                  borderColor: "divider",
+                }}
+              >
+                {/* プロフィール */}
+                <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 2 }}>
+                  <Avatar
+                    alt="Tatsuya Ichinose"
+                    src={`${process.env.PUBLIC_URL}/images/me.jpg`}
+                    onClick={() => navigate(`/${lngSupported}`)}
+                    sx={{ width: 40, height: 40, cursor: "pointer", "&:hover": { opacity: 0.8 } }}
+                  />
+                  <Box>
+                    <Typography variant="body2" fontWeight={700} lineHeight={1.3}>
+                      {lngSupported === "ja" ? "一瀬 達矢" : "Tatsuya Ichinose"}
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary" lineHeight={1.3}>
+                      {lngSupported === "ja" ? "東京科学大学 岡崎研" : "Okazaki Lab, IST"}
+                      <br />
+                      Swallow LLM
+                    </Typography>
+                  </Box>
+                </Stack>
+
+                <Divider sx={{ mb: 1.5 }} />
+
+                {/* 注目情報 */}
+                {highlightedMaterial && (
+                  <Box sx={{ mb: 1.5 }}>
+                    <Stack direction="row" spacing={0.5} alignItems="center" sx={{ mb: 0.5 }}>
+                      <StarIcon sx={{ fontSize: 14, color: "#FFD700" }} />
+                      <Typography variant="caption" fontWeight={700}>
+                        {lngSupported === "ja" ? "注目の発表" : "Featured"}
+                      </Typography>
+                    </Stack>
+                    <Typography variant="body2" fontWeight={600} sx={{ mb: 0.5 }}>
+                      {highlightedMaterial.title[lngSupported]}
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary" sx={{ display: "block", mb: 0.5 }}>
+                      {highlightedMaterial.description[lngSupported]}
+                    </Typography>
+                    {highlightedMaterial.schedule && (
+                      <Typography variant="caption" color="text.secondary" sx={{ display: "flex", alignItems: "center", gap: 0.3, mb: 1 }}>
+                        <PlaceIcon sx={{ fontSize: 13 }} />
+                        {highlightedMaterial.schedule[lngSupported]}
+                      </Typography>
+                    )}
+                    {highlightedMaterial.paperUrl && (
+                      <Button
+                        size="small"
+                        startIcon={<ArticleIcon sx={{ fontSize: 14 }} />}
+                        href={highlightedMaterial.paperUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        sx={{ textTransform: "none", fontSize: "0.75rem", p: 0, minWidth: 0, "&:hover": { bgcolor: "transparent" } }}
+                      >
+                        {lngSupported === "ja" ? "論文" : "Paper"}
+                      </Button>
+                    )}
+                  </Box>
+                )}
+
+                <Divider sx={{ mb: 1.5 }} />
+
+                {/* 発表資料一覧ボタン */}
+                <Button
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  startIcon={<ListAltIcon />}
+                  onClick={() => setListOpen(true)}
+                  sx={{ textTransform: "none", borderRadius: 2, mb: 1 }}
+                >
+                  {lngSupported === "ja" ? "発表資料一覧" : "All Materials"}
+                </Button>
+
+                <Button
+                  fullWidth
+                  size="small"
+                  startIcon={<HomeIcon />}
+                  onClick={() => navigate(`/${lngSupported}`)}
+                  sx={{ textTransform: "none", borderRadius: 2, color: "text.secondary" }}
+                >
+                  {lngSupported === "ja" ? "プロフィール" : "Profile"}
+                </Button>
+              </Box>
+            )}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* ===== メイン: PDF表示 ===== */}
         <Box
           sx={{
-            textAlign: "right",
-            fontSize: "0.875rem",
-            color: "text.secondary",
-            mt: 4,
-            px: 3,
-            pb: 3,
+            width: "100%",
+            height: "100vh",
+            display: "flex",
+            flexDirection: "column",
           }}
         >
-          <Button
-            size="small"
-            startIcon={<HomeIcon />}
-            onClick={() => navigate(`/${lngSupported}`)}
-            sx={{ mr: 2 }}
-          >
-            {lngSupported === "ja" ? "プロフィールに戻る" : "Back to Profile"}
-          </Button>
-          © {new Date().getFullYear()} Tatsuya Ichinose. All rights reserved.
+          {highlightedMaterial ? (
+            <Box
+              ref={pdfContainerRef}
+              sx={{
+                flex: 1,
+                width: "100%",
+                overflowY: "auto",
+                bgcolor: isDark ? "grey.900" : "grey.200",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: isMobile ? "center" : "flex-start",
+                pt: { xs: 8, sm: 10 },
+                pb: 2,
+                pl: isMobile ? 0 : 4,
+                pr: isMobile ? 0 : "320px",
+                gap: 2,
+              }}
+            >
+              {/* モバイル: 日時・場所バナー */}
+              {isMobile && highlightedMaterial.schedule && (
+                <Box
+                  sx={{
+                    width: "100%",
+                    px: 2,
+                    py: 1,
+                    bgcolor: isDark ? "rgba(0,0,0,0.7)" : "rgba(0,0,0,0.6)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 0.5,
+                  }}
+                >
+                  <PlaceIcon sx={{ fontSize: 16, color: "white" }} />
+                  <Typography variant="caption" fontWeight={600} sx={{ color: "white" }}>
+                    {highlightedMaterial.schedule[lngSupported]}
+                  </Typography>
+                </Box>
+              )}
+              <Document
+                file={pdfUrl(highlightedMaterial)}
+                onLoadSuccess={onDocumentLoadSuccess}
+                loading={
+                  <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mt: 8, gap: 2 }}>
+                    <CircularProgress />
+                    <Typography variant="body2" color="text.secondary">
+                      {lngSupported === "ja" ? "PDF を読み込み中..." : "Loading PDF..."}
+                    </Typography>
+                  </Box>
+                }
+                error={
+                  <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mt: 8, gap: 1 }}>
+                    <PictureAsPdfIcon sx={{ fontSize: 48, color: "error.main" }} />
+                    <Typography variant="body2" color="error">
+                      {lngSupported === "ja" ? "PDF の読み込みに失敗しました" : "Failed to load PDF"}
+                    </Typography>
+                  </Box>
+                }
+              >
+                {numPages && Array.from({ length: numPages }, (_, i) => (
+                  <Page
+                    key={i + 1}
+                    pageNumber={i + 1}
+                    width={containerWidth ? Math.min(containerWidth - 32, 1200) : undefined}
+                    renderTextLayer={true}
+                    renderAnnotationLayer={true}
+                  />
+                ))}
+              </Document>
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                bgcolor: "background.default",
+              }}
+            >
+              <PictureAsPdfIcon sx={{ fontSize: 64, color: "text.disabled", mb: 2 }} />
+              <Typography variant="h6" color="text.secondary">
+                {lngSupported === "ja" ? "発表資料が見つかりません" : "No material found"}
+              </Typography>
+            </Box>
+          )}
         </Box>
-      </Box>
-    </AppProvider>
+
+        {/* ===== 発表資料一覧ダイアログ ===== */}
+        <Dialog
+          open={listOpen}
+          onClose={() => setListOpen(false)}
+          maxWidth="sm"
+          fullWidth
+          scroll="paper"
+          PaperProps={{
+            sx: {
+              bgcolor: isDark ? "rgba(0,0,0,0.3)" : "rgba(255,255,255,0.4)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              borderRadius: 4,
+              boxShadow: 10,
+            },
+          }}
+          BackdropProps={{ sx: { backgroundColor: "rgba(0,0,0,0.3)" } }}
+        >
+          <DialogTitle sx={{ fontWeight: 700, display: "flex", alignItems: "center", gap: 1 }}>
+            <ListAltIcon />
+            {lngSupported === "ja" ? "発表資料一覧" : "All Materials"}
+            <IconButton
+              onClick={() => setListOpen(false)}
+              sx={{ position: "absolute", right: 8, top: 8 }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
+          <DialogContent dividers>
+            <Stack divider={<Divider />} spacing={0}>
+              {sortedMaterials.map((material, idx) => {
+                const isHL = material.id === (highlightId || materials.find((m) => m.featured)?.id);
+                const prevDate = idx > 0 ? sortedMaterials[idx - 1].date : null;
+                const showDateHeader = isMobile && material.date !== prevDate;
+                return (
+                  <React.Fragment key={material.id}>
+                    {showDateHeader && (
+                      <Typography variant="caption" fontWeight={700} sx={{ pt: idx > 0 ? 2 : 0.5, pb: 0.5, px: 1, color: "text.secondary", letterSpacing: 0.5 }}>
+                        {material.date}
+                      </Typography>
+                    )}
+                    <Box
+                    key={material.id}
+                    onClick={() => {
+                      navigate(`/${lngSupported}/materials?highlight=${material.id}`);
+                      setListOpen(false);
+                    }}
+                    sx={{
+                      display: "flex",
+                      alignItems: isMobile ? "flex-start" : "center",
+                      flexDirection: isMobile ? "column" : "row",
+                      gap: isMobile ? 1 : 2,
+                      py: 2,
+                      px: 1,
+                      cursor: "pointer",
+                      borderLeft: isHL ? "3px solid" : "3px solid transparent",
+                      borderColor: isHL ? "primary.main" : "transparent",
+                      transition: "background-color 0.2s",
+                      "&:hover": { bgcolor: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.03)" },
+                    }}
+                  >
+                    {/* ロゴ */}
+                    <Stack direction="row" spacing={1} alignItems="center" flexShrink={0}>
+                      <Box
+                        component="img"
+                        src={logoUrl(material)}
+                        alt={material.conference}
+                        sx={{
+                          width: 40,
+                          height: 40,
+                          objectFit: "contain",
+                          borderRadius: 1.5,
+                          border: "1px solid",
+                          borderColor: "divider",
+                          bgcolor: "background.paper",
+                        }}
+                      />
+                      {previewUrl(material) && (
+                        <Box
+                          component="img"
+                          src={previewUrl(material)}
+                          alt="Preview"
+                          sx={{
+                            width: 64,
+                            height: 44,
+                            objectFit: "cover",
+                            objectPosition: "top left",
+                            borderRadius: 1,
+                            border: "1px solid",
+                            borderColor: "divider",
+                          }}
+                        />
+                      )}
+                    </Stack>
+
+                    {/* 情報 */}
+                    <Box flex={1} minWidth={0}>
+                      <Stack direction="row" spacing={0.5} alignItems="center" sx={{ mb: 0.3 }}>
+                        <Typography variant="body2" fontWeight={600} sx={{
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          whiteSpace: isMobile ? "normal" : "nowrap",
+                        }}>
+                          {material.title[lngSupported]}
+                        </Typography>
+                        {material.featured && (
+                          <StarIcon sx={{ fontSize: 14, color: "#FFD700", flexShrink: 0 }} />
+                        )}
+                      </Stack>
+                      <Typography variant="caption" color="text.secondary" sx={{
+                        display: "-webkit-box",
+                        WebkitLineClamp: 1,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                      }}>
+                        {material.description[lngSupported]}
+                      </Typography>
+                      <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 0.3 }}>
+                        <Typography variant="caption" color="text.disabled">
+                          {material.date}
+                        </Typography>
+                        <Chip label={material.type} size="small" variant="outlined" sx={{ height: 18, fontSize: "0.6rem" }} />
+                      </Stack>
+                    </Box>
+
+                    {/* アクション */}
+                    <Stack direction="row" spacing={0.5} flexShrink={0}>
+                      <Tooltip title={lngSupported === "ja" ? "表示" : "View"}>
+                        <IconButton
+                          size="small"
+                          onClick={() => {
+                            navigate(`/${lngSupported}/materials?highlight=${material.id}`);
+                            setListOpen(false);
+                          }}
+                        >
+                          <PictureAsPdfIcon fontSize="small" />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title={lngSupported === "ja" ? "ダウンロード" : "Download"}>
+                        <IconButton size="small" href={pdfUrl(material)} download>
+                          <DownloadIcon fontSize="small" />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title={lngSupported === "ja" ? "新しいタブ" : "New tab"}>
+                        <IconButton size="small" href={pdfUrl(material)} target="_blank" rel="noopener noreferrer">
+                          <OpenInNewIcon fontSize="small" />
+                        </IconButton>
+                      </Tooltip>
+                    </Stack>
+                  </Box>
+                  </React.Fragment>
+                );
+              })}
+            </Stack>
+          </DialogContent>
+        </Dialog>
+
+        {/* フッターオーバーレイ */}
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            py: 0.5,
+            fontSize: "0.7rem",
+            color: "text.disabled",
+            bgcolor: isDark ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.7)",
+            backdropFilter: "blur(4px)",
+            zIndex: 1,
+          }}
+        >
+          © {new Date().getFullYear()} Tatsuya Ichinose
+        </Box>
+      </AppProvider>
     </ThemeProvider>
   );
 }
