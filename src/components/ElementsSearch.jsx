@@ -57,6 +57,7 @@ const getIcon = (category, tags) => {
 export default function ElementsSearch({ lng = "en", setTimelineFilter, setResearchFilter }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [pendingTargetId, setPendingTargetId] = useState(null);
   const theme = useTheme();
 
   // Prepare index
@@ -160,7 +161,7 @@ export default function ElementsSearch({ lng = "en", setTimelineFilter, setResea
       const titleJa = getText(item.title, "ja").toLowerCase();
       const subEn = getText(item.subtitle, "en").toLowerCase();
       const subJa = getText(item.subtitle, "ja").toLowerCase();
-      const date = (item.date || "").toLowerCase();
+      const date = getText(item.date, lng).toLowerCase();
       
       return keywords.every(keyword => 
         titleEn.includes(keyword) ||
@@ -176,51 +177,66 @@ export default function ElementsSearch({ lng = "en", setTimelineFilter, setResea
   const handleClose = () => {
     setOpen(false);
     setQuery("");
+    setPendingTargetId(null);
   };
 
   const handleItemClick = (id) => {
-    handleClose();
-    // Assuming search logic: if user searches and clicks a timeline item, 
-    // we want to ensure it is visible, so we reset filter to 'All'.
+    setPendingTargetId(id);
+    setOpen(false);
+    setQuery("");
+
+    // If a timeline/research item is selected, make sure its section is visible first.
     if (setTimelineFilter) {
         setTimelineFilter("All");
     }
     if (setResearchFilter) {
         setResearchFilter("All");
     }
+  };
 
-    setTimeout(() => {
-      const element = document.getElementById(id);
+  useEffect(() => {
+    if (!pendingTargetId || open) return;
+
+    const scrollAndHighlight = () => {
+      const element = document.getElementById(pendingTargetId);
+
       if (element) {
-        const offset = 80; // Header offset
+        const offset = 80;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
-        
+
         window.scrollTo({
           top: offsetPosition,
-          behavior: "smooth"
+          behavior: "smooth",
         });
 
-        // Optional: Highlight effect could be added here
         element.style.transition = "background-color 0.5s";
         const originalBg = element.style.backgroundColor;
         element.style.backgroundColor = theme.palette.action.selected;
-        setTimeout(() => {
-            element.style.backgroundColor = originalBg;
+        window.setTimeout(() => {
+          element.style.backgroundColor = originalBg;
         }, 1500);
-      } else if (id.startsWith("others-")) {
-           // Fallback for others since they might not have individual IDs in DOM yet
-           // Scroll to skills section
-           const skillsElement = document.getElementById("skills");
-           if (skillsElement) {
-               const offset = 80;
-               const elementPosition = skillsElement.getBoundingClientRect().top;
-               const offsetPosition = elementPosition + window.pageYOffset - offset;
-               window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-           }
+
+        setPendingTargetId(null);
+        return;
       }
-    }, 100);
-  };
+
+      if (pendingTargetId.startsWith("others-")) {
+        const skillsElement = document.getElementById("skills");
+        if (skillsElement) {
+          const offset = 80;
+          const elementPosition = skillsElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        }
+      }
+
+      setPendingTargetId(null);
+    };
+
+    const animationFrameId = window.requestAnimationFrame(scrollAndHighlight);
+    return () => window.cancelAnimationFrame(animationFrameId);
+  }, [pendingTargetId, open, theme.palette.action.selected]);
 
   return (
     <>
@@ -329,7 +345,7 @@ export default function ElementsSearch({ lng = "en", setTimelineFilter, setResea
                             secondary={
                                 <Stack component="span" spacing={0.5}>
                                     <Typography variant="body2" component="span" color="text.secondary">
-                                       {item.date}
+                                      {getText(item.date, lng)}
                                     </Typography>
                                     <Typography variant="caption" component="span" color="text.secondary" sx={{ display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                         {getText(item.subtitle, lng)}
