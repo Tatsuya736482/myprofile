@@ -35,5 +35,19 @@
     },
     "bibtex_key": "Ichinose:YANS2025",
     "tag": ["presentations"]
+  },
+  "2026-03A": {
+    "image": "scienceTokyoIcon.png",
+    "date": "Mar 2026",
+    "icon": "SchoolIcon",
+    "title": {
+      "en": "Received the Excellent Student Award as department representative at graduation",
+      "ja": "優秀学生証を受賞 (情報理工学院 情報工学系)"
+    },
+    "subtitle": {
+      "en": "Awarded the Excellent Student Award from the School of Computing, Dept. of Computer Science, and recognized as the department representative at the graduation ceremony.",
+      "ja": "東京科学大学の情報理工学院 情報工学系の優秀学生証をいただき、卒業式では学科の代表として表彰されました。"
+    },
+    "tag": ["presentations"]
   }
 }

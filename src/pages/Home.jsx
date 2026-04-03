@@ -17,6 +17,7 @@ import ContentsSkills from "../components/ContentsSkills";
 import ContentsTimeline from "../components/ContentsTimeline";
 import ContentsPhotos from "../components/ContentsPhotos";
 import ContentsResearches from "../components/ContentsResearches";
+import ContentsPublications from "../components/ContentsPublications";
 import ElementsDarkmode from "../components/ElementsDarkmode";
 import ElementsSearch from "../components/ElementsSearch";
 import { Stack, Box } from "@mui/material";
@@ -55,7 +56,8 @@ export default function Home({ lng = "en" }) {
   const tocItems = [
     { id: "introduction", label: "Hello👋" },
     { id: "timeline", label: "Education & Career" },
-    {id: "researches", label: "Research"},
+    {id: "researches", label: "Awards"},
+    { id: "publications", label: "Publications" },
     { id: "projects", label: "Work / Projects" },
     { id: "skills", label: "Others" },
   ];
@@ -127,6 +129,9 @@ export default function Home({ lng = "en" }) {
           </Box>
           <Box id="researches">
             <ContentsResearches lng={lngSupported} researchFilter={researchFilter} setResearchFilter={setResearchFilter} />
+          </Box>
+          <Box id="publications">
+            <ContentsPublications lng={lngSupported} />
           </Box>
           
           <Box id="projects">

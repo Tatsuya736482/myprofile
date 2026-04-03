@@ -27,6 +27,7 @@ import StarIcon from "@mui/icons-material/Star"; // Import an icon for "others"
 import posts from "../data/posts.json";
 import projects from "../data/projects.json";
 import researches from "../data/researches.json";
+import publications from "../data/publications.json";
 import others from "../data/others.json";
 
 // Helper to safely get text from multilingual objects
@@ -40,6 +41,7 @@ const getText = (obj, lng) => {
 const getIcon = (category, tags) => {
   if (category === "project") return <CodeIcon />;
   if (category === "research") return <ArticleIcon />;
+  if (category === "publications") return <ArticleIcon />;
   if (category === "others") return <StarIcon />; // Add icon check for "others"
   
   // Timeline tags
@@ -99,6 +101,24 @@ export default function ElementsSearch({ lng = "en", setTimelineFilter, setResea
         date: item.date,
         tags: ["research"],
         category: "research",
+        source: item
+      });
+    });
+
+    // Process Publications (publications.json)
+    Object.entries(publications).forEach(([key, item]) => {
+      const authorsText = Array.isArray(item.authors)
+        ? item.authors.map(author => author.name).join(" ")
+        : "";
+
+      data.push({
+        id: `publication-${key}`,
+        key: key,
+        title: item.title,
+        subtitle: { en: authorsText, ja: authorsText },
+        date: item.date,
+        tags: ["publications"],
+        category: "publications",
         source: item
       });
     });

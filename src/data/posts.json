@@ -59,7 +59,7 @@
   },
   "2025-02I": {
     "image": "SkyIcon.png",
-    "date": "Feb 2025 - Present",
+    "date": "Feb 2025 - Apr 2026",
     "icon": "WorkIcon",
     "title": {
       "en": "Internship at Sky Co., LTD.(Sky株式会社)",
@@ -143,19 +143,32 @@
     },
     "tag": ["career"]
   },
-  "Present": {
+  "2026-03G": {
     "image": "scienceTokyoIcon.png",
-    "date": "Apr 2022 - Present",
+    "date": "Mar 2026",
     "icon": "SchoolIcon",
     "title": {
-      "en": "Studying at Institute of Science Tokyo (Science Tokyo)",
-      "ja": "東京科学大学（旧・東京工業大学）在学中"
+      "en": "Graduated from Institute of Science Tokyo (Science Tokyo)",
+      "ja": "東京科学大学 卒業"
     },
     "subtitle": {
-      "en": "Undergraduate Student, Dept. of Computer Science",
-      "ja": "情報理工学院 情報工学系"
+      "en": "Dept. of Computer Science, School of Computing / Commencement representative and recipient of the Excellent Student Award",
+      "ja": "情報理工学院 情報工学系 / 卒業式代表・優秀学生証"
     },
-    "link": null,
+    "tag": ["education"]
+  },
+  "2026-04M": {
+    "image": "scienceTokyoIcon.png",
+    "date": "Apr 2026 - Present",
+    "icon": "SchoolIcon",
+    "title": {
+      "en": "Master's student at Institute of Science Tokyo (Science Tokyo)",
+      "ja": "東京科学大学 大学院 (修士課程) 在学中"
+    },
+    "subtitle": {
+      "en": "School of Computing, Dept. of Computer Science, Intelligent Information Course",
+      "ja": "情報理工学院 情報工学系 知能情報コース"
+    },
     "tag": ["education"]
   }
 }

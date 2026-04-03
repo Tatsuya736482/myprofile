@@ -15,6 +15,7 @@ import { Link as RouterLink } from "react-router-dom";
 import postsContent from "../data/researches.json"
 import { Article } from "@mui/icons-material";
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 export default function ContentsResearches({ lng = "en", researchFilter, setResearchFilter }) {
   // If props are provided use them, else fallback to internal state
@@ -100,10 +101,9 @@ export default function ContentsResearches({ lng = "en", researchFilter, setRese
 
   return (
     <Box sx={{ padding: 3 }}>
-      <Typography variant="h4" component="h2" gutterBottom>
-        {lng === "ja"
-          ? "研究業績・受賞歴 / Research"
-          : "Research Achievements and Awards"}
+      <Typography variant="h4" component="h2" gutterBottom sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <EmojiEventsIcon fontSize="inherit" />
+        {lng === "ja" ? "受賞歴 / Awards" : "Awards"}
       </Typography>
 
 

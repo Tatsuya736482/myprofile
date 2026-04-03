@@ -1,0 +1,86 @@
+{
+  "2026-03-anlp": {
+    "authors": [
+      { "name": "一瀬 達矢" , "bold": true },
+      { "name": "Youmi Ma" },
+      { "name": "大井 聖也" },
+      { "name": "小池 隆斗" },
+      { "name": "岡崎 直観" }
+    ],
+    "title": {
+      "ja": "対照的デコーディングを用いた指示学習データの合成",
+      "en": "対照的デコーディングを用いた指示学習データの合成"
+    },
+    "date": {
+      "ja": "2026年03月",
+      "en": "Mar 2026"
+    },
+    "venue": {
+      "ja": "言語処理学会第32回年次大会(NLP2026)",
+      "en": "The 32nd Association for Natural Language Processing (NLP2026)"
+    },
+    "url": "https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/C7-12.pdf"
+  },
+  "2025-09-yans": {
+    "authors": [
+      { "name": "一瀬 達矢" , "bold": true },
+      { "name": "Youmi Ma" },
+      { "name": "大井 聖也" },
+      { "name": "小池 隆斗" },
+      { "name": "岡崎 直観" }
+    ],
+    "title": {
+      "ja": "対照的デコーディングを用いた指示学習データの合成",
+      "en": "対照的デコーディングを用いた指示学習データの合成"
+    },
+    "date": {
+      "ja": "2025年09月",
+      "en": "Sep 2025"
+    },
+    "venue": {
+      "ja": "第20回言語処理若手シンポジウム(YANS2025)",
+      "en": "YANS2025 (Young Researcher Association for NLP Studies)"
+    },
+    "url": null,
+    "badges": [
+      {
+        "ja": "株式会社サイバーエージェント賞",
+        "en": "Sponsor Award",
+        "color": "warning"
+      }
+    ]
+  },
+  "2026-03-anlp-2": {
+    "authors": [
+      { "name": "水木 栄" },
+      { "name": "藤井 一喜" },
+      { "name": "川村 政貴" },
+      { "name": "Nguyen Tien Dung" },
+      { "name": "片山 結太" },
+      { "name": "齋藤 幸史郎" },
+      { "name": "一瀬 達矢" , "bold": true },
+      { "name": "宮本 空" },
+      { "name": "松下 直矢" },
+      { "name": "大井 聖也" },
+      { "name": "Youmi Ma" },
+      { "name": "太田 晋" },
+      { "name": "大葉 大輔" },
+      { "name": "高村 大也" },
+      { "name": "横田 理央" },
+      { "name": "岡崎 直観" }
+    ],
+    "title": {
+      "ja": "蒸留による日英推論型大規模言語モデル構築戦略の探索",
+      "en": "蒸留による日英推論型大規模言語モデル構築戦略の探索"
+    },
+    "date": {
+      "ja": "2026年03月",
+      "en": "Mar 2026"
+    },
+    "venue": {
+      "ja": "言語処理学会第32回年次大会(NLP2026)",
+      "en": "The 32nd Association for Natural Language Processing (NLP2026)"
+    },
+    "url": "https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/C8-11.pdf"
+  }
+}

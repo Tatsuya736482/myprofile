@@ -8,6 +8,7 @@ import {
   Box,
   Chip,
 } from "@mui/material";
+import PhonelinkIcon from "@mui/icons-material/Phonelink";
 import posts from "../data/projects.json";
 
 const ContentsProjects = ({ lng = "ja" }) => {
@@ -33,7 +34,8 @@ const ContentsProjects = ({ lng = "ja" }) => {
 
   return (
     <Box sx={{ padding: 3 }} id="projects-section">
-      <Typography variant="h4" component="h2" gutterBottom>
+      <Typography variant="h4" component="h2" gutterBottom sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <PhonelinkIcon fontSize="inherit" />
         {lng === "ja" ? "開発実績 / Work" : "Work"}
       </Typography>
 

@@ -36,7 +36,7 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
           >
             岡崎研究室
           </a>{" "}
-          学部4年
+          修士1年
         </h3>
         <h3>
           <a

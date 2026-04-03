@@ -2,13 +2,15 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import others from "../data/others.json";
+import StarIcon from "@mui/icons-material/Star";
 
 export default function ContentsSkills({ lng = "en" }) {
   const title = lng === "ja" ? "その他" : "Others";
 
   return (
     <Box sx={{ padding: 3 }}>
-      <Typography variant="h4" component="h2" gutterBottom>
+      <Typography variant="h4" component="h2" gutterBottom sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <StarIcon fontSize="inherit" />
         {title}
       </Typography>
 

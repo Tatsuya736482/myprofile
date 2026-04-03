@@ -52,10 +52,9 @@ export default function ContentsTimeline({ lng = "en", timelineFilter, setTimeli
 
   return (
     <Box sx={{ padding: 3 }}>
-      <Typography variant="h4" component="h2" gutterBottom>
-        {lng === "ja"
-          ? "学歴・職歴 / Education & Career"
-          : "Education & Career"}
+      <Typography variant="h4" component="h2" gutterBottom sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <SchoolIcon fontSize="inherit" />
+        {lng === "ja" ? "学歴・職歴 / Education & Career" : "Education & Career"}
       </Typography>
 
 
