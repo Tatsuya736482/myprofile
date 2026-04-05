@@ -8,7 +8,7 @@ export default function ContentsEducation({ lng = "en" }) {
   const institute = lng === "ja" ? "東京科学大学" : "Institute of Science Tokyo";
   const degree =
     lng === "ja"
-      ? "2022年4月 入学\n2026年3月 卒業式代表・優秀学生証"
+      ? "2022年4月 入学\n2026年3月 卒業式代表・優秀学生賞"
       : "Admitted in April 2022\nGraduated in March 2026 as commencement representative and recipient of the Excellent Student Award";
   const period = lng === "ja" ? "2022年4月 - 2026年3月" : "April 2022 - March 2026";
 
