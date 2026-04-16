@@ -1,4 +1,26 @@
 {
+  "2026-04-arxiv": {
+    "authors": [
+      { "name": "Tatsuya Ichinose" , "bold": true },
+      { "name": "Youmi Ma" },
+      { "name": "Masanari Oi" },
+      { "name": "Ryuto Koike" },
+      { "name": "Naoaki Okazaki" }
+    ],
+    "title": {
+      "ja": "Synthesizing Instruction-Tuning Datasets with Contrastive Decoding",
+      "en": "Synthesizing Instruction-Tuning Datasets with Contrastive Decoding"
+    },
+    "date": {
+      "ja": "2026年04月",
+      "en": "Apr 2026"
+    },
+    "venue": {
+      "ja": "arXiv",
+      "en": "arXiv"
+    },
+    "url": "https://arxiv.org/abs/2604.13538"
+  },
   "2026-03-anlp": {
     "authors": [
       { "name": "一瀬 達矢" , "bold": true },
