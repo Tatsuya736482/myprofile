@@ -1,10 +1,54 @@
 import React, { useState, useMemo } from "react";
-import { Typography, Stack, Box, useTheme, Link, Dialog, DialogTitle, DialogContent, DialogActions, Button, IconButton, TextField, Tooltip } from "@mui/material";
+import { Typography, Stack, Box, useTheme, useMediaQuery, Link, Dialog, DialogTitle, DialogContent, DialogActions, Button, IconButton, TextField, Tooltip } from "@mui/material";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import SlideshowIcon from '@mui/icons-material/Slideshow';
+
+const MONTH_INDEX = {
+  Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+  Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
+};
+
+function parseMonthYear(str) {
+  const m = str.trim().match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (!m) return null;
+  const month = MONTH_INDEX[m[1]];
+  return month !== undefined ? new Date(parseInt(m[2]), month, 1) : null;
+}
+
+function computeDuration(dateStr) {
+  if (!dateStr) return null;
+  const parts = dateStr.split(/\s+[-–—]\s+/);
+  if (parts.length !== 2) return null;
+
+  const isPresent = /present/i.test(parts[1]);
+  const end = isPresent ? new Date() : parseMonthYear(parts[1]);
+  let start = parseMonthYear(parts[0]);
+
+  if (!start && end) {
+    const onlyMonth = parts[0].trim().match(/^([A-Za-z]+)$/);
+    if (onlyMonth) {
+      const month = MONTH_INDEX[onlyMonth[1]];
+      if (month !== undefined) start = new Date(end.getFullYear(), month, 1);
+    }
+  }
+
+  if (!start || !end) return null;
+
+  const totalMonths =
+    (end.getFullYear() - start.getFullYear()) * 12 +
+    (end.getMonth() - start.getMonth());
+  if (totalMonths <= 0) return null;
+
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  const parts2 = [];
+  if (years > 0) parts2.push(`${years} ${years === 1 ? "year" : "years"}`);
+  if (months > 0) parts2.push(`${months} ${months === 1 ? "month" : "months"}`);
+  return parts2.join(" ");
+}
 
 export default function TypeTimeline({
   date,
@@ -22,7 +66,9 @@ export default function TypeTimeline({
   id,
 }) {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = useState(false);
+  const duration = computeDuration(date);
   
   // Dialog state for BibTeX
   const [bibDialogOpen, setBibDialogOpen] = useState(false);
@@ -70,15 +116,33 @@ export default function TypeTimeline({
     <Stack
       id={id}
       direction="row"
-      spacing={2}
+      spacing={0}
       alignItems="stretch"
-      sx={{
-        py: 2,          // 縦のパディングを小さめに
-        position: "relative",
-        minHeight: minH,
-      }}
+      sx={{ py: 1.5, position: "relative", minHeight: minH }}
     >
-      {/* タイムライン（縦線＋ドット） */}
+      {/* 左：日付列（デスクトップのみ） */}
+      {!isMobile && (
+        <Box
+          sx={{
+            width: 160,
+            flexShrink: 0,
+            textAlign: "right",
+            pr: 2.5,
+            pt: 1,
+          }}
+        >
+          <Typography sx={{ fontWeight: 600, fontSize: "0.78rem", lineHeight: 1.5, color: "text.primary" }}>
+            {date}
+          </Typography>
+          {duration && (
+            <Typography sx={{ fontSize: "0.68rem", opacity: 0.5, lineHeight: 1.4, display: "block" }}>
+              {duration}
+            </Typography>
+          )}
+        </Box>
+      )}
+
+      {/* 中央：縦線＋ドット */}
       <Box
         sx={{
           position: "relative",
@@ -127,11 +191,21 @@ export default function TypeTimeline({
         )}
       </Box>
 
-      {/* 本文エリア */}
-      <Stack direction="column" spacing={0.5} sx={{ flex: 1, minWidth: 0 }}>
-        <Typography variant="overline" sx={{ fontWeight: 700, letterSpacing: 0.5, opacity: 0.9 }}>
-          {date}
-        </Typography>
+      {/* 右：本文エリア */}
+      <Stack direction="column" spacing={0.5} sx={{ flex: 1, minWidth: 0, pl: 2 }}>
+        {/* モバイル時のみ日付を上部に表示 */}
+        {isMobile && (
+          <Box sx={{ display: "flex", alignItems: "baseline", gap: 1 }}>
+            <Typography sx={{ fontWeight: 600, fontSize: "0.72rem", color: "text.secondary" }}>
+              {date}
+            </Typography>
+            {duration && (
+              <Typography sx={{ fontSize: "0.65rem", opacity: 0.55 }}>
+                {duration}
+              </Typography>
+            )}
+          </Box>
+        )}
 
         <Stack direction="row" spacing={2} alignItems="center">
           <Box

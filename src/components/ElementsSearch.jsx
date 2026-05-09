@@ -54,7 +54,7 @@ const getIcon = (category, tags) => {
   return <EventNoteIcon />;
 };
 
-export default function ElementsSearch({ lng = "en", setTimelineFilter, setResearchFilter }) {
+export default function ElementsSearch({ lng = "en" }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [pendingTargetId, setPendingTargetId] = useState(null);
@@ -185,13 +185,6 @@ export default function ElementsSearch({ lng = "en", setTimelineFilter, setResea
     setOpen(false);
     setQuery("");
 
-    // If a timeline/research item is selected, make sure its section is visible first.
-    if (setTimelineFilter) {
-        setTimelineFilter("All");
-    }
-    if (setResearchFilter) {
-        setResearchFilter("All");
-    }
   };
 
   useEffect(() => {

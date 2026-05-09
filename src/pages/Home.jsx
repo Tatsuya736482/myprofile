@@ -29,8 +29,6 @@ export default function Home({ lng = "en" }) {
   const lngSupported = lng.startsWith("ja") ? "ja" : "en";
   const [isMobile, setIsMobile] = React.useState(false);
   const [mode, setMode] = React.useState("light");
-  const [timelineFilter, setTimelineFilter] = React.useState("All");
-  const [researchFilter, setResearchFilter] = React.useState("All");
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -55,10 +53,11 @@ export default function Home({ lng = "en" }) {
 
   const tocItems = [
     { id: "introduction", label: "Hello👋" },
-    { id: "timeline", label: "Education & Career" },
-    {id: "researches", label: "Awards"},
+    { id: "education", label: "Education" },
+    { id: "career", label: "Career" },
+    { id: "researches", label: "Awards" },
     { id: "publications", label: "Publications" },
-    { id: "projects", label: "Work / Projects" },
+    { id: "projects", label: "Projects" },
     { id: "skills", label: "Others" },
   ];
 
@@ -85,11 +84,7 @@ export default function Home({ lng = "en" }) {
           alignItems="center"
           sx={{ color: "white" }}
         >
-          <ElementsSearch 
-            lng={lngSupported} 
-            setTimelineFilter={setTimelineFilter} 
-            setResearchFilter={setResearchFilter} 
-          />
+          <ElementsSearch lng={lngSupported} />
           <ElementsDarkmode setModeFromParent={setMode} />
           <ElementsLanguagemenu />
         </Stack>
@@ -124,11 +119,14 @@ export default function Home({ lng = "en" }) {
             ml: isMobile ? 0 : "100px",
           }}
         >
-          <Box id="timeline">
-            <ContentsTimeline lng={lngSupported} timelineFilter={timelineFilter} setTimelineFilter={setTimelineFilter} />
+          <Box id="education">
+            <ContentsTimeline lng={lngSupported} tag="education" />
+          </Box>
+          <Box id="career">
+            <ContentsTimeline lng={lngSupported} tag="career" />
           </Box>
           <Box id="researches">
-            <ContentsResearches lng={lngSupported} researchFilter={researchFilter} setResearchFilter={setResearchFilter} />
+            <ContentsResearches lng={lngSupported} />
           </Box>
           <Box id="publications">
             <ContentsPublications lng={lngSupported} />
@@ -137,10 +135,8 @@ export default function Home({ lng = "en" }) {
           <Box id="projects">
             <ContentsProjects lng={lngSupported} />
           </Box>
-          <Box id="skills" display="flex" justifyContent="center" width="100%">
-            <Box margin="0 auto">
-              <ContentsSkills lng={lngSupported} />
-            </Box>
+          <Box id="skills">
+            <ContentsSkills lng={lngSupported} />
           </Box>
 
           {/* <Box id="projects">

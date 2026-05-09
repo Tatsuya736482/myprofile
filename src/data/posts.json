@@ -69,21 +69,7 @@
       "en": "Developing a web service.",
       "ja": "社内のDX改善のためのWebサービス開発, Next.js,Docker"
     },
-    "tag": ["career"],
-    "links": {
-      "en": [
-        {
-          "title": "Long-term Internship Recruitment Page(Japanese)",
-          "url": "https://www.sky-recruit.jp/internship/long-term/"
-        }
-      ],
-      "ja": [
-        {
-          "title": "長期インターンシップ募集ページ",
-          "url": "https://www.sky-recruit.jp/internship/long-term/"
-        }
-      ]
-    }
+    "tag": ["career"]
   },
   "2025-04O": {
     "image": "okazakiLabIcon.jpeg",
@@ -140,6 +126,20 @@
     "subtitle": {
       "en": "Working as a Research Assistant (RA) at Tokyo Institute of Technology.",
       "ja": "東京科学大学のRAとして、研究を進めています。"
+    },
+    "tag": ["career"]
+  },
+  "2026-05C": {
+    "image": "CAIcon.png",
+    "date": "May 2026 - Present",
+    "icon": "WorkIcon",
+    "title": {
+      "en": "Long-term Internship at CyberAgent, Inc.",
+      "ja": "長期インターンシップ@CyberAgent"
+    },
+    "subtitle": {
+      "en": "Machine Learning Engineer",
+      "ja": "Machine Learning Engineer"
     },
     "tag": ["career"]
   },
