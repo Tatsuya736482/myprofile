@@ -3,9 +3,13 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
+import Link from "@mui/material/Link";
 import { useTheme } from "@mui/material/styles";
+import { Link as RouterLink } from "react-router-dom";
 import publications from "../data/publications.json";
+import materialsData from "../data/materials.json";
 import ArticleIcon from '@mui/icons-material/Article';
+import SlideshowIcon from '@mui/icons-material/Slideshow';
 
 const getText = (value, lng) => {
   if (!value) return "";
@@ -45,6 +49,10 @@ const renderBadges = (badges, lng) =>
       />
     );
   });
+
+const materialsMap = Object.fromEntries(
+  materialsData.materials.map((m) => [m.id, m])
+);
 
 export default function ContentsPublications({ lng = "en" }) {
   const theme = useTheme();
@@ -97,11 +105,30 @@ export default function ContentsPublications({ lng = "en" }) {
         )}
       </Box>
       <Box component="div">{renderAuthors(item.authors)}</Box>
-      {getText(item.date, lng) && (
-        <Box component="div">
-          {getText(item.date, lng)}.
-        </Box>
-      )}
+      <Stack direction="row" spacing={1.5} useFlexGap flexWrap="wrap" alignItems="center">
+        {getText(item.date, lng) && (
+          <Box component="span">
+            {getText(item.date, lng)}.
+          </Box>
+        )}
+        {item.materialId && materialsMap[item.materialId] && (
+          <Link
+            component={RouterLink}
+            to={`/${lng}/materials?highlight=${item.materialId}`}
+            sx={{
+              fontSize: "0.82rem",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 0.4,
+              textDecoration: "none",
+              "&:hover": { textDecoration: "underline" },
+            }}
+          >
+            <SlideshowIcon sx={{ fontSize: "0.95rem" }} />
+            {lng === "ja" ? "発表資料" : "Slides"}
+          </Link>
+        )}
+      </Stack>
     </Box>
   );
 

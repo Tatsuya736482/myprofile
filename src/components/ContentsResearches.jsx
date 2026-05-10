@@ -2,9 +2,6 @@ import * as React from "react";
 import TimelineFilter from "./TypeTimelineFilter";
 import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import SlideshowIcon from "@mui/icons-material/Slideshow";
-import { Link as RouterLink } from "react-router-dom";
 import postsContent from "../data/researches.json"
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
@@ -63,23 +60,6 @@ export default function ContentsResearches({ lng = "en" }) {
         {lng === "ja" ? "受賞歴 / Awards" : "Awards"}
       </Typography>
 
-
-      <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 1 }}>
-        <Button
-          component={RouterLink}
-          to={`/${lng}/materials`}
-          size="small"
-          variant="outlined"
-          startIcon={<SlideshowIcon />}
-          sx={{
-            fontSize: { xs: "0.5rem", sm: "0.7rem", md: "0.75rem" },
-            padding: { xs: "2px 6px", sm: "4px 8px" },
-            textTransform: "none",
-          }}
-        >
-          {lng === "ja" ? "発表資料" : "Materials"}
-        </Button>
-      </Box>
 
       <Box>
         <TimelineFilter filterTag={null} lng={lng} posts={postsContent} idPrefix="research-" bibtexMap={bibtexMap} />

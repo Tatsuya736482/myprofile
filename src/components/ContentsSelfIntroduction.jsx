@@ -49,14 +49,15 @@ export default function ContentsSelfIntroduction({ lng = "en" }) {
       </Stack>
     ) : (
       <Stack direction="column" spacing={1}>
-        <h3>Institute of Science Tokyo, B.Sc. Candidate (4th Year)</h3>
         <h3>
+          Institute of Science Tokyo,{" "}
           <a
             href="https://www.nlp.c.titech.ac.jp/index.en.html"
             style={{ color: "#ffff" }}
           >
             Okazaki Laboratory
-          </a>
+          </a>{" "}
+          (M1)
         </h3>
         <h3>
           <a

@@ -24,6 +24,12 @@ import { Stack, Box } from "@mui/material";
 import ElementsLanguagemenu from "../components/ElementsLanguagemenu";
 import ContentsProjects from "../components/ContentsProjects";
 import SideNav from "../components/SideNav";
+import SchoolIcon from "@mui/icons-material/School";
+import WorkIcon from "@mui/icons-material/Work";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import ArticleIcon from "@mui/icons-material/Article";
+import PhonelinkIcon from "@mui/icons-material/Phonelink";
+import StarIcon from "@mui/icons-material/Star";
 
 export default function Home({ lng = "en" }) {
   const lngSupported = lng.startsWith("ja") ? "ja" : "en";
@@ -53,12 +59,12 @@ export default function Home({ lng = "en" }) {
 
   const tocItems = [
     { id: "introduction", label: "Hello👋" },
-    { id: "education", label: "Education" },
-    { id: "career", label: "Career" },
-    { id: "researches", label: "Awards" },
-    { id: "publications", label: "Publications" },
-    { id: "projects", label: "Projects" },
-    { id: "skills", label: "Others" },
+    { id: "education", label: "Education", icon: <SchoolIcon fontSize="small" /> },
+    { id: "career", label: "Career", icon: <WorkIcon fontSize="small" /> },
+    { id: "researches", label: "Awards", icon: <EmojiEventsIcon fontSize="small" /> },
+    { id: "publications", label: "Publications", icon: <ArticleIcon fontSize="small" /> },
+    { id: "projects", label: "Projects", icon: <PhonelinkIcon fontSize="small" /> },
+    { id: "skills", label: "Others", icon: <StarIcon fontSize="small" /> },
   ];
 
   return (

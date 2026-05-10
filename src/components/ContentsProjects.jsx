@@ -49,11 +49,13 @@ const ContentsProjects = ({ lng = "ja" }) => {
           };
 
           return (
-            <Grid item xs={12} sm={6} md={4} key={key} id={`project-${key}`}>
+            <Grid item xs={12} sm={6} md={4} key={key} id={`project-${key}`} sx={{ display: "flex" }}>
               <Card
                 sx={{
                   display: "flex",
                   flexDirection: "column",
+                  height: "100%",
+                  width: "100%",
                   transition: "transform 0.2s ease-in-out",
                   cursor: post.src ? "pointer" : "default",
                   "&:hover": post.src
