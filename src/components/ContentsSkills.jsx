@@ -15,7 +15,7 @@ const iconMap = {
 };
 
 export default function ContentsSkills({ lng = "en" }) {
-  const title = lng === "ja" ? "その他" : "Others";
+  const title = lng === "ja" ? "その他 / Others" : "Others";
 
   return (
     <Box sx={{ padding: 3 }}>

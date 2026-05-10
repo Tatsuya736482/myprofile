@@ -36,7 +36,7 @@ const ContentsProjects = ({ lng = "ja" }) => {
     <Box sx={{ padding: 3 }} id="projects-section">
       <Typography variant="h4" component="h2" gutterBottom sx={{ display: "flex", alignItems: "center", gap: 1 }}>
         <PhonelinkIcon fontSize="inherit" />
-        Projects
+        {lng === "ja" ? "作品 / Projects" : "Projects"}
       </Typography>
 
       <Grid container spacing={3}>

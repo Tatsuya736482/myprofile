@@ -1,67 +1,94 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
-import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { keyframes } from '@mui/material/styles';
-import { SiWantedly } from "react-icons/si";
-import { SiQiita } from "react-icons/si";
-import { SiZenn } from "react-icons/si";
+import { SiQiita, SiZenn } from "react-icons/si";
 import { FaXTwitter } from "react-icons/fa6";
+import { motion, useAnimation } from "framer-motion";
 
-// ...existing code...
-const wave = keyframes`
-  0% { transform: rotate(0.0deg) }
-  10% { transform: rotate(14.0deg) }
-  20% { transform: rotate(-8.0deg) }
-  30% { transform: rotate(14.0deg) }
-  40% { transform: rotate(-4.0deg) }
-  50% { transform: rotate(10.0deg) }
-  60% { transform: rotate(0.0deg) }
-  100% { transform: rotate(0.0deg) }
-`;
+const MotionIconButton = motion(IconButton);
+
+const ICONS = [
+  { key: "x",        href: "https://x.com/tatsuya_ich",                     label: "x",        El: FaXTwitter,  isMui: false },
+  { key: "github",   href: "https://github.com/Tatsuya736482",               label: "github",   El: GitHubIcon,  isMui: true  },
+  { key: "linkedin", href: "https://www.linkedin.com/in/tatsuya-ich",        label: "linkedin", El: LinkedInIcon,isMui: true  },
+  { key: "qiita",    href: "https://qiita.com/A12",                          label: "qiita",    El: SiQiita,     isMui: false },
+  { key: "zenn",     href: "https://zenn.dev/yay1",                          label: "zenn",     El: SiZenn,      isMui: false },
+];
+
+function buildAnimation(amp) {
+  return {
+    rotate: [0, -amp, amp, -(amp * 0.65), amp * 0.65, -(amp * 0.3), amp * 0.3, 0],
+    transition: {
+      duration: Math.max(0.35, 0.65 - amp * 0.005),
+      ease: "easeInOut",
+    },
+  };
+}
 
 export default function CustomPageToolbar({ color = 'white' }) {
-    const iconHoverStyle = {
-      '&:hover svg': {
-        animation: `${wave} 2.5s infinite`,
-        transformOrigin: '70% 70%',
-      },
+  const c0 = useAnimation();
+  const c1 = useAnimation();
+  const c2 = useAnimation();
+  const c3 = useAnimation();
+  const c4 = useAnimation();
+  const controls = [c0, c1, c2, c3, c4];
+  const isAnimating = useRef(false);
+  const lastScrollY = useRef(window.scrollY);
+  const lastScrollT = useRef(performance.now());
+
+  useEffect(() => {
+    const handleScroll = async () => {
+      const now = performance.now();
+      const dy = Math.abs(window.scrollY - lastScrollY.current);
+      const dt = now - lastScrollT.current;
+      lastScrollY.current = window.scrollY;
+      lastScrollT.current = now;
+
+      if (isAnimating.current) return;
+      isAnimating.current = true;
+
+      // px/ms → 0〜3 あたりを想定、振れ幅 8〜38 deg に写像
+      const velocity = dt > 0 ? dy / dt : 0;
+      const amp = Math.min(38, 8 + velocity * 22);
+      const stagger = Math.max(40, 110 - velocity * 40); // ms
+
+      const animation = buildAnimation(amp);
+
+      // アイコンを順番に揺らす
+      for (let i = 0; i < controls.length; i++) {
+        setTimeout(() => controls[i].start(animation), i * stagger);
+      }
+
+      // 最後のアイコンが終わるまで待ってからフラグを解除
+      const totalDuration = (controls.length - 1) * stagger + (animation.transition.duration * 1000) + 100;
+      setTimeout(() => {
+        isAnimating.current = false;
+      }, totalDuration);
     };
 
-    return (
-        <Stack direction="row" spacing={1} alignItems="center" sx={{ color: 'white' }}>
-          {/* <a href="mailto:tatsuya.ichinose@nlp.comp.isct.ac.jp" style={{ color: 'black' }}>
-            <IconButton aria-label="email" size="medium" sx={iconHoverStyle}>
-              <EmailIcon fontSize="inherit"style={{ color }} />
-            </IconButton>
-          </a> */}
-          <a href="https://x.com/tatsuya_ich" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="zenn" size="medium" sx={iconHoverStyle}>
-              <FaXTwitter style={{ color }}/>
-            </IconButton>
-          </a>
-          <a href="https://github.com/Tatsuya736482" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="github" size="medium" sx={iconHoverStyle}>
-              <GitHubIcon fontSize="inherit" style={{ color }} />
-            </IconButton>
-          </a>
-          <a href="https://www.linkedin.com/in/tatsuya-ich" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="linkedin" size="medium" sx={iconHoverStyle}>
-              <LinkedInIcon fontSize="inherit" style={{ color }}/>
-            </IconButton>
-          </a>
-          <a href="https://qiita.com/A12" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="qiita" size="medium" sx={iconHoverStyle}>
-              <SiQiita style={{ color }}/>
-            </IconButton>
-          </a>
-          <a href="https://zenn.dev/yay1" target="_blank" rel="noopener noreferrer">
-            <IconButton aria-label="zenn" size="medium" sx={iconHoverStyle}>
-              <SiZenn style={{ color }}/>
-            </IconButton>
-          </a>
-        </Stack>
-    );
-  }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <Stack direction="row" spacing={1} alignItems="center">
+      {ICONS.map(({ key, href, label, El, isMui }, i) => (
+        <a key={key} href={href} target="_blank" rel="noopener noreferrer">
+          <MotionIconButton
+            animate={controls[i]}
+            aria-label={label}
+            size="medium"
+            onMouseEnter={() => controls[i].start(buildAnimation(15))}
+          >
+            {isMui
+              ? <El fontSize="inherit" style={{ color }} />
+              : <El style={{ color }} />
+            }
+          </MotionIconButton>
+        </a>
+      ))}
+    </Stack>
+  );
+}

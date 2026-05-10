@@ -56,7 +56,7 @@ const materialsMap = Object.fromEntries(
 
 export default function ContentsPublications({ lng = "en" }) {
   const theme = useTheme();
-  const title = lng === "ja" ? "論文・発表" : "Publications & Presentations";
+  const title = lng === "ja" ? "論文・発表 / Publications" : "Publications";
   const mainAuthorTitle = lng === "ja" ? "主著" : "First-author";
   const coAuthorTitle = lng === "ja" ? "共著" : "Co-authored";
   const sortedItems = Object.entries(publications).sort(([keyA], [keyB]) => keyB.localeCompare(keyA));
